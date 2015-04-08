@@ -418,6 +418,13 @@
         .ui.table thead th {
             background: #fff;
         }
+        .parts{
+            background-color: #f55300;
+            color: #fff;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            margin-top:50px;
+        }
     </style>
 </head>
 <body>
@@ -439,12 +446,14 @@
                         <div id="center-book">
                             <img src="images/Ninja-1.png" class="ninja noBorder" style="margin-top:125px" />
 
+                            <div class="parts">Part One: Why Kendo UI and What is Kendo UI</div>
+
                             <!--_____________-->
                             <!--  chapter 1  -->
                             <!--_____________-->
                             <div id="chapter1" class="chapter">
 
-                            <h2 style="margin-top:50px"><strong>Chapter 1.</strong> Why Kendo UI</h2>
+                            <h2 style="margin-top:50px"><strong>Chapter 1.</strong> Key Benefits of Kendo UI</h2>
 
                             <h3><strong>1.1</strong> Comprehensive set of widgets &amp; tools for building web sites and applications for desktop computers &amp; touch devices</h3>
                             
@@ -470,24 +479,45 @@
                             </ul>
 
 
-                            <h3><strong>1.2</strong> The bulk of Kendo UI is free and open source</h3>
-
-                            <p>Most of Kendo UI is free (41+ widgets), and can be found on <a href="https://github.com/telerik/kendo-ui-core">Github</a> under the permissive Apache 2.0 license. This is what Telerik refers to as <a href="http://www.telerik.com/download/kendo-ui-core">Kendo UI core</a>. Historically, Kendo UI Core was a commercial solution but as of April 2014 it is freely available to anyone to be used for anything. That's right. Telerik is giving away part of a commercial, enterprise grade solution, for free, to anyone to be used for anything! No catch!</p>
-
-
-                            <h3><strong>1.3</strong> Widgets are jQuery based</h3>
+                            <h3><strong>1.2</strong> Widgets are jQuery based</h3>
 
                             <p>The jQuery find-something-then-do-something pattern is likely the most prevalent pattern for working with the DOM today.  It is likely impossible to find a developer who is not familiar with jQuery and its plugin architecture.  Developers who have never used a jQuery-based UI toolkit, like  Kendo UI, will already be familiar with it because of its similarities to jQuery and the jQuery plugin pattern.</p>
 
-                            <h3><strong>1.4</strong> Kendo UI and jQuery Plug-ins</h3>
+                            <h3><strong>1.3</strong> Kendo UI and jQuery Plug-ins</h3>
 
                             <p>The jQuery community contains the largest selection of JavaScript plug-ins available for doing front-end development. Just consider, on Github there are 19,257 repository results for the search “jquery+plugin”. As well, the jQuery project itself provides a repository of 2400+ community plugins.</p>
 
                             <p>If Kendo UI doesn't have or do exactly what you want, you legitimately have good options because it's jQuery based. Most any jQuery plugin can run alongside Kendo UI widgets, which are jQuery plug-ins themselves.  It’s even programmatically reasonable to pick and choose parts from multiple jQuery UI widget toolkits to be used with Kendo UI with no fuss, overhead, conflicts, or fear of duplicating code.</p>
 
-                            <h3><strong>1.5</strong> Initialize widgets using imperative or declarative interfaces</h3>
+                            <h3><strong>1.4</strong> Initialize widgets using imperative or declarative interfaces</h3>
 
                             <p>Kendo UI widgets can be initialized imperatively using using the common jQuery plugin method pattern or declaratively from markup using several options including AngularJS Directives. </p>
+
+                            <h3><strong>1.5</strong> Data visualization widgets Included</h3>
+
+                            <p>Other widget/component toolkits don't always offer or include at no additional cost a robust set of widgets for doing data visualization. Kendo UI includes the following data visualization widgets </p>
+
+                            <ul>
+                                <li><a href="http://demos.telerik.com/kendo-ui/area-charts/index">Area Charts</a></li>
+                                        <li><a href="http://demos.telerik.com/kendo-ui/bar-charts/index">Bar Charts</a></li>
+                                        <li><a href="http://demos.telerik.com/kendo-ui/box-plot-charts/index">Box Plot Charts</a></li>
+                                        <li><a href="http://demos.telerik.com/kendo-ui/bubble-charts/index">Bubble Charts</a></li>
+                                        <li><a href="http://demos.telerik.com/kendo-ui/bullet-charts/index">Bullet Charts</a></li>
+                                        <li><a href="http://demos.telerik.com/kendo-ui/chart-api/index">Chart API</a></li>
+                                        <li><a href="http://demos.telerik.com/kendo-ui/donut-charts/index">Donut Charts</a></li>
+                                        <li><a href="http://demos.telerik.com/kendo-ui/funnel-charts/index">Funnel Charts</a></li>
+                                        <li><a href="http://demos.telerik.com/kendo-ui/line-charts/index">Line Charts</a></li>
+                                        <li><a href="http://demos.telerik.com/kendo-ui/pie-charts/index">Pie Charts</a></li>
+                                        <li><a href="http://demos.telerik.com/kendo-ui/polar-charts/index">Polar Charts</a></li>
+                                        <li><a href="http://demos.telerik.com/kendo-ui/radar-charts/index">Radar Charts</a></li>
+                                        <li><a href="http://demos.telerik.com/kendo-ui/range-bar-charts/index">Range Bar Charts</a></li>
+                                        <li><a href="http://demos.telerik.com/kendo-ui/scatter-charts/index">Scatter Charts</a></li>
+                                        <li><a href="http://demos.telerik.com/kendo-ui/financial/index">Stock Charts</a></li>
+                                        <li><a href="http://demos.telerik.com/kendo-ui/waterfall-charts/index">Waterfall Charts</a></li>
+                                        <li><a href="http://demos.telerik.com/kendo-ui/treemap/index">TreeMap</a></li>
+                                        <li><a href="http://demos.telerik.com/kendo-ui/sparklines/index">Sparklines</a></li>
+                                    </ul>
+
 
                             <h3><strong>1.6</strong> Integrated AngularJS Directives</h3>
 
@@ -1259,6 +1289,8 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
 
 
                             </div><!--  /chapter 2  -->
+
+                            <div class="parts">Part Two: Working (First steps) with Kendo UI</div>
 
 
                             <!--_____________-->
