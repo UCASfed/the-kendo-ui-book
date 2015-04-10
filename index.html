@@ -1,5 +1,6 @@
 <!-- TJ: You should link to your Kendo UI Mobile guide prominently somewhere in here -->
 
+
 <!DOCTYPE html>
 <!--
 
@@ -1316,6 +1317,9 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
                             <li><strong>Individual source files</strong> - The <a href="http://docs.telerik.com/kendo-ui/getting-started/javascript-dependencies#individual-scripts">Kendo UI source is divided into a set of individual JavaScript modules, which have dependencies</a> on each other. These files can individually be added to a web page and the dependencies will have to be managed manually (with your human brain in real time!) as opposed to using a dependency manager/loader like RequireJS that deals with which files are needed and when.</li>
                             <li><strong>AMD module/dependency loader</strong> - Because each source file is an module and wrapped in an AMD definition, a modular loading system such as <a href="http://docs.telerik.com/kendo-ui/getting-started/using-kendo-with/using-kendo-with-requirejs">RequireJS can be used to load and manage Kendo UI dependencies</a>. Using a dependency loader alleviates having to manage dependencies manually which typically requires the correct ordering of inline <code>&lt;script&gt;</code> tags in an html web page.</li>
                             <li><strong>One custom JavaScript file</strong> - Using the Custom Download Tool a custom version of Kendo UI can be downloaded as a single, all in one, file (Note: you must create an account and be logged in to use the (Note: you must create an account and be logged in to use the <a href="http://www.telerik.com/download/custom-download">Custom Download tool</a>).</li>
+
+<!-- TJ: The previous bullet has a duplicated sentence. -->
+
                             <li><strong>One custom Core JavaScript file</strong> - If you use Kendo UI Core, you can build a custom distribution using the grunt build tool by following <a href="https://github.com/telerik/kendo-ui-core#building-only-what-you-need">the instructions in the README</a>.</li>
                             </ol>
 
@@ -1333,7 +1337,7 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
 
                             <h3><strong>3.2</strong> Overview of Kendo UI source code</h3>
 
-                            <p>Regardless of if you are using Kendo UI source code from a Professional download, Core download, or CDN, the directory structure will contain a <code>js</code> and <code>styles</code> directory that could, depending which source you are using, contain the following files (read carefully the highlighted comments).
+                            <p>Regardless of if you are using Kendo UI source code from a Professional download, Core download, or a CDN, the directory structure will contain <code>js</code> and <code>styles</code> directories that could, depending which source you are using, contain the following files (read carefully the highlighted comments).
 
 
 <pre class="brush: xml; highlight: [7,18,31,69,116,121,145,146,176,180]">
@@ -1539,17 +1543,25 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
                             <p>Several things to note about the folder structure are:</p>
 
                             <ol>
-                                <li>Kendo ships with three third-party librarys, AngularJS, jQuery, and JSzip. This is out of convenience and, while you are not required to use them, you should be aware of the versions which are <a href="http://docs.telerik.com/kendo-ui/install/prerequisites">officially supported</a>.</li>
-                                 <li>Obviously, the professional source will differ from the CDN and Core source files and directories. The directory structure I am showing is a combination of all these sources (i.e. not exactly what is downloaded) so you can understand what is offered from each.</li>
+                                <li>Kendo UI ships with three third-party libraries, AngularJS, jQuery, and JSZip. This is out of convenience and, while you are not required to use them, you should be aware of the versions which are <a href="http://docs.telerik.com/kendo-ui/install/prerequisites">officially supported</a>.</li>
+
+<!-- TJ: This is the first mention of JSZip so you might want to make it a link -->
+
+                                 <li>Obviously, the Professional source will differ from the CDN and Core source files and directories. The directory structure I am showing is a combination of all these sources (i.e. not exactly what is downloaded) so you can understand what is offered from each.</li>
                                  <li>Two strategies for including Kendo UI widgets are possible. The first is simply including bundled files (i.e. kendo.all.min.js) which contains large groupings of widgets in one file. The second option would be to include the <code>kendo.core.min.js</code> file then each individual widget/tool module (i.e. kendo.menu.min.js) and all its <a href="http://docs.telerik.com/kendo-ui/install/custom#framework">dependencies</a>.</li>
-                                 <li>The CDN offers the directory structure above excluding non-minified files. The CDN is version, which should be obvious based on the url's to the files on the CDN (e.g. <code>http://cdn.kendostatic.com/2015.1.318/styles/...</code> and <code>http://cdn.kendostatic.com/2015.1.318/js/...</code>). Note, that no "the latest" CDN (i.e. not a version, just the latest) endpoint is offered for Kendo UI.</li>
+                                 <li>The CDN offers the directory structure above excluding non-minified files. The CDN is version, which should be obvious based on the URLs to the files on the CDN (e.g. <code>http://cdn.kendostatic.com/2015.1.318/styles/...</code> and <code>http://cdn.kendostatic.com/2015.1.318/js/...</code>). Note, that no "the latest" CDN (i.e. not a version, just the latest) endpoint is offered for Kendo UI.</li>
+
+<!-- TJ: “The CDN is version”? I'm guessing you mean “The CDN contains the version”? -->
+
                             </ol>
 
-                            <p>The remainder of this book will show code examples using professional source code hosted locally or from the CDN. It's assume from this point forward that the above directory structure is in place no matter if code in the book is shown referencing the CDN or locally hosted files. 
+                            <p>The remainder of this book will show code examples using Professional source code hosted locally or from the CDN. It's assumed from this point forward that the above directory structure is in place regardless of whether the code in the book references the CDN or locally hosted files. 
 
                             The purpose in stating this is so that you realize that the CSS files included in your HTML document will not work correctly without the proper file system placement of the theme, <code>images</code>, and <code>textures</code> directories in relation to the CSS files.</p>
 
                             <p>The two code examples below demonstrate the minimally required source files (i.e. two .js files and two .css files) to run Kendo UI. Don't forget that the CSS files will only provide the correct CSS if the theme, images, and textures directories are also properly put on the same file system serving the CSS files (i.e. the CSS dependencies, defined in the CSS files, are relative references).</p>
+
+<!-- TJ: You're inconsistent about whether “theme”, “images”, and ”textures” are in code tags above. -->
 
                             <p>Running Kendo UI Professional from CDN source code:</p>
 
@@ -1876,6 +1888,8 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
 &lt;/html&gt;
 </pre>
 
+<!-- TJ: This might be a good place to link off to your mobile guide. You could even consider dropping this mobile-specific material, as it duplicates material your mobile guide already covers. -->
+
                             <div class="note">
                             <div class="notes-title">Notes</div>
                             <div class="notes">
@@ -1929,9 +1943,12 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
                             <div class="notes-title">Notes</div>
                             <div class="notes">
                                     <ul>
-                                        <li>Don't confuse the JavaScript file <code>kendo.ui.core.min.js</code> with <code>kendo.core.min.js</code>. The <code>kendo.ui.core.min.js</code> contains all of the Core widgets while the <code>kendo.core.min.js</code> is the core JavaScript file required by all widgets.</li>
+                                        <li>Don't confuse the JavaScript file <code>kendo.ui.core.min.js</code> with <code>kendo.core.min.js</code>. The <code>kendo.ui.core.min.js</code> file contains all of the Core widgets while <code>kendo.core.min.js</code> is the core JavaScript file required by all widgets.</li>
                                         <li>The documentation provides a <a href="http://docs.telerik.com/kendo-ui/install/custom#include-individual-widget-scripts">list</a> of all widgets and tools that can be included individually and provides a link to a <a href="http://docs.telerik.com/kendo-ui/install/custom#framework">list of dependencies for each</a>.</li>
-                                        <li>Keep in mind that Kendo UI code supports the use of an AMD loader. Use <a href="http://webpack.github.io/">webpack</a> or <a href="http://jspm.io/">jspm.io</a>). Including individual widgets/tools and managing their dependencies can quickly become, well, unmanageable depending upon how many individual parts you include and the overlapping similarities between the dependencies. For this reason, if you want to include a large number of widgets and tools individually, you would probably be better off using an AMD loader to manager dependencies.</li>
+                                        <li>Keep in mind that Kendo UI code supports the use of an AMD loader. Use <a href="http://webpack.github.io/">webpack</a> or <a href="http://jspm.io/">jspm.io</a>. Including individual widgets/tools and managing their dependencies can quickly become, well, unmanageable depending upon how many individual parts you include and the overlapping similarities between the dependencies. For this reason, if you want to include a large number of widgets and tools individually, you would probably be better off using an AMD loader to manager dependencies.</li>
+
+<!-- TJ: No RequireJS love? Also it might be worth having note about CommonJS usage  -->
+
                                     </ul>
                                 </div>
                             </div>
@@ -1946,15 +1963,20 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
                             
                             <h2><strong>Chapter 4.</strong> Creating Kendo UI Widgets</h2>
 
+<!-- TJ: As a suggestion I'd stick with “initializing”, especially since you plan to cover “creating” later. You can say “creating widget instances”, but I'd avoid “creating widgets” here.  -->
+
                             <h3><strong>4.1</strong> Overview of instantiating widgets</h3>
 
-                            <p>A Kendo UI widget is typically created (i.e. instantiated) in the following five ways.</p>
+                            <p>A Kendo UI widget is typically created (i.e. instantiated) in the following five ways:</p>
 
                             <ol>
                                 <li>Imperatively using jQuery methods</li>
                                 <li>Declaratively from markup using <code>kendo.init()</code></li>
                                 <li>Declaratively from template markup when a <code>View</code> is <code>render()</code>'ed to the DOM</li>
                                 <li>Declaratively from markup when binding a viewModel to a view (i.e. MVVM)</li>
+
+<!-- TJ: Shouldn't it be “view model”? This applies in a number of places. If “viewModel” actually is correct I'd expect it to be in code tags. -->
+
                                 <li>Declaratively from markup in AngularJS applications using directives</li>
                             </ol>
 
@@ -1977,7 +1999,7 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
 
                             <a class="jsbin-embed" href="http://jsbin.com/benuna/1/embed?html&height=500px">JS Bin</a>
 
-                             <p>When creating widgets, you'll need to make sure the correct HTML element is being used (refer to the demos, docs, and api). For example, to create an auto complete widget, the method assumes that it's being invoked on a <code>&lt;input&gt;</code> element otherwise the widget does not function properly. If the creation of a widget is failing, always verify that the widget is being instantiated on the correct HTML element.</p>
+                             <p>When creating widgets, you'll need to make sure the correct HTML element is being used (refer to the demos, docs, and api). For example, to create an auto complete widget, the method assumes that it's being invoked on an <code>&lt;input&gt;</code> element, otherwise the widget does not function properly. If the creation of a widget is failing, always verify that the widget is being instantiated on the correct HTML element.</p>
 
                              <a class="jsbin-embed" href="http://jsbin.com/sofico/1/embed?html&height=450px">JS Bin</a>
 
@@ -1985,9 +2007,9 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
                             <div class="notes-title">Notes</div>
                             <div class="notes">
                                     <ul>
-                                        <li>Kendo methods follow the jQuery plugin pattern and return the jQuery object so that additional methods can be chained after invoking a Kendo method.</li>
+                                        <li>Kendo UI methods follow the jQuery plugin pattern and return the jQuery object so that additional methods can be chained after invoking a Kendo UI method.</li>
                                         <li>Calling a Kendo UI method on more than one HTML element will instantiate a widget instance for each HTML element selected.</li>
-                                        <li>Widget options can be updated/set after initial widget instantiation using the <code><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/widget#methods-setOptions">.setOptions()</a></code> widget method.</li>
+                                        <li>Widget options can be updated/set after initial widget instantiation using the <code><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/widget#methods-setOptions">setOptions()</a></code> widget method.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -1995,13 +2017,19 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
 
                             <h3><strong>4.3</strong> Instantiate widgets declaratively (from markup) using <code>kendo.init()</code></h3>
 
-                            <p>Kendo UI offers the <code><a href="http://docs.telerik.com/kendo-ui/api/javascript/kendo#methods-init">kendo.init()</a></code> function to instantiate widgets from markup. The function when called will instantiates widgets on the passed element argument and all child elements with a data role attribute and value defining what type of widget should be created (e.g. <code>data-role="calendar"</code>).</p>
+                            <p>Kendo UI offers the <code><a href="http://docs.telerik.com/kendo-ui/api/javascript/kendo#methods-init">kendo.init()</a></code> function to instantiate widgets from markup. The function instantiates widgets on the passed element argument and all child elements with a <code>data-role</code> attribute and value defining what type of widget should be created (e.g. <code>data-role="calendar"</code>).</p>
+
+<!-- TJ: The previous sentence needs some punctuation -->
 
                             <p>In the code below, I am passing the <code>init()</code> function a reference to the <code>&lt;body&gt;</code> element in the HTML which it uses as the starting point for converting markup to widgets. The <code>&lt;body&gt;</code> element contains <code>&lt;div data-role=&quot;calendar&quot;&gt;&lt;/div&gt;</code> and this element is turned into a Kendo UI calendar when <code>kendo.init(document.body)</code> is invoked.</p>
 
                             <a class="jsbin-embed" href="http://jsbin.com/rutepe/5/embed?html&height=500px">JS Bin</a>
 
-                            <p>By default <code><a href="http://docs.telerik.com/kendo-ui/api/javascript/kendo#methods-init">kendo.init()</a></code> will only instantiate widgets found in the <code>kendo.ui</code> namespace (i.e. not mobile widgets or dataViz widgets). But multiple arguments can be passed to the <code>init()</code> function, after first passing a DOM reference argument, that specifically identifies the namespaces that should be check for <code>data-role</code> instantiation. For example, the follow code will instantiate web widgets, mobile widgets, and dataViz widgets on HTML elements in the &lt;body&gt; that have the proper <code>data-role=""</code> attribute values.</p>
+                            <p>By default <code><a href="http://docs.telerik.com/kendo-ui/api/javascript/kendo#methods-init">kendo.init()</a></code> will only instantiate widgets found in the <code>kendo.ui</code> namespace (i.e. not mobile widgets or DataViz widgets). But multiple arguments can be passed to the <code>init()</code> function, after first passing a DOM reference argument, that specifically identifies the namespaces that should be check for <code>data-role</code> instantiation.
+
+<!-- TJ: Rewrite the start of the preceding sentence; it's awkward currently. -->
+
+                            For example, the follow code will instantiate web widgets, mobile widgets, and DataViz widgets on HTML elements in the &lt;body&gt; that have the proper <code>data-role=""</code> attribute values.</p>
 <pre class="brush: js">
 kendo.init($('body'), kendo.ui, kendo.mobile.ui, kendo.dataviz.ui);
 </pre>
@@ -2010,19 +2038,22 @@ kendo.init($('body'), kendo.ui, kendo.mobile.ui, kendo.dataviz.ui);
                             <div class="notes-title">Notes</div>
                             <div class="notes">
                                     <ul>
-                                        <li>The first argument passed to<code>init()</code> can be a DOM reference (<code>document.body</code> or <code>document.querySelector('#body')</code>) or a jQuery object (e.g. <code>$('#body')</code>).</li>
+                                        <li>The first argument passed to <code>init()</code> can be a DOM reference (<code>document.body</code> or <code>document.querySelector('#body')</code>) or a jQuery object (e.g. <code>$('#body')</code>).</li>
                                         <li>The <code>data-role</code> value for a widget is the name of a widget in all lowercase. For example, to instantiate a <code><a href="https://github.com/telerik/kendo-ui-core/blob/master/src/kendo.autocomplete.js">kendo.ui.AutoComplete</a></code> widget from markup you'd use <code>data-role="autocomplete"</code>.</li>
-                                        <li>A widgets configuration options and events can be declared as HTML attributes by changing the camel case configuration name or event name to dash-separated, and then pre-pending with "data-". For example, the auto complete widget configuration <code>ignoreCase</code> when used in HTML would become <code>data-ignore-case="false"</code>. Configuration options which start with "data" do not require an additional "data" in the attribute name e.g. the <code>dataTextField</code> option is set using the <code>data-text-field</code> attribute and <code>dataSource</code> is set using the <code>data-source attribute</code>.</li>
+
+<!-- TJ: My OCD noticed that you just randomly switched from double quotes to single quotes. Obviously this is trivial, but consistency is good :) -->
+
+                                        <li>A widget's configuration options and events can be declared as HTML attributes by changing the camel case configuration name or event name to dash-separated, and then pre-pending with "data-". For example, <code>data-ignore-case="false"</code> sets the auto complete widget's <code>ignoreCase</code> configuration option to <code>false</code>. Configuration options which start with "data" do not require an additional "data" in the attribute name e.g. the <code>dataTextField</code> option is set using the <code>data-text-field</code> attribute and <code>dataSource</code> is set using the <code>data-source attribute</code>.</li>
                                         <li>Event handlers, set as HTML attribute values will <a href="http://docs.telerik.com/kendo-ui/framework/data-attribute-initialization#events">be resolved from a string in HTML (e.g. <code>data-change="change"</code>) to a JavaScript value found in the global scope (e.g. <code>window.change</code> where <code>change</code> is a JavaScript function)</a>.</li>
-                                        <li>The <code>template</code> configuration option, set as an HTML attribute value (e.g. <code>data-template="foo"</code>), is used to select a template in the HTML document with that value as it's <code>id</code> value. (e.g. <code>&lt;script id=&quot;foo&quot; type=&quot;text/x-kendo-template&quot;&gt;&lt;/script&gt;</code>).</li>
+                                        <li>The <code>template</code> configuration option, set as an HTML attribute value (e.g. <code>data-template="foo"</code>), is used to select a template in the HTML document with that value as its <code>id</code> value. (e.g. <code>&lt;script id=&quot;foo&quot; type=&quot;text/x-kendo-template&quot;&gt;&lt;/script&gt;</code>).</li>
                                     </ul>
                                 </div>
                             </div>
 
 
-                            <h3><strong>4.4</strong> Instantiate widgets declaratively (from markup) using <code>kendo.View</code>'s</h3>
+                            <h3><strong>4.4</strong> Instantiate widgets declaratively (from markup) using <code>kendo.View</code>s</h3>
 
-                            <p>Kendo UI offers a <code><a href="http://docs.telerik.com/kendo-ui/framework/spa/view">View</a></code> abstraction similar to a <a href="http://backbonejs.org/#View">Backbone view</a> but a little more light weight. When a <code>View</code> is <code>render()</code>ed any HTML elements in the view with a <code>data-role</code> attribute and widget name value will get instantiated upon rendering. This is identical to how widgets are instantiated from HTML using <code>kendo.init()</code>.</p>
+                            <p>Kendo UI offers a <code><a href="http://docs.telerik.com/kendo-ui/framework/spa/view">View</a></code> abstraction similar to a <a href="http://backbonejs.org/#View">Backbone view</a> but a little more lightweight. When a <code>View</code> is <code>render()</code>ed, any HTML elements in the view with a <code>data-role</code> attribute and widget name value will get instantiated upon rendering. This is identical to how widgets are instantiated from HTML using <code>kendo.init()</code>.</p>
 
                             <p>In the code below, an auto complete widget is being instantiated from HTML when the <code>myView</code> <code>View</code> renders the HTML to the DOM.</p>
 
@@ -2041,6 +2072,8 @@ kendo.init($('body'), kendo.ui, kendo.mobile.ui, kendo.dataviz.ui);
                                     </ul>
                                 </div>
                             </div>
+
+<!-- TJ: You gave this entire proceeding notes section, verbatim, in the previous section. Drop this one. It threw me off. -->
 
                             <h3><strong>4.5</strong> Instantiate widgets declaratively (from markup) using MVVM</h3>
 
@@ -2069,9 +2102,11 @@ kendo.init($('body'), kendo.ui, kendo.mobile.ui, kendo.dataviz.ui);
                                 </div>
                             </div>
 
+<!-- TJ: And the same notes appear again. I'd again drop this one too. I think people will realize that this same points still apply. -->
+
                             <h3><strong>4.6</strong> Instantiate widgets declaratively (from markup) using AngularJS directives</h3>
 
-                            <p>Kendo UI provides official AngularJS directives for initializing widgets from markup the Angular way using custom element attributes or custom tag names. In the code example below the <code><a href="https://github.com/telerik/kendo-ui-core/blob/master/src/kendo.angular.js">kendo.directives</a></code> are injected into the "ctrl" controller aiding the instantiation of a slide widget from the <code>kendo-slider</code> directive found in the HTML.</p>
+                            <p>Kendo UI provides official AngularJS directives for initializing widgets from markup the Angular way using custom element attributes or custom tag names. In the code example below the <code><a href="https://github.com/telerik/kendo-ui-core/blob/master/src/kendo.angular.js">kendo.directives</a></code> are injected into the "ctrl" controller aiding the instantiation of a slider widget from the <code>kendo-slider</code> directive found in the HTML.</p>
 
                             <a class="jsbin-embed" href="http://jsbin.com/qivuhi/5/embed?html&height=600px">JS Bin</a>
 
@@ -2081,10 +2116,10 @@ kendo.init($('body'), kendo.ui, kendo.mobile.ui, kendo.dataviz.ui);
                                 <div class="notes-title">Notes</div>
                                 <div class="notes">
                                     <ul>
-                                        <li>Kendo officially supports AngularJS v1.3.x</li>
-                                        <li>When instantiate widgets from markup using Angular directives widget configuration options don't start with "data" they start with "k".</li>
+                                        <li>Kendo UI officially supports AngularJS v1.3.x</li>
+                                        <li>When instantiating widgets from markup using Angular directives widget, configuration options don't start with "data" they start with "k".</li>
                                         <li>Be aware <a href="https://blog.angularjs.org/2013/12/angularjs-13-new-release-approaches.html">AngularJS 1.3 drops support for IE8</a>. AngularJS 1.2 will continue to support IE8, but the core AngularJS team does not plan to spend time addressing issues specific to IE8 or earlier.</li>
-                                        <li>Choose either AngularJS data binding/routing or Kendo MVVM/routing don't mix the solutions in a single application.</li>
+                                        <li>Choose either AngularJS data binding/routing or Kendo MVVM/routing; don't mix the solutions in a single application.</li>
                                         <li>When loading individual Kendo UI files you need to also load <code>kendo.angular.js</code> (or <code>kendo.angular.min.js</code>) after <code>kendo.core.js</code> (or <code>kendo.core.min.js</code>) because this file contains the actual directives.</li>
                                     </ul>
                                 </div>
@@ -2098,7 +2133,7 @@ kendo.init($('body'), kendo.ui, kendo.mobile.ui, kendo.dataviz.ui);
 
                             <a class="jsbin-embed" href="http://jsbin.com/siwuni/1/embed?html&height=670px">JS Bin</a>
 
-                            <p>After getting Kendo UI installed and deciding how you will instantiate the widgets the next order of business should be to learn, in detail, the in's and out's of the Kendo UI <code>template</code> and <code>DataSource</code> abstractions. I have only briefly introduced them here to communicate their importances as it pertains to creating Kendo UI widgets.</p>
+                            <p>After getting Kendo UI installed and deciding how you will instantiate the widgets, the next order of business should be to learn, in detail, the ins and outs of the Kendo UI <code>template</code> and <code>DataSource</code> abstractions. I have only briefly introduced them here to communicate their importances as it pertains to creating Kendo UI widgets.</p>
                         
 
                             </div><!--  /chapter 4  -->
@@ -2111,7 +2146,7 @@ kendo.init($('body'), kendo.ui, kendo.mobile.ui, kendo.dataviz.ui);
                             <h2><strong>Chapter 5.</strong> Kendo UI Widget Basics</h2>
                             <h3><strong>5.1</strong> Getting reference/pointer to widget instance</h3>
 
-                            <p>Once you have created a widget it is possible that you will want to do something with it, even after initially instantiating it with options. For example, you might want to call widget methods, bind/unbind widget events, or destroy the widget instance. In order to accomplish all of this, you will need a reference to the widget instance. Regardless of if you created the widget using a jQuery method or markup (i.e. via MVVM or <code>Views</code>), you will have to use JavaScript to get a reference to the DOM element the widget was initialized on. Once you have a reference to the original element in the DOM the widget was instantiated on you can use the <code>.data('kendoNameOfWidget')</code> / <code>.getKendoNameOfWidget</code> jQuery methods or the <code>kendo.widgetInstance()</code> method to gain/return a reference to the actual widget instance.</p>
+                            <p>Once you have created a widget it's likely that you will want to do something with it, even after initially instantiating it with options. For example, you might want to call widget methods, bind/unbind widget events, or destroy the widget instance. In order to accomplish all of this, you will need a reference to the widget instance. Regardless of whether you created the widget using a jQuery method or markup (i.e. via MVVM or <code>Views</code>), you will have to use JavaScript to get a reference to the DOM element the widget was initialized on. Once you have a reference to the original element in the DOM the widget was instantiated on, you can use the <code>.data('kendoNameOfWidget')</code> / <code>.getKendoNameOfWidget</code> jQuery methods or the <code>kendo.widgetInstance()</code> method to gain/return a reference to the actual widget instance.</p>
 
                             <p>In the code example below I demonstrate both solutions for gaining a reference to a widget instance.</p>
 
@@ -2119,7 +2154,7 @@ kendo.init($('body'), kendo.ui, kendo.mobile.ui, kendo.dataviz.ui);
 
                             <h3><strong>5.2</strong> Calling widget methods</h3>
 
-                            <p>Each widget has a set of methods that are unique to that widget as well <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/widget">some methods that are inherited and available to all widgets</a>. To invoke methods on a widget after instantiation get a reference to the widget then invoke any of the methods the widgets instance inherits. Below, I show three examples of grabbing an element from the DOM that an auto complete widget was initialized on, getting a reference to the widget instance, then calling the <code>value()</code> <code>AutoComplete</code> method.</p>
+                            <p>Each widget has a set of methods that are unique to that widget as well <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/widget">some methods that are inherited and available to all widgets</a>. To invoke methods on a widget after instantiation, get a reference to the widget and then invoke any of the methods the widgets instance inherits. Below, I show three examples of grabbing an element from the DOM that an auto complete widget was initialized on, getting a reference to the widget instance, then calling the <code>value()</code> <code>AutoComplete</code> method.</p>
 
                             <a class="jsbin-embed" href="http://jsbin.com/quseso/4/embed?html&height=600px">JS Bin</a>
 
@@ -2133,11 +2168,15 @@ kendo.init($('body'), kendo.ui, kendo.mobile.ui, kendo.dataviz.ui);
 
                             <a class="jsbin-embed" href="http://jsbin.com/qegemo/2/embed?html&height=600px">JS Bin</a>
 
-                            <p>It can be useful to know the current configuration values for a widget before updating it using <code>setOptions()</code>. Most widgets offer an <code>options</code> property on the widget instance object, which is an object containing the configuration options and there current values.</p>
+<!-- TJ: Mixed single quotes and double quotes in the same example! My brain can't handle that. -->
 
-                            <p>In the code example below I inject into the HTML document all of the options and current values for a calendar widget using the <code>options</code> property.</p>
+                            <p>It can be useful to know the current configuration values for a widget before updating it using <code>setOptions()</code>. Most widgets offer an <code>options</code> property on the widget instance object, which is an object containing the configuration options and their current values.</p>
+
+                            <p>In the code example below I inject all of the options and current values for a calendar widget into the HTML document using the <code>options</code> property.</p>
 
                             <a class="jsbin-embed" href="http://jsbin.com/nonivi/4/embed?html&height=600px">JS Bin</a>
+
+<!-- TJ: Trivial, but $('</p>') can be $('<p>'). -->
 
                             <h3><strong>5.4</strong> Binding/unbinding widget events</h3>
 
@@ -2178,9 +2217,9 @@ $('#autocomplete').kendoAutoComplete({
 
                             <h3><strong>5.6</strong> Manually triggering a widget event</h3>
 
-                            <p>Using the widget <code>trigger()</code> method it is possible to manually set off an event on a widget.</p>
+                            <p>Using the widget <code>trigger()</code> method it's possible to manually set off an event on a widget.</p>
 
-                            <p>In the code example below I manually trigger the <code>click</code> event on a Kendo button widget.</p>
+                            <p>In the code example below I manually trigger the <code>click</code> event on a Kendo UI button widget.</p>
 
                             <a class="jsbin-embed" href="http://jsbin.com/bitoge/2/embed?html&height=520px">JS Bin</a>
 
@@ -2190,8 +2229,8 @@ $('#autocomplete').kendoAutoComplete({
 
                             <ul>
                                 <li><code>.sender</code> - a reference to the widget instance that triggered the event</li>
-                                <li><code>.preventDefault()</code> - cancel default event effects on widget when called in the scope of the callback function
-                                <li><code>.isDefaultPrevented()</code> - returns boolean value of current state of <code>preventDefault()</code>
+                                <li><code>.preventDefault()</code> - a method that cancels default event effects on the widget when called in the scope of the callback function
+                                <li><code>.isDefaultPrevented()</code> - returns the boolean value of current state of <code>preventDefault()</code>
                             </ul>
 
                             <p>In the code example below I use the <code>event</code> parameter as a reference to the event object passed to all widget event callback functions to get a reference to the button widget instance and specifically the click event option passed to the button widget.</p>
@@ -2202,9 +2241,11 @@ $('#autocomplete').kendoAutoComplete({
 
                             <p>The <code>bind()</code> and <code>unbind()</code> methods are actually inherited from <code><a href="http://docs.telerik.com/kendo-ui/api/javascript/observable">kendo.Observable</a></code> for each widget. And each widget inherits from <code><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/widget">kendo.ui.Widget</a></code>, which directly inherits from <code>kendo.Observable</code>. Because <code>kendo.Observable</code> is just a reusable pattern for listening and firing events on objects, we can use the <code>bind()</code> and <code>trigger()</code> methods to setup custom events on widgets and trigger them.</p>
 
-                            <p>In the code example below I am adding a custom event called 'foo' to the button widget and then immediately trigger it.</p>
+                            <p>In the code example below I am adding a custom event called 'foo' to the button widget and then immediately triggering it.</p>
 
                             <a class="jsbin-embed" href="http://jsbin.com/wuruze/4/embed?html&height=550px">JS Bin</a>
+
+<!-- TJ: Something I noticed on a few of these examples. Here I only see the console output if I have the console tab open on the JS Bin when this example runs. So if I click on Output and then Console (which I have been doing), I get confused. Not sure you can do anything about this, but I just thought I'd let you know that this confused me for a minute (although I did figure out what was up pretty quickly). -->
 
                             <div class="note">
                                 <div class="notes-title">Notes</div>
@@ -2218,6 +2259,8 @@ $('#autocomplete').kendoAutoComplete({
                             <h3><strong>5.9</strong> Referencing the top most element that wraps a widget in the DOM</h3>
 
                             <p>Widget instances have a property called <code>.wrapper</code> that contains a jQuery object with the outer most element selected which wraps the widget in the DOM.</p>
+
+<!-- TJ: This could use a brief explanation of why some widgets use wrappers. -->
 
                             <p>In the code example below I use the <code>.wrapper</code> property to invoke the jQuery <code>prop()</code> method returning the name of the outer most element that is wrapping the grid.</p>
 
@@ -2241,11 +2284,15 @@ $('#autocomplete').kendoAutoComplete({
                             <li>Destroys all child widgets with the help of <a href="/kendo-ui/api/framework/kendo#methods-destroy"><code>kendo.destroy()</code></a> method.</li>
                             </ul>
 
+<!-- TJ: It also cleans up event handlers to avoid memory leaks (or at least it should). -->
+
                             <p>In the code example below I am creating a button widget which upon clicking will destroy itself and then empty and remove the element the button widget was originally instantiated on (i.e. <code>&lt;button&gt;</code>). </p>
 
                             <a class="jsbin-embed" href="http://jsbin.com/namazo/4/embed?html&height=550px">JS Bin</a>
 
-                            <p>The <code>kendo.destroy()</code> function is offered to destroy multiple widgets with one call. Pass <code>kendo.destroy()</code> a DOM element and all widgets contained on in in the DOM element will have it's widget <code>.destroy()</code> method called.</p>
+<!-- TJ: Destroy is spelled incorrectly in the example above -->
+
+                            <p>The <code>kendo.destroy()</code> function is offered to destroy multiple widgets with one call. Pass <code>kendo.destroy()</code> a DOM element and all widgets within the DOM element will have their <code>.destroy()</code> method called.</p>
 
                             <div class="note">
                                 <div class="notes-title">Notes</div>
@@ -2253,6 +2300,9 @@ $('#autocomplete').kendoAutoComplete({
                                     <ul>
                                         <li>Destroying a widget does not empty or remove the DOM elements that were in place when the widget was instantiated. One will have to manually remove these DOM elements to totally remove all traces of the widget.</li>
                                         <li>Kendo UI widgets are destroyed automatically when the web page is unloaded.</li> 
+
+<!-- TJ: “Kendo UI widgets are destroyed automatically when the web page is unloaded.” Wait, what? -->
+
                                         <li>Creating a new widget instance from the leftovers of a destroyed widget may work, but is not recommended.</li> 
                                     </ul>
                                 </div>
