@@ -1961,7 +1961,7 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
                                         <li>Kendo UI methods follow the jQuery plugin pattern and return the jQuery object so that additional methods can be chained after invoking a Kendo UI method.</li>
                                         <li>Calling a Kendo UI method on more than one HTML element will instantiate a widget instance for each HTML element selected.</li>
                                         <li>Widget options can be updated/set after initial widget instantiation using the <code><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/widget#methods-setOptions">setOptions()</a></code> widget method.</li>
-                                        <li>jQuery is a hard dependency but imperative instantiation can sidestep jQuery if you prefer using <code>new</code> and have the instance returned instead of jQuery (e.g. <code>var slider = new kendo.ui.Slider(document.querySelector('input'),{});</code>)</li>
+                                        <li>A non-jQuery imperative instantiation option exist that can sidestep jQuery if you prefer using <code>new</code> and having the instance returned without having to invoke another method. Non-jQuery developers will be more familiar with this style of imperative instantiation. (e.g. <code>var slider = new kendo.ui.Slider(document.querySelector('input'),{option:option});</code>)</li>
                                     </ul>
                                 </div>
                             </div>
