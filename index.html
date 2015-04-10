@@ -2098,6 +2098,15 @@ kendo.init($('body'), kendo.ui, kendo.mobile.ui, kendo.dataviz.ui);
 
                             <a class="jsbin-embed" href="http://jsbin.com/nonivi/6/embed?html&height=600px">JS Bin</a>
 
+                            <div class="note">
+                                <div class="notes-title">Notes</div>
+                                <div class="notes">
+                                    <ul>
+                                        <li>As of the 2015.1.318 Kendo UI release <code>setOptions()</code> works on a limited set of widgets. It's planned for all widgets to fully support the method in the next release.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
                             <h3><strong>5.4</strong> Binding/unbinding widget events</h3>
 
                             <p>During instantiation, widget events can be configured just like configuration options. In the code below a callback function is configured during instantiation to run any time the <code>change</code> event is broadcast-ed by the widget.</p>
@@ -2125,7 +2134,6 @@ $('#autocomplete').kendoAutoComplete({
                                     </ul>
                                 </div>
                             </div>
-
 
                             <h3><strong>5.5</strong> Invoke a widget event once</h3>
 
@@ -2433,14 +2441,15 @@ $('#autocomplete').kendoAutoComplete({
 
         
         //toggle
+
         $( '#toggle-toc' ).on('click',function() {
             splitter.toggle('.k-pane:first');
-            if($('#book')[0].scrollTop > 0){
+            /*if($('#book')[0].scrollTop > 0){
                 $('#toc-padding a.active').first()[0].scrollIntoView(true);
-            }
+            }*/
             return false;
         });
-
+        /*
         window.setTimeout(function(){
 
             $('.sec')
@@ -2478,15 +2487,16 @@ $('#autocomplete').kendoAutoComplete({
                 $.waypoints('refresh');
             });
 
-            if(window.location.hash !== ''){
-                window.location.hash = window.location.hash;
-            }
 
-        },10000);
+        },10000);*/
 
         window.setTimeout(function(){ 
             if(window.location.hash === ''){
             //$( '#toggle-toc' ).trigger('click');
+            }
+
+            if(window.location.hash !== ''){
+                window.location.hash = window.location.hash;
             }
         }, 5000);
 
