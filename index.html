@@ -1961,7 +1961,7 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
                                         <li>Kendo UI methods follow the jQuery plugin pattern and return the jQuery object so that additional methods can be chained after invoking a Kendo UI method.</li>
                                         <li>Calling a Kendo UI method on more than one HTML element will instantiate a widget instance for each HTML element selected.</li>
                                         <li>Widget options can be updated/set after initial widget instantiation using the <code><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/widget#methods-setOptions">setOptions()</a></code> widget method.</li>
-                                        <li>A non-jQuery imperative instantiation option exist that can sidestep jQuery if you prefer using <code>new</code> and having the instance returned without having to invoke another method. Non-jQuery developers will be more familiar with this style of imperative instantiation. (e.g. <code>var slider = new kendo.ui.Slider(document.querySelector('input'),{option:option});</code>)</li>
+                                        <li>A non-jQuery imperative instantiation option exist that can sidestep jQuery if you prefer using <code>new</code> and having the instance returned without having to invoke another method. Non-jQuery developers will be more familiar with this style of imperative instantiation. (e.g. <code>var slider = new kendo.ui.Slider(document.querySelector('input'),{option:'option'});</code>)</li>
                                     </ul>
                                 </div>
                             </div>
@@ -1986,6 +1986,7 @@ kendo.init($('body'), kendo.ui, kendo.mobile.ui, kendo.dataviz.ui);
                             <div class="notes">
                                     <ul>
                                         <li>The first argument passed to <code>init()</code> can be a DOM reference (<code>document.body</code> or <code>document.querySelector('#body')</code>) or a jQuery object (e.g. <code>$('#body')</code>).</li>
+                                        <li><code>init()</code> came before <code>bind()</code>, but <code>bind()</code> can be used in place of <code>init()</code> (e.g. <code>kendo.init(element,namespace,namespace)</code> is the same as <code>kendo.bind(element,null,namespaces,namespace)</code>.</li>
                                         <li>The <code>data-role</code> value for a widget is the name of a widget in all lowercase. For example, to instantiate a <code><a href="https://github.com/telerik/kendo-ui-core/blob/master/src/kendo.autocomplete.js">kendo.ui.AutoComplete</a></code> widget from markup you'd use <code>data-role="autocomplete"</code>.</li>
                                         <li>A widget's configuration options and events can be declared as HTML attributes by changing the camel case configuration name or event name to dash-separated, and then pre-pending with "data-". For example, <code>data-ignore-case="false"</code> sets the auto complete widget's <code>ignoreCase</code> configuration option to <code>false</code>. Configuration options which start with "data" do not require an additional "data" in the attribute name e.g. the <code>dataTextField</code> option is set using the <code>data-text-field</code> attribute and <code>dataSource</code> is set using the <code>data-source attribute</code>.</li>
                                         <li>Event handlers, set as HTML attribute values will <a href="http://docs.telerik.com/kendo-ui/framework/data-attribute-initialization#events">be resolved from a string in HTML (e.g. <code>data-change="change"</code>) to a JavaScript value found in the global scope (e.g. <code>window.change</code> where <code>change</code> is a JavaScript function)</a>.</li>
@@ -2102,7 +2103,7 @@ kendo.init($('body'), kendo.ui, kendo.mobile.ui, kendo.dataviz.ui);
                                 <div class="notes-title">Notes</div>
                                 <div class="notes">
                                     <ul>
-                                        <li>As of the 2015.1.318 Kendo UI release <code>setOptions()</code> works on a limited set of widgets. It's planned for all widgets to fully support the method in the next release.</li>
+                                        <li>As of the 2015.1.318 Kendo UI release <code>setOptions()</code> works on a limited set of widgets. It's planned for all widgets to fully support the <code>setOptions()</code> by the end of the year.</li>
                                     </ul>
                                 </div>
                             </div>
