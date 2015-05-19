@@ -751,7 +751,39 @@
                             <h3><strong>1.16</strong> Offline Widgets</h3>
 
                             <p>Kendo UI allows data-bound widgets (i.e. widgets that use <a href="http://docs.telerik.com/kendo-ui/framework/datasource/offline">DataSource</a>) to function without being online. Users can continue working while offline and data will be stored locally until network connectivity resumes.</p>
-                            
+
+                            <h3><strong>1.17</strong> Built in Templating Engine</h3>
+
+                            <p>Kendo UI offers a <a href="http://docs.telerik.com/kendo-ui/framework/templates/performance">high performance JavaScript templating engine</a> that can be used in the creation of widgets. Or, you can bring <a href="http://demos.telerik.com/kendo-ui/integration/index">your own</a> as well.</p>
+
+                            <h3><strong>1.18</strong> Robust Data Abstraction</h3>
+
+                            <p>Kendo UI widgets are designed from the ground up to make use of a powerful data abstraction that fully supports CRUD operations (Create, Read, Update, Destroy), and provides support for data sorting, paging, filtering, grouping and aggregates. The abstraction (i.e. <code>kendo.data.DataSource()</code> instances) can use local data (arrays of JavaScript objects) or connect to remote data (web services returning JSON, JSONP, OData or XML) services and API's.</p>
+
+                            <p>The Kendo UI DataSource has many abilities and responsibilities, including:</p>
+
+                            <ul>
+                                <li>
+                                <a href="/kendo-ui/framework/datasource/cors">retrieve data from a remote endpoint</a>;</li>
+                                <li>maintain the <a href="/kendo-ui/framework/datasource/crud#schema">structure and type of the data (schema)</a>;</li>
+                                <li>process serialization formats to/from a remote endpoint;</li>
+                                <li>
+                                <a href="/kendo-ui/framework/datasource/crud">synchronize updates (i.e. create, update, delete)</a> to/from a remote endpoint;</li>
+                                <li>
+                                <a href="/kendo-ui/framework/datasource/offline">maintain an in-memory cache of data (including changes)</a> for updating to a remote endpoint;</li>
+                                <li>calculate and maintain <a href="/kendo-ui/api/javascript/data/datasource#methods-aggregate">aggregates</a>,
+                                <a href="/kendo-ui/api/javascript/data/datasource#methods-sort">sorting order</a> and <a href="/kendo-ui/api/javascript/data/datasource#methods-page">paging</a>;</li>
+                                <li>provide a query mechanism via <a href="/kendo-ui/api/javascript/data/datasource#methods-filter">filter expressions</a>.</li>
+                            </ul>
+
+                            <div class="note">
+                                <div class="notes-title">Notes</div>
+                                <div class="notes">
+                                    <ul>
+                                        <li>Several of the more sophisticated widgets have their own data abstractions that inherit from <code>kendo.data.DataSource</code> (e.g. <code>kendo.data.GanttDataSource</code>, <code>kendo.data.HierarchicalDataSource</code>, <code>kendo.data.PivotDataSource</code>, <code>kendo.data.SchedulerDataSource</code>, <code>kendo.data.TreeListDataSource</code>).</li>
+                                    </ul>
+                                </div>
+                            </div>
 
 
                             </div><!--  /chapter 1  -->
