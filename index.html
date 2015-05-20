@@ -785,6 +785,10 @@
                                 </div>
                             </div>
 
+                            <h3><strong>1.18</strong> Responsive Widgets</h3>
+
+                            <p>Most Kendo UI widgets will auto resize by default when used in a responsive web page (i.e. when parent container is resized) making the widgets themselves drop-in ready for responsive web design. Those widgets that do not auto resize will simply require their <code>resize()</code> method to be called directly or by using <a href="http://docs.telerik.com/kendo-ui/api/javascript/kendo#methods-resize"><code>kendo.resize()<code></a> to resize a grouping of widgets. </p>
+
 
                             </div><!--  /chapter 1  -->
 
@@ -1038,7 +1042,7 @@
 
                             <p>As previously mentioned, Kendo UI is a set of <a href="https://docs.webplatform.org/wiki/html">HTML</a> widgets driven by <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a>. It is influenced and takes its cues from JQuery's <a href="http://learn.jquery.com/using-jquery-core/dollar-object-vs-function/">DOM</a>/<a href="http://learn.jquery.com/plugins/">plugin</a> patterns as well as the declarative data binding MVVM pattern made popular by <a href="http://knockoutjs.com/documentation/introduction.html">Knockout</a>.</p>
 
-                            <p> Minimally, to get started with Kendo UI, one should have some basic knowledge about <a href="https://docs.webplatform.org/wiki/html">HTML</a>, <a href="https://docs.webplatform.org/wiki/css">CSS</a>, <a href="https://docs.webplatform.org/wiki/javascript">JavaScript</a>, and the <a href="https://docs.webplatform.org/wiki/dom">DOM</a>. Knowledge of jQuery, Backbone, and Knockout, while not required to get started, will certainly make learning Kendo UI easier.</p>
+                            <p> Minimally, to get started with Kendo UI, one should have some basic knowledge about <a href="https://docs.webplatform.org/wiki/html">HTML</a>, <a href="https://docs.webplatform.org/wiki/css">CSS</a>, <a href="https://docs.webplatform.org/wiki/javascript">JavaScript</a> (ES3), and the <a href="https://docs.webplatform.org/wiki/dom">DOM</a>. Knowledge of jQuery, Backbone, and Knockout, while not required to get started, will certainly make learning Kendo UI easier.</p>
 
                             <p>In addition to UI widgets, Kendo UI also offers tools for building <a href="http://developer.telerik.com/featured/planning-front-end-javascript-application/">JavaScript applications</a>. These tools will require more advanced JavaScript knowledge about <a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/#detailmvcmvp">MV* patterns</a>, <a href="http://en.wikipedia.org/wiki/Single-page_application">SPAs</a>, and <a href="http://docs.telerik.com/kendo-ui/framework/datasource/overview">data abstractions</a>.</p>
 
@@ -1330,7 +1334,7 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
                                         <li>Options 1-3 above can make use of local files and or <a href="http://docs.telerik.com/kendo-ui/getting-started/install/cdn">the official CDN</a>.</li>
                                         <li>To make a custom build of Kendo UI you <a href="http://www.telerik.com/download/custom-download">must create an account</a> and be logged in to use the Custom Download tool.</li>
                                         <li>Kendo UI <a href="http://docs.telerik.com/kendo-ui/install/bower#install-kendo-ui-core-bower-package">Core</a> and <a href="http://docs.telerik.com/kendo-ui/install/bower#install-kendo-ui-professional-bower-package">Professional</a> can be installed using the bower package manager.</li>
-                                        <li>Both Kendo UI Core and Professional offer minified sourced files as well as minified all in one files in addition to non-minified files.</li>
+                                        <li>Both Kendo UI Core and Professional offer minified sourced files as well as minified all in one files in addition to non-minified files (i.e. source files).</li>
                                     </ul>
                                 </div>
                             </div>
@@ -1543,7 +1547,7 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
                             <p>Several things to note about the folder structure are:</p>
 
                             <ol>
-                                <li>Kendo UI ships with three third-party libraries, <a href="https://angularjs.org/">AngularJS</a>, <a href="https://jquery.com/">jQuery</a>, and <a href="https://stuk.github.io/jszip/">JSZip</a>. This is out of convenience and, while you are not required to use them, you should be aware of the versions which are <a href="http://docs.telerik.com/kendo-ui/install/prerequisites">officially supported</a>.</li>
+                                <li>Kendo UI ships with three third-party libraries, <a href="https://angularjs.org/">AngularJS</a>, <a href="https://jquery.com/">jQuery</a>, and <a href="https://stuk.github.io/jszip/">JSZip</a>. This is out of convenience and, while you are not required to use these versions, you should be aware of the versions which are <a href="http://docs.telerik.com/kendo-ui/install/prerequisites">officially supported</a> (Keep in mind that jQuery is the only required third-party library).</li>
                                  <li>Obviously, the Professional source will differ from the CDN and Core source files and directories. The directory structure I am showing is a combination of all these sources (i.e. not exactly what is downloaded) so you can understand what is offered from each.</li>
                                  <li>Two strategies for including Kendo UI widgets are possible. The first is simply including bundled files (i.e. kendo.all.min.js) which contains large groupings of widgets in one file. The second option would be to include the <code>kendo.core.min.js</code> file then each individual widget/tool module (i.e. kendo.menu.min.js) and all its <a href="http://docs.telerik.com/kendo-ui/install/custom#framework">dependencies</a>.</li>
                                  <li>The CDN offers the directory structure above excluding non-minified files. The CDN offers the current and past versions of Kendo UI, which should be obvious based on the URLs to the files on the CDN (e.g. <code>http://cdn.kendostatic.com/2015.1.318/styles/...</code> and <code>http://cdn.kendostatic.com/2015.1.318/js/...</code>). Note, that no "the latest" CDN (i.e. not a version, just the latest) endpoint is offered for Kendo UI.</li>
