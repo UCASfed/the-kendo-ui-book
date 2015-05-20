@@ -564,11 +564,7 @@
                                 </video>
                             </div>
 
-                            <h3><strong>1.10</strong> Official Twitter Bootstrap theme</h3>
-
-                            <p>Kendo UI can be <a href="http://demos.telerik.com/kendo-ui/bootstrap/">combined seamlessly</a> with the powerful <a href="http://getbootstrap.com/">Bootstrap front-end framework</a> by using an <a href="http://docs.telerik.com/kendo-ui/getting-started/using-kendo-with/using-kendo-with-twitter-bootstrap">officially supported Kendo UI Bootstrap theme</a>. By supporting Bootstrap, Kendo UI widgets can live alongside anything that Bootstrap provides. The combination of Kendo UI and Bootstrap leaves little need for much else when building application interfaces.</p>
-
-                            <h3><strong>1.11</strong> Out-of-the-box themes and theme builder tools</h3>
+                            <h3><strong>1.10</strong> Out-of-the-box themes and theme builder tools</h3>
 
                             <p>The Kendo UI Web &amp; DataViz widgets have 15 out-of-the-box themes. As well, each of the themes can be customized using the <a href="http://demos.telerik.com/kendo-ui/themebuilder/">Telerik ThemeBuilder</a> tool.</p>
 
@@ -584,6 +580,10 @@
                                     </ul>
                                 </div>
                             </div>
+
+                            <h3><strong>1.11</strong> Official Bootstrap, SAP Fiori, Office 365, and Material Design theme</h3>
+
+                            <p>Kendo UI widgets can be <a href="http://demos.telerik.com/kendo-ui/bootstrap/">combined seamlessly</a> with <a href="http://getbootstrap.com/">Twitter Bootstrap</a> UI's, <a href="http://experience.sap.com/fiori-design/">SAP Fiori</a> UI's, Office 365 UI's, and <a href="http://www.google.com/design/spec/material-design/introduction.html">Material Design</a> UI's by using the corresponding Kendo UI theme (i.e. <a href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.material.min.css">Material</a>/<a href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.materialblack.min.css">Material Black</a>, <a href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.bootstrap.min.css">Bootstrap</a>, <a href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.fiori.min.css">Fiori</a>, or <a href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.office365.min.css">Office 365</a> theme).</p>
 
                             <h3><strong>1.12</strong> Localized widgets</h3>
 
@@ -752,7 +752,7 @@
 
                             <p>Kendo UI allows data-bound widgets (i.e. widgets that use <a href="http://docs.telerik.com/kendo-ui/framework/datasource/offline">DataSource</a>) to function without being online. Users can continue working while offline and data will be stored locally until network connectivity resumes.</p>
 
-                            <h3><strong>1.17</strong> Built in Templating Engine</h3>
+                            <h3><strong>1.17</strong> Built in templating Engine</h3>
 
                             <p>Kendo UI offers a <a href="http://docs.telerik.com/kendo-ui/framework/templates/performance">high performance JavaScript templating engine</a> that can be used in the creation of widgets. Or, you can bring <a href="http://demos.telerik.com/kendo-ui/integration/index">your own</a> as well.</p>
 
@@ -787,7 +787,7 @@
 
                             <h3><strong>1.19</strong> Responsive widgets</h3>
 
-                            <p>Most Kendo UI widgets will auto resize by default when used in a responsive web page (i.e. when parent container is resized) making the widgets themselves drop-in ready for responsive web design. Those widgets that do not auto resize will simply require their <code>resize()</code> method to be called directly or by using <a href="http://docs.telerik.com/kendo-ui/api/javascript/kendo#methods-resize"><code>kendo.resize()</code></a> to resize a grouping of widgets. </p>
+                            <p>Most Kendo UI widgets will auto resize by default when used in a responsive web page (i.e. when widgets <a href="http://docs.telerik.com/kendo-ui/framework/widgets/wrapper-element#wrapper">wrapper</a> container has a height and width of 100% and is resized) making the widgets themselves drop-in ready for responsive web design. Those widgets that do not auto resize will simply require their <code>resize()</code> method to be called directly or by using <a href="http://docs.telerik.com/kendo-ui/api/javascript/kendo#methods-resize"><code>kendo.resize()</code></a> to resize a grouping of widgets. </p>
 
 
                             </div><!--  /chapter 1  -->
@@ -2270,6 +2270,41 @@ $('#autocomplete').kendoAutoComplete({
                                     <ul>
                                         <li>Destroying a widget does not empty or remove the DOM elements that were in place when the widget was instantiated. One will have to manually remove these DOM elements to totally remove all traces of the widget.</li>
                                         <li>Creating a new widget instance from the leftovers of a destroyed widget may work, but is not recommended.</li> 
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h3><strong>5.12</strong> Resizing widgets</h3>
+
+                            <p>If the element a widget is instantiated on has a width and height of 100% then the widget will automatically adjust itself to fill the container, it's contained within. In the code example below I set the width of the <code>&lt;div&gt;</code> that the calendar is instantiated on to 100% and the calendar widget will fill the parent container 100% (i.e the <code>&lt;body&gt;</code> element) and auto adjust as that parent container changes widths.</p>
+
+                             <a class="jsbin-embed" href="http://jsbin.com/sebacu/3/embed?html,output&height=550px">JS Bin</a>
+
+                            <p>However, not all widgets will auto resize to the width of the parent element by using CSS to set the element the widget is instantiated to <code>width:100%;</code>. The following widgets do not support auto resizing by CSS when the container is resized.</p>
+
+                             <ul>
+                                <li>All DataViz Widgets</li>
+                                <li>Mobile Actionsheet</li>
+                                <li>Mobile ListView</li>
+                                <li>Mobile ScrollView</li>
+                                <li>MobileSwitch</li>
+                                <li>Grid</li>
+                                <li>Scheduler</li>
+                                <li>Slider</li>
+                                <li>Splitter</li>
+                                <li>Window</li>
+                            </ul>
+
+                            <p>In order to adjust the size of non-auto resizing widgets the <code>.resize()</code> method or <code>kendo.resize()</code> function will need to be called to inform these non-auto resizing widget(s) that a resize has occurred. For example, in the code below the chart widget is responding to container resizes by calling the chart <code>.resize()</code> method when the browser <code>resize</code> event is fired.</p>
+
+                            <a class="jsbin-embed" href="http://jsbin.com/gomaqa/7/embed?html,output&height=950px">JS Bin</a>
+
+                            <div class="note">
+                                <div class="notes-title">Notes</div>
+                                <div class="notes">
+                                    <ul>
+                                        <li>Auto resizing widgets mostly deals with resizing widths. Some widgets can respond favorably as well to height adjustments (e.g. <a href="http://docs.telerik.com/kendo-ui/web/grid/appearance#make-the-grid-100-high-and-auto-resizable">Grid widget</a>) but not all widgets are intended to auto expand both vertically and horizontally (e.g. Calendar widget).</li>
+                                        <li>An undocumented method, <code>getSize()</code> is inherited by all widgets that will return an object containing the height and width of the wrapper element containing the widget.</li> 
                                     </ul>
                                 </div>
                             </div>
