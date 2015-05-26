@@ -748,15 +748,12 @@
                                 <li><strong>PHP</strong> - <a href="http://www.telerik.com/php-ui">40+ PHP Components Powered by Kendo UI</a>.</li>
                             </ul>
 
-                            <h3><strong>1.16</strong> Offline widgets</h3>
 
-                            <p>Kendo UI allows data-bound widgets (i.e. widgets that use <a href="http://docs.telerik.com/kendo-ui/framework/datasource/offline">DataSource</a>) to function without being online. Users can continue working while offline and data will be stored locally until network connectivity resumes.</p>
-
-                            <h3><strong>1.17</strong> Built in templating Engine</h3>
+                            <h3><strong>1.16</strong> Built in templating engine</h3>
 
                             <p>Kendo UI offers a <a href="http://docs.telerik.com/kendo-ui/framework/templates/performance">high performance JavaScript templating engine</a> that can be used in the creation of widgets. Or, you can bring <a href="http://demos.telerik.com/kendo-ui/integration/index">your own</a> as well.</p>
 
-                            <h3><strong>1.18</strong> Robust data abstraction</h3>
+                            <h3><strong>1.17</strong> Robust data abstraction</h3>
 
                             <p>Kendo UI widgets are designed from the ground up to make use of a powerful data abstraction that fully supports CRUD operations (Create, Read, Update, Destroy), and provides support for data sorting, paging, filtering, grouping and aggregates. The abstraction (i.e. <code>kendo.data.DataSource()</code> instances) can use local data (arrays of JavaScript objects) or connect to remote data (web services returning JSON, JSONP, OData or XML) services and API's.</p>
 
@@ -784,6 +781,10 @@
                                     </ul>
                                 </div>
                             </div>
+
+                            <h3><strong>1.18</strong> Offline widgets</h3>
+
+                            <p>Kendo UI allows data-bound widgets (i.e. widgets that use <a href="http://docs.telerik.com/kendo-ui/framework/datasource/offline">DataSource</a>) to function without being online. Users can continue working while offline and data will be stored locally until network connectivity resumes.</p>
 
                             <h3><strong>1.19</strong> Responsive widgets</h3>
 
@@ -2303,25 +2304,35 @@ $('#autocomplete').kendoAutoComplete({
                                 <div class="notes-title">Notes</div>
                                 <div class="notes">
                                     <ul>
-                                        <li>Auto resizing widgets mostly deals with resizing widths. Some widgets can respond favorably as well to height adjustments (e.g. <a href="http://docs.telerik.com/kendo-ui/web/grid/appearance#make-the-grid-100-high-and-auto-resizable">Grid widget</a>) but not all widgets are intended to auto expand both vertically and horizontally (e.g. Calendar widget).</li>
-                                        <li>An undocumented method, <code>getSize()</code> is inherited by all widgets that will return an object containing the height and width of the wrapper element containing the widget.</li> 
+                                        <li>Auto resizing or manually resizing widgets mostly pertains to the resizing of a widgets width. Some widgets can respond favorably to height adjustments (e.g. <a href="http://docs.telerik.com/kendo-ui/web/grid/appearance#make-the-grid-100-high-and-auto-resizable">Grid widget</a>) but not all widgets are intended to auto expand both vertically and horizontally (e.g. Calendar widget).</li>
+                                        <li>An undocumented method, <code>getSize()</code> is inherited by all widgets that will return an object containing the height and width of the wrapper element containing the widget.</li>
+                                        <li>The ResponsivePanel, Grid, TreeList, Scheduler, Menu, and SplitView widgets all contain their own unique RWD configurations and auto adjusting features that come into play when a widget is created with the intention of having them adjust to screen size (i.e. 100% width and either auto resizing or manually forcing a resize using <code>resize()</code>).</li>
                                     </ul>
                                 </div>
                             </div>
 
                             </div><!--  /chapter 5  -->
 
-                           <div class="parts">Part Three: Kendo UI Building Blocks</div>                         
-                
+                           <div class="parts">Part Three: Kendo UI Building Blocks</div>       
 
                             <!--_____________-->
                             <!--  chapter 6  -->
                             <!--_____________-->
                             <div id="chapter6" class="chapter">
                             
-                            <h2><strong>Chapter 6.</strong> Templates</h2>
+                            <h2><strong>Chapter 6</strong> Templates (<code>kendo.template()</code>)</h2>
 
-                            <h3>Coming Soon.</h3>
+                            <h3><strong>6.1</strong> <code>kendo.template()</code> overview</h3>
+
+                            <h3><strong>6.2</strong> Template Syntax</h3>
+
+                            <h3><strong>6.3</strong> String (aka inline) v.s. HTML (aka external) templates</h3>
+
+                            <h3><strong>6.4</strong> Writing JavaScript in templates</h3>
+
+                            <h3><strong>6.5</strong> Using template functions with widgets</h3>
+
+                            <h3><strong>6.6</strong> Speeding up templates</h3>
 
                             </div><!--  /chapter 6  -->
 
@@ -2330,7 +2341,7 @@ $('#autocomplete').kendoAutoComplete({
                             <!--_____________-->
                             <div id="chapter7" class="chapter">
                             
-                            <h2><strong>Chapter 7.</strong> DataSource</h2>
+                            <h2><strong>Chapter 7.</strong> DataSource (kendo.data.DataSrouce)</h2>
 
                             <h3>Coming Soon.</h3>
 
@@ -2341,7 +2352,7 @@ $('#autocomplete').kendoAutoComplete({
                             <!--_____________-->
                             <div id="chapter8" class="chapter">
                             
-                            <h2><strong>Chapter 8.</strong> Observables &amp; MVVM</h2>
+                            <h2><strong>Chapter 8.</strong> MVVM</h2>
 
                             <h3>Coming Soon.</h3>
 
