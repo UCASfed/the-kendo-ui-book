@@ -791,9 +791,11 @@
 
                             <p>Kendo UI allows data-bound widgets (i.e. widgets that use <a href="http://docs.telerik.com/kendo-ui/framework/datasource/offline">DataSource</a>) to function without being online. Users can continue working while offline and data will be stored locally until network connectivity resumes.</p>
 
-                            <h3><strong>1.20</strong> Responsive widgets</h3>
+                            <h3><strong>1.20</strong> Screen size adaptive widgets</h3>
 
-                            <p>Most Kendo UI widgets will auto resize by default when used in a responsive web page (i.e. when widgets <a href="http://docs.telerik.com/kendo-ui/framework/widgets/wrapper-element#wrapper">wrapper</a> container has a height and width of 100% and is resized) making the widgets themselves drop-in ready for responsive web design. Those widgets that do not auto resize will simply require their <code>resize()</code> method to be called directly or by using <a href="http://docs.telerik.com/kendo-ui/api/javascript/kendo#methods-resize"><code>kendo.resize()</code></a> to resize a grouping of widgets. </p>
+                            <p>Most Kendo UI widgets will auto resize by default when used in a fluid web page layout (i.e. when widgets <a href="http://docs.telerik.com/kendo-ui/framework/widgets/wrapper-element#wrapper">wrapper</a> container has a height and width of 100% and is resized) making the widgets themselves drop-in ready for mobile web design strategies. Those widgets that do not auto resize will simply require their <code>resize()</code> method to be called directly or by using <a href="http://docs.telerik.com/kendo-ui/api/javascript/kendo#methods-resize"><code>kendo.resize()</code></a> to resize a grouping of widgets. </p>
+
+                            <p>Additionally, a select few widgets (grid, scheduler, charts, toolbar, tabstrip) will actually adapt to the screensize beyond simply adjusting themselves horizontally in width. Meaning, the widgets UI will adapt, automatically when required by the screen size or view port.</p>
 
 
                             </div><!--  /chapter 1  -->
@@ -816,7 +818,7 @@
 
                             <p>Kendo UI can be used with anything that runs on the web platform. In this sense you can think of Kendo UI much like a simple jQuery plugin that can augment any front-end website or web application.</p>
 
-                            <p>In addition to UI widgets Kendo UI also provides basic tools (aka framework and utilities in the docs) for developing modern JavaScript applications (e.g. <a href="http://demos.telerik.com/kendo-ui/mvvm/index">MVVM</a>, <a href="http://demos.telerik.com/kendo-ui/datasource/index">DataSource</a>, <a href="http://demos.telerik.com/kendo-ui/templates/index">Templates</a>, <a href="http://demos.telerik.com/kendo-ui/fx/expand">Effects/FX</a> etc...). Many of these are used in conjunction with the Kendo UI widgets themselves (i.e. <code><a href="http://docs.telerik.com/kendo-ui/framework/templates/overview">templates</a></code> and <code><a href="http://docs.telerik.com/kendo-ui/framework/datasource/overview">DataSource</a></code>). While, Kendo UI makes a basic offering of tools for build JS applications, and one could build an entire JS application using just Kendo UI framework tools, its more common that Kendo UI is used in combination with tools like Backbone, React, Ember, or Angular.</p>
+                            <p>In addition to UI widgets Kendo UI also provides some optional and basic tools (aka framework and utilities in the docs) for developing modern JavaScript applications (e.g. <a href="http://demos.telerik.com/kendo-ui/mvvm/index">MVVM</a>, <a href="http://demos.telerik.com/kendo-ui/datasource/index">DataSource</a>, <a href="http://demos.telerik.com/kendo-ui/templates/index">Templates</a>, <a href="http://demos.telerik.com/kendo-ui/fx/expand">Effects/FX</a> etc...). Many of these are optionally used in conjunction with the Kendo UI widgets themselves (i.e. <code><a href="http://docs.telerik.com/kendo-ui/framework/templates/overview">templates</a></code> and <code><a href="http://docs.telerik.com/kendo-ui/framework/datasource/overview">DataSource</a></code>). While, Kendo UI makes a basic offering of tools for build JS applications, and one could build an entire JS application using just Kendo UI framework tools, its more common that Kendo UI is used in combination with solutions like Backbone, React, Ember, Meteor, or AngularJS.</p>
 
                             <p>Kendo UI is designed to run on laptop/desktop web browsers, as well as browsers on touch devices and WebViews used in hybrid mobile application development.</p>
 
@@ -2030,8 +2032,17 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
 
                             <p>Non-jQuery developers will be more familiar with the following style of imperative instantiation.</p>
 
-                            <a class="jsbin-embed" href="http://jsbin.com/kariku/1/embed?html&height=500px">JS Bin</a>
+                            <a class="jsbin-embed" href="http://jsbin.com/kariku/2/embed?html&height=500px">JS Bin</a>
 
+                            <div class="note">
+                            <div class="notes-title">Notes</div>
+                            <div class="notes">
+                                    <ul>
+                                        <li>The constructor expects, as it's first argument, an actual reference to a DOM object and not a jQuery object containing a reference to a DOM element.</li>
+                                        <li>The jQuery methods are simply calling constructor functions, which you can directly call imperatively call yourself.</li>
+                                    </ul>
+                                </div>
+                            </div>
 
                             <h3><strong>4.4</strong> Instantiate widgets declaratively (from markup) using <code>kendo.init()</code></h3>
 
@@ -2135,7 +2146,12 @@ kendo.init($('body'), kendo.ui, kendo.mobile.ui, kendo.dataviz.ui);
                             <div id="chapter5" class="chapter">
                             
                             <h2><strong>Chapter 5.</strong> Kendo UI Widget Basics</h2>
-                            <h3><strong>5.1</strong> Getting reference/pointer to widget instance</h3>
+
+                            <h3><strong>5.1</strong> Overview of Widget Basics</h3>
+
+                            <p>In previous chapters you learned how to include Kendo UI and create a Kendo UI widget. In this chapter we'll look at what you can do with a widget once you have one instantiated and ready to be managed.</p>
+
+                            <h3><strong>5.2</strong> Getting reference/pointer to widget instance</h3>
 
                             <p>Once you have created a widget it's likely that you will want to do something with it, even after initially instantiating it with options. For example, you might want to call widget methods, bind/unbind widget events, or destroy the widget instance. In order to accomplish all of this, you will need a reference to the widget instance. Regardless of whether you created the widget using a jQuery method or markup (i.e. via MVVM or <code>Views</code>), you will have to use JavaScript to get a reference to the DOM element the widget was initialized on. Once you have a reference to the original element in the DOM the widget was instantiated on, you can use the <code>.data('kendoNameOfWidget')</code> / <code>.getKendoNameOfWidget</code> jQuery methods or the <code>kendo.widgetInstance()</code> method to gain/return a reference to the actual widget instance.</p>
 
@@ -2143,7 +2159,7 @@ kendo.init($('body'), kendo.ui, kendo.mobile.ui, kendo.dataviz.ui);
 
                             <a class="jsbin-embed" href="http://jsbin.com/digusa/1/embed?html&height=675px">JS Bin</a>
 
-                            <h3><strong>5.2</strong> Calling widget methods</h3>
+                            <h3><strong>5.3</strong> Calling widget methods</h3>
 
                             <p>Each widget has a set of methods that are unique to that widget as well <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/widget">some methods that are inherited and available to all widgets</a>. To invoke methods on a widget after instantiation, get a reference to the widget and then invoke any of the methods the widgets instance inherits. Below, I show three examples of grabbing an element from the DOM that an auto complete widget was initialized on, getting a reference to the widget instance, then calling the <code>value()</code> <code>AutoComplete</code> method.</p>
 
@@ -2151,7 +2167,7 @@ kendo.init($('body'), kendo.ui, kendo.mobile.ui, kendo.dataviz.ui);
 
                             <p>You can reference the <a href="http://docs.telerik.com/kendo-ui/introduction">API</a> documents for the methods available to each widget.</p>
 
-                            <h3><strong>5.3</strong> Setting &amp; getting widget instance options</h3>
+                            <h3><strong>5.4</strong> Setting &amp; getting widget instance options</h3>
 
                             <p>A widget can have its configurations options set or updated after instantiation by using the <code>setOptions()</code> method inherited by all widget instances.</p>
 
@@ -2174,7 +2190,7 @@ kendo.init($('body'), kendo.ui, kendo.mobile.ui, kendo.dataviz.ui);
                                 </div>
                             </div>
 
-                            <h3><strong>5.4</strong> Binding/unbinding widget events</h3>
+                            <h3><strong>5.5</strong> Binding/unbinding widget events</h3>
 
                             <p>During instantiation, widget events can be configured just like configuration options. In the code below a callback function is configured during instantiation to run any time the <code>change</code> event is broadcast-ed by the widget.</p>
 
@@ -2202,7 +2218,7 @@ $('#autocomplete').kendoAutoComplete({
                                 </div>
                             </div>
 
-                            <h3><strong>5.5</strong> Invoke a widget event once</h3>
+                            <h3><strong>5.6</strong> Invoke a widget event once</h3>
 
                             <p>To have a callback function be called only once when a widget event occurs, use the <code>one()</code> widget method to add the event instead of <code>bind()</code>.</p>
 
@@ -2210,7 +2226,7 @@ $('#autocomplete').kendoAutoComplete({
 
                             <a class="jsbin-embed" href="http://jsbin.com/boruju/2/embed?html&height=570px">JS Bin</a>
 
-                            <h3><strong>5.6</strong> Manually triggering a widget event</h3>
+                            <h3><strong>5.7</strong> Manually triggering a widget event</h3>
 
                             <p>Using the widget <code>trigger()</code> method it's possible to manually set off an event on a widget.</p>
 
@@ -2218,7 +2234,7 @@ $('#autocomplete').kendoAutoComplete({
 
                             <a class="jsbin-embed" href="http://jsbin.com/bitoge/2/embed?html&height=520px">JS Bin</a>
 
-                            <h3><strong>5.7</strong> Accessing widget event details and functions</h3>
+                            <h3><strong>5.8</strong> Accessing widget event details and functions</h3>
 
                             <p>Widget events pass one argument to event callback functions. The argument is called the event object and contains the following event related information and functions:</p>
 
@@ -2232,7 +2248,7 @@ $('#autocomplete').kendoAutoComplete({
 
                             <a class="jsbin-embed" href="http://jsbin.com/fesiqa/2/embed?html&height=550px">JS Bin</a>
 
-                            <h3><strong>5.8</strong> Using custom events on widgets</h3>
+                            <h3><strong>5.9</strong> Using custom events on widgets</h3>
 
                             <p>The <code>bind()</code> and <code>unbind()</code> methods are actually inherited from <code><a href="http://docs.telerik.com/kendo-ui/api/javascript/observable">kendo.Observable</a></code> for each widget. And each widget inherits from <code><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/widget">kendo.ui.Widget</a></code>, which directly inherits from <code>kendo.Observable</code>. Because <code>kendo.Observable</code> is just a reusable pattern for listening and firing events on objects, we can use the <code>bind()</code> and <code>trigger()</code> methods to setup custom events on widgets and trigger them.</p>
 
@@ -2249,7 +2265,7 @@ $('#autocomplete').kendoAutoComplete({
                                 </div>
                             </div>
 
-                            <h3><strong>5.9</strong> Referencing the top most element that wraps a widget in the DOM</h3>
+                            <h3><strong>5.10</strong> Referencing the top most element that wraps a widget in the DOM</h3>
 
                             <p>Widget instances have a property called <code>.wrapper</code> that contains a jQuery object selecting the outer most element which wraps the widget in the DOM. For example, if the Grid is initialized from a <code>&lt;div&gt;</code>, the two references match. But if the Grid is initialized from a <code>&lt;table&gt;</code>, then element points to the <code>&lt;table&gt;</code>, while wrapper points to the wrapper <code>&lt;div&gt;</code>.</p>
 
@@ -2257,7 +2273,7 @@ $('#autocomplete').kendoAutoComplete({
 
                             <a class="jsbin-embed" href="http://jsbin.com/facafe/3/embed?html&height=550px">JS Bin</a>
 
-                            <h3><strong>5.10</strong> Referencing the element the widget was initialized on in the DOM</h3>
+                            <h3><strong>5.11</strong> Referencing the element the widget was initialized on in the DOM</h3>
 
                             <p>Widget instances have a property called <code>.element</code> that contains a jQuery object with the element the widget was instantiated on, pre-selected (i.e. already wrapped jQuery sugar). Depending on the widget, it may be visible (e.g. AutoComplete, Calendar, DatePicker, etc.) or hidden (e.g. DropDownList, Upload). A reference to this element is also returned by the initialization statement.</p>
 
@@ -2274,7 +2290,7 @@ $('#autocomplete').kendoAutoComplete({
                                 </div>
                             </div>
 
-                            <h3><strong>5.11</strong> Destroying widgets</h3>
+                            <h3><strong>5.12</strong> Destroying widgets</h3>
 
                             <p>Every widget has a <code>destory()</code> method which does the following:</p>
 
@@ -2301,7 +2317,7 @@ $('#autocomplete').kendoAutoComplete({
                                 </div>
                             </div>
 
-                            <h3><strong>5.12</strong> Resizing widgets</h3>
+                            <h3><strong>5.13</strong> Resizing widgets</h3>
 
                             <p>If the element a widget is instantiated on has a width and height of 100% then the widget will automatically adjust itself to fill the container, it's contained within. In the code example below I set the width of the <code>&lt;div&gt;</code> that the calendar is instantiated on to 100% and the calendar widget will fill the parent container 100% (i.e the <code>&lt;body&gt;</code> element) and auto adjust as that parent container changes widths.</p>
 
@@ -2350,13 +2366,102 @@ $('#autocomplete').kendoAutoComplete({
 
                             <h3><strong>6.1</strong> <code>kendo.template()</code> overview</h3>
 
-                            <h3><strong>6.2</strong> Template Syntax</h3>
+                            <p>This chapter will cover the HTML templating engine included with Kendo UI and its usage with widgets. As well as, using alternative templating engines with Kendo UI widgets. Read this chapter from beginning to end so that you are aware of all the nuances associating with Kendo UI templates and using a templating abstraction with widgets.</p>
 
-                            <h3><strong>6.3</strong> String (aka inline) v.s. HTML (aka external) templates</h3>
+                            <p>The Kendo UI templating engine exist to merge HTML containing Kendo UI hash templating syntax (e.g. <code>#= javascript property #</code>) with JavaScript objects to produce new HTML containing the data values from the associating JavaScript object. For example, using <code>kendo.template()</code> we can take the HTML: </p>
 
-                            <h3><strong>6.4</strong> Writing JavaScript in templates</h3>
+                            <p><code>&lt;div&gt;#= name #&lt;/div&gt;</code> </p>
 
-                            <h3><strong>6.5</strong> Using template functions with widgets</h3>
+                            <p>and merge it with the JavaScript object </p>
+
+                            <p><code>{name:'john'}</code> </p>
+
+                            <p>to produce </p>
+
+                            <p><code>&lt;div&gt;john&lt;/div&gt;</code>. </p>
+
+                            <p>Below I show a complete example of how this would be done.</p>
+
+                            <pre class="brush: js;">
+                            //produces a function, that will return an HTML string, containing values from the object passed
+                            var myTemplate = kendo.template('&lt;div&gt;#= name #&lt;/div&gt;');
+                            
+                            //create a new JavaScript string of HTML where #= name # is replaced with 'john'
+                            var newHTML = myTemplate({name:'john'}); //= '&lt;div&gt;john&lt;/div&gt;'
+                                
+                            </pre>
+
+                            <p>The engine can be used stand alone, as I just demonstrated. Or optionally, and as  intended, by widgets as a configuration value. For example, in the code below I am passing the AutoComplete widget a function, returned by calling <code>kendo.template()</code> to be used in the creation of the widget.</p>
+                            
+                            <pre class="brush: html;">
+                                &lt;input id=&quot;autocomplete&quot; /&gt;
+                                &lt;script&gt;
+                                $("#autocomplete").kendoAutoComplete({
+                                  dataSource: [
+                                    { id: 1, name: "Apples" },
+                                    { id: 2, name: "Oranges" }
+                                  ],
+                                  dataTextField: "name",
+                                  template: kendo.template('&lt;span&gt;&lt;img src=&quot;/img/#: id #.png&quot; alt=&quot;#: name #&quot; /&gt;#: name #&lt;/span&gt;')
+                                });
+                                &lt;/script&gt;
+                            </pre>
+
+                            <h3><strong>6.2</strong> Kendo UI Hash Template Syntax</h3>
+
+                            <p>The syntax used in a Kendo UI template is called "hash syntax". It is a very simple syntax and only used to accomplish two things.</p>
+
+                            <p>First the hash syntax is used to render values from a JavaScript object to an HTML template. This is done by using either the raw value hash syntax <code>#= name #</code> or the HTML encoding value syntax <code>#: name #</code>. In the code example below I contrast these two different ways of placing data into an HTML template.</p>
+            
+                            <a class="jsbin-embed" href="http://jsbin.com/heyese/2/embed?html&height=550px">JS Bin</a>
+
+                            <p>Second, the hash template syntax <code># expression #</code> is used to execute arbitrary JavaScript code when a template is executed. For example, to loop over a JavaScript value no extra syntactical sugar is available, instead by using <code># expression #</code> in the template you write a plain JavaScript expressions to perform the loop. Below I show three examples of external templates (i.e. not inline JavaScript strings) containing plain JavaScript expressions wrapped with # # syntax. Notice how the hash's wrap the JavaScript expression both at the beginning and the end of the expression regardless of line breaks. </p>
+
+                            <p>Example 1:</p>
+
+                            <pre class="brush: html;">
+                                &lt;ul&gt;
+                                # for (var i = 0; i &lt; data.length; i++) { #
+                                    &lt;li&gt;#= data[i] #&lt;/li&gt;
+                                # } #
+                                &lt;ul&gt;
+                            </pre>
+
+                            <p>Example 2:</p>
+
+                            <pre class="brush: html;">
+                                #if (foo) {# #= foo # is true #}#
+                            </pre>
+
+                            <p>Example 3:</p>
+
+                            <pre class="brush: html;">
+                                #if(isAdmin){#
+                                    &lt;li&gt;#: name # is Admin&lt;/li&gt;
+                                #}else{#
+                                    &lt;li&gt;#: name # is User&lt;/li&gt;
+                                #}#
+                            </pre>
+
+                            <p>Placing JavaScript values in an HTML template and writing JavaScript expressions in the template is the extent of the hash templating syntax. Make sure you are clear on both usages when writing inline or external Kendo UI templates.</p>
+
+                            <div class="note">
+                                <div class="notes-title">Notes</div>
+                                <div class="notes">
+                                    <ul>
+                                        <li>HTML encoding is useful when you want to avoid rendering HTML tags in your templates. It will escape the HTML tags in your data and render the tags as a string. You should use HTML encoding when working with data from unknown sources (such as user submitted values) in case users have included HTML markup in the content that could break the layout of your page.</li>
+                                         <li>If your template includes a literal # character, which is not part of a binding expression and is not a script code marker, then you must escape that character or it will cause a template compilation error. For example, this can happen if a # is used inside a hyperlink URL or a CSS color value. Literal # in Javascript strings are escaped with \\\\#, while literal # in external HTML script templates are escaped with \\#. If your template includes a # character, which is part of a binding expression of a nested template, then this character must be escaped as well. In this way the character will be ignored by the outer template, but will be handled correctly by the inner template.</li>
+                                         <li>Kendo UI opts to use normal JavaScript instead of custom syntax sugar because it's much faster and it's easy for anyone familiar with JavaScript to use. If you know JavaScript, you know Kendo UI templates!</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h3><strong>6.3</strong> Inline v.s. External templates</h3>
+
+
+                            <h3><strong>6.4</strong> Using Kendo UI templates with widgets</h3>
+
+                            <h3><strong>6.5</strong> Using None Kendo UI templates with widgets</h3>
 
                             <h3><strong>6.6</strong> Speeding up templates</h3>
 
