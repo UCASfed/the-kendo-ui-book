@@ -2700,8 +2700,6 @@ $('#autocomplete').kendoAutoComplete({
         };
         lineWrap();
 
-        $(window).resize(function(){lineWrap()});
-
         $('#book a').attr('target', '_blank');
 
         //setup splitter
@@ -2816,7 +2814,7 @@ $('#autocomplete').kendoAutoComplete({
             document.body.appendChild(s)
 
 
-        },2000);
+        },3000);
         
         window.setTimeout(function(){
 
@@ -2853,10 +2851,11 @@ $('#autocomplete').kendoAutoComplete({
 
             $(window).resize(function(event) {
                 $.waypoints('refresh');
+                lineWrap()
             });
 
 
-        },3000);
+        },4000);
 
         /* jshint ignore:end */
 
