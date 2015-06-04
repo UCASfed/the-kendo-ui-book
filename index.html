@@ -2837,22 +2837,31 @@ $('#autocomplete').kendoAutoComplete({
 
         },10000);*/
 
- 
-            if(window.location.hash === ''){
-            //$( '#toggle-toc' ).trigger('click');
-            }
+        window.setTimeout(function(){
 
-            if(window.location.hash !== ''){
+            var s = document.createElement("script");
+            s.type = "text/javascript";
+            
+            s.onload = function(){
+                if(window.location.hash === ''){
+                //$( '#toggle-toc' ).trigger('click');
+                }
+
+                if(window.location.hash !== ''){
                 $('a[href="'+window.location.hash+'"]')[0].click();
-            }
+                }
+            };
+            s.src = "http://static.jsbin.com/js/embed.js";
+            // Use any selector
+            document.body.appendChild(s)
 
+
+        },1500)
 
 
         /* jshint ignore:end */
 
     </script>
-
-    <script src="http://static.jsbin.com/js/embed.js"></script>
     
 </body>
 </html>
