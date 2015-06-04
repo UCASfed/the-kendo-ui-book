@@ -546,7 +546,7 @@
                                 </div>
                             </div>
 
-                            <h3><strong>1.8</strong> In-depth Getting Started docs and API docs</h3>
+                            <h3><strong>1.8</strong> In-depth getting started docs and API docs</h3>
 
                             <p>Kendo UI provides <a href="http://docs.telerik.com/kendo-ui/api/introduction">API documentation</a> which details options, methods, and events for each widget or tool. Additionally, above and beyond the API documentation, a <a href="http://docs.telerik.com/kendo-ui/getting-started/introduction">Getting Started</a> overview is provided for each widget or tool. Very few commercial solutions provide such a resource (API &amp; Documenation on usage), and if they do, it is nowhere as in depth as what is found in the Kendo UI docs.</p>
 
@@ -2391,21 +2391,23 @@ $('#autocomplete').kendoAutoComplete({
                                 
                             </pre>
 
-                            <p>The engine can be used stand alone, as I just demonstrated. Or optionally, and as  intended, by widgets as a configuration value. For example, in the code below I am passing the AutoComplete widget a function, returned by calling <code>kendo.template()</code> to be used in the creation of the widget.</p>
+                            <p>The engine can be used stand alone, as I just demonstrated. Or optionally, and as  intended, by widgets as a configuration value. For example, in the code below I am passing the AutoComplete widget a compiled template function, returned by calling <code>kendo.template()</code> to be used in the creation of the widget.</p>
                             
                             <pre class="brush: html;">
                                 &lt;html&gt;
                                 &lt;body&gt;
                                 &lt;input id=&quot;autocomplete&quot; /&gt;
+                                &lt;script src=&quot;jquery.min.js&quot;&gt;&lt;/script&gt;
+                                &lt;script src=&quot;kendo.all.min.js&quot;&gt;&lt;/script&gt;
                                 &lt;script&gt;
-                                $('#autocomplete').kendoAutoComplete({
-                                  dataSource: [
-                                    { id: 1, name: "Apples" },
-                                    { id: 2, name: "Oranges" }
-                                  ],
-                                  dataTextField: "name",
-                                  template: kendo.template('&lt;span&gt;&lt;img src=&quot;/img/#: id #.png&quot; alt=&quot;#: name #&quot; /&gt;#: name #&lt;/span&gt;')
-                                });
+                                    $('#autocomplete').kendoAutoComplete({
+                                      dataSource: [
+                                        { id: 1, name: "Apples" },
+                                        { id: 2, name: "Oranges" }
+                                      ],
+                                      dataTextField: "name",
+                                      template: kendo.template('&lt;span&gt;&lt;img src=&quot;/img/#: id #.png&quot; alt=&quot;#: name #&quot; /&gt;#: name #&lt;/span&gt;')
+                                    });
                                 &lt;/script&gt;
                                 &lt;/body&gt;
                                 &lt;/html&gt;
@@ -2416,6 +2418,9 @@ $('#autocomplete').kendoAutoComplete({
                             <pre class="brush: html;">
                                 &lt;html&gt;
                                 &lt;body&gt;
+
+                                &lt;script src=&quot;jquery.min.js&quot;&gt;&lt;/script&gt;
+                                &lt;script src=&quot;kendo.all.min.js&quot;&gt;&lt;/script&gt;
 
                                 &lt;script id=&quot;template&quot; type=&quot;text/x-kendo-template&quot;&gt;
                                     &lt;ul&gt;
@@ -2432,12 +2437,13 @@ $('#autocomplete').kendoAutoComplete({
                                     var result = template(['bill', 'john', 'steve']); 
 
                                 &lt;/script&gt;
+
                                 &lt;/body&gt;
                                 &lt;/html&gt;
                             </pre>
 
 
-                            <h3><strong>6.2</strong> Kendo UI Hash Template Syntax</h3>
+                            <h3><strong>6.2</strong> Kendo UI hash template syntax</h3>
 
                             <p>The syntax used in a Kendo UI template is called "hash syntax". It is a very simple syntax and only used to accomplish two things.</p>
 
@@ -2492,33 +2498,36 @@ $('#autocomplete').kendoAutoComplete({
                                 </div>
                             </div>
 
-                            <h3><strong>6.3</strong> Inline v.s. External templates</h3>
+                            <h3><strong>6.3</strong> Inline v.s. external templates</h3>
 
-                            <p>Templates can be written as JavaScript strings inline in JavaScript code. For example, the following JavaScript code uses the inline template, <code>#if (name) {# #= name # is available #}#</code>.</p>
+                            <p>As we've seen several times already templates can be written as JavaScript strings inline in JavaScript code. For example, the following JavaScript code uses the inline template, <code>#if (name) {# #= name # is available #}#</code>.</p>
                             
                             <pre class="brush: html;">
                                 &lt;html&gt;
                                 &lt;body&gt;
-                                &lt;div id=&quot;example&quot;&gt;&lt;/div&gt;
+                                    &lt;div id=&quot;example&quot;&gt;&lt;/div&gt;
 
-                                &lt;script type=&quot;text/javascript&quot;&gt;
-                                    var templateString = &#039;#if (name) {# #= name # is available #}#&#039;;
-                                    var template = kendo.template(templateString);
+                                    &lt;script src=&quot;jquery.min.js&quot;&gt;&lt;/script&gt;
+                                    &lt;script src=&quot;kendo.all.min.js&quot;&gt;&lt;/script&gt;
 
-                                    $(&#039;#example&#039;).html(template({ name: &#039;John&#039; }));
-                                &lt;/script&gt;
+                                    &lt;script type=&quot;text/javascript&quot;&gt;
+                                        var templateString = &#039;#if (name) {# #= name # is available #}#&#039;;
+                                        var template = kendo.template(templateString);
+
+                                        $(&#039;#example&#039;).html(template({ name: &#039;John&#039; }));
+                                    &lt;/script&gt;
                                 &lt;/body&gt;
                                 &lt;/html&gt;
                             </pre>
 
-                            <p>Using inline templates can be an acceptable solution in some cases for very short and simple templates (e.g. passing a small template to a widget). For complex templates with a lot of hash syntax or simply for the sake of a modular architecture you'll want to use external templates instead of inline templates.</p>
+                            <p>Using inline templates can be an acceptable solution in some cases for very short and simple templates (e.g. passing a simple template to a widget as a configuration value). For complex templates with a lot of hash syntax or simply for the sake of a modular architecture you'll want to use external templates instead of inline templates.</p>
 
-                            <p>External templates are not written inline with JavaScript code. An external template is an HTML template define inside of a <code>&lt;script&gt;&lt;/script&gt;</code> element which has to be in the current/local page (i.e. the DOM) where its being used. In the HTML document blow an external template is shown.</p>
+                            <p>External templates are not written inline with JavaScript code. An external template is an HTML template define inside of a <code>&lt;script&gt;&lt;/script&gt;</code> element which has to be in the current/local HTML page (i.e. the DOM) where its being used. In the HTML document blow an external template is shown.</p>
 
                             <pre class="brush: html;">
-
                             &lt;html&gt;
                             &lt;body&gt;
+
                                 &lt;script type=&quot;text/x-kendo-template&quot; id=&quot;template&quot;&gt;
                                 &lt;# for (var i = 0; i &lt; data.length; i++) { #&gt;
                                     &lt;li&gt;
@@ -2526,9 +2535,9 @@ $('#autocomplete').kendoAutoComplete({
                                     &lt;/li&gt;
                                 &lt;# } #&gt;
                                 &lt;/script&gt;
+
                             &lt;/body&gt;
                             &lt;/html&gt;
-                    
                             </pre>
 
                             <p>Notice that by not using an inline string template, the template does not require JavaScript string quotes or line breaking concatenation using the <code>+</code> operator. By using an external template you are free to format the template however you want without having deal with JavaScript syntax issues.</p>
@@ -2536,11 +2545,10 @@ $('#autocomplete').kendoAutoComplete({
                             <p>Using an external template with <code>kendo.template()</code> simply requires getting a JavaScript string version of the template out of the DOM. So based on our previous code example using the external template would require grabbing the contents out of the DOM (i.e. a text node) with something like jQuery's <code>.html()</code> method.</p>
 
                             <pre class="brush: html;">
-
                             &lt;html&gt;
-                            &lt;head&gt;
-                            &lt;/head&gt;
                             &lt;body&gt;
+                                &lt;script src=&quot;jquery.min.js&quot;&gt;&lt;/script&gt;
+                                &lt;script src=&quot;kendo.all.min.js&quot;&gt;&lt;/script&gt;
                                 &lt;script type=&quot;text/x-kendo-template&quot; id=&quot;template&quot;&gt;
                                 &lt;# for (var i = 0; i &lt; data.length; i++) { #&gt;
                                     &lt;li&gt;
@@ -2558,10 +2566,8 @@ $('#autocomplete').kendoAutoComplete({
                                     console.log(newHTML); 
 
                                 &lt;/script&gt;
-
                             &lt;/body&gt;
                             &lt;/html&gt;
-                    
                             </pre>
 
                             <div class="note">
@@ -2573,9 +2579,19 @@ $('#autocomplete').kendoAutoComplete({
                                 </div>
                             </div>
 
-                            <h3><strong>6.4</strong> Using Kendo UI template functions with widgets</h3>
+                            <h3><strong>6.4</strong> Using Kendo UI templates with widgets</h3>
+
+                            <p>The intended purpose of including a templating engine with Kendo UI was to fuel widgets with HTML templates. The following widgets can make use of a compiled template.</p>
+
+                            <ul>
+                                <li></li>
+                            </ul>
 
                             <h3><strong>6.5</strong> Using non-Kendo UI templates with widgets</h3>
+
+                            <p>You are not locked into using only the Kendo UI templating engine with Kendo UI widgets. Because widgets accept a function value for template configuration options any templating engine that offers a function that will return HTML with merged data can be used. For example in the code example below the Handlers templating engine is being used in place of Kendo UI's (i.e. <code>Handlebars.compile()</code> can be used in place of <code>kendo.template()</code>)</p>
+
+                            <a class="jsbin-embed" href="http://jsbin.com/cejepu/2/embed?html,output&height=650px">JS Bin</a>
 
                             <h3><strong>6.6</strong> Speeding up Kendo UI templates</h3>
 
@@ -2682,9 +2698,9 @@ $('#autocomplete').kendoAutoComplete({
             };
             whenReady();
         };
-        lineWrap();
+        //lineWrap();
 
-        $(window).resize(function(){lineWrap()});
+        //$(window).resize(function(){lineWrap()});
 
         $('#book a').attr('target', '_blank');
 
@@ -2697,7 +2713,7 @@ $('#autocomplete').kendoAutoComplete({
         }).data('kendoSplitter');
 
         //create TOC
-        jQuery('.toc').each(function(index){
+        /*jQuery('.toc').each(function(index){
     
             jQuery('h2','#toc'+(index+1)).each(function(i){
                 //$(this).attr('id',$(this).text().replace(/ /g,'-'));
@@ -2719,7 +2735,7 @@ $('#autocomplete').kendoAutoComplete({
                     .append('<h6><a href="#'+($(this).text().replace(/[ .]/g,'-'))+'">'+$(this).html()+'</a></h6>');
             });
             
-        });
+        });*/
 
         jQuery('.chapter').each(function(index){
             jQuery('h2','#chapter'+(index+1)).each(function(i){
@@ -2821,22 +2837,31 @@ $('#autocomplete').kendoAutoComplete({
 
         },10000);*/
 
-        window.setTimeout(function(){ 
-            if(window.location.hash === ''){
-            //$( '#toggle-toc' ).trigger('click');
-            }
+        window.setTimeout(function(){
 
-            if(window.location.hash !== ''){
-                window.location.hash = window.location.hash;
-            }
-        }, 5000);
+            var s = document.createElement("script");
+            s.type = "text/javascript";
+            
+            s.onload = function(){
+                if(window.location.hash === ''){
+                //$( '#toggle-toc' ).trigger('click');
+                }
+
+                if(window.location.hash !== ''){
+                $('a[href="'+window.location.hash+'"]')[0].click();
+                }
+            };
+            s.src = "http://static.jsbin.com/js/embed.js";
+            // Use any selector
+            document.body.appendChild(s)
+
+
+        },2000)
 
 
         /* jshint ignore:end */
 
     </script>
-
-    <script src="http://static.jsbin.com/js/embed.js"></script>
     
 </body>
 </html>
