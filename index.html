@@ -2028,11 +2028,11 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
 
                             <h3><strong>4.3</strong> Imperatively instantiate widgets using <code>new</code> and constructor</h3>
 
-                            <p>A non-jQuery imperative instantiation option exist that can sidestep jQuery if you prefer using <code>new</code> and having the widget instance returned instead of the jQuery instance.</p>
+                            <p>A non-jQuery imperative instantiation option exist that can sidestep jQuery if you prefer using <code>new</code> and having the widget instance returned instead of a jQuery instance.</p>
 
-                            <p>Non-jQuery developers will be more familiar with the following style of imperative instantiation.</p>
+                            <p>Non-jQuery developers will be more familiar with the following style of imperative instantiation using the JavaScript <code>new</code> keyword.</p>
 
-                            <a class="jsbin-embed" href="http://jsbin.com/kariku/2/embed?html&height=500px">JS Bin</a>
+                            <a class="jsbin-embed" href="http://jsbin.com/kariku/2/embed?html&height=550px">JS Bin</a>
 
                             <div class="note">
                             <div class="notes-title">Notes</div>
@@ -2135,7 +2135,7 @@ kendo.init($('body'), kendo.ui, kendo.mobile.ui, kendo.dataviz.ui);
 
                             <a class="jsbin-embed" href="http://jsbin.com/siwuni/1/embed?html&height=670px">JS Bin</a>
 
-                            <p>After getting Kendo UI installed and deciding how you will instantiate the widgets, the next order of business should be to learn, in detail, the ins and outs of the Kendo UI <code>template</code> and <code>DataSource</code> abstractions. I have only briefly introduced them here to communicate their importances as it pertains to creating Kendo UI widgets.</p>
+                            <p>After getting Kendo UI installed and deciding how you will instantiate the widgets, the next order of business should be to learn, in detail, the ins and outs of the Kendo UI <code>template</code> and <code>DataSource</code> abstractions. I have only briefly introduced them here to communicate their importances as it pertains to creating Kendo UI widgets. Both <code>template</code> and <code>DataSource</code> will be discussed in detail in coming chapters.</p>
                         
 
                             </div><!--  /chapter 4  -->
@@ -2362,7 +2362,7 @@ $('#autocomplete').kendoAutoComplete({
                             <!--_____________-->
                             <div id="chapter6" class="chapter">
                             
-                            <h2><strong>Chapter 6</strong> Templates (<code>kendo.template()</code>)</h2>
+                            <h2><strong>Chapter 6</strong> Templates</h2>
 
                             <h3><strong>6.1</strong> <code>kendo.template()</code> overview</h3>
 
@@ -2581,19 +2581,142 @@ $('#autocomplete').kendoAutoComplete({
 
                             <h3><strong>6.4</strong> Using Kendo UI templates with widgets</h3>
 
-                            <p>The intended purpose of including a templating engine with Kendo UI was to fuel widgets with HTML templates. The following widgets can make use of a compiled template.</p>
+                            <p>The intended purpose of including a templating engine with Kendo UI was to fuel widgets with HTML templates. For example, in the code below I am using the <code>template</code> and <code>valueTemplate</code> configuration options to pass the DropdownList widget two Kendo UI templates. Notice that when passing a widget a template, the combining of the data with the template is left to the widget internals upon instantiation. All you have to do is pass a compiled template to the widget, the widget will create the HTML for you using data from the widgets <code>dataSource</code>.</p>
+
+                            <a class="jsbin-embed" href="http://jsbin.com/jiyoma/3/embed?html&height=650px">JS Bin</a>
+
+                            <p>The following web widgets (DataViz is not being shown) can make use of a compiled template.</p>
 
                             <ul>
-                                <li></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/autocomplete">AutoComplete</a><ul>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/autocomplete#configuration-fixedGroupTemplate">fixedGroupTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/autocomplete#configuration-groupTemplate">groupTemplate </a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/autocomplete#configuration-headerTemplate">headerTemplate </a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/autocomplete#configuration-template">template</a> </li>
+                                </ul></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/autocomplete">ComboBox</a><ul>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/combobox#configuration-fixedGroupTemplate">fixedGroupTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/combobox#configuration-groupTemplate">groupTemplate </a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/combobox#configuration-headerTemplate">headerTemplate </a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/combobox#configuration-template">template</a> </li>
+                                </ul></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/autocomplete">DropDownList</a><ul>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/dropdownlist#configuration-fixedGroupTemplate">fixedGroupTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/dropdownlist#configuration-groupTemplate">groupTemplate </a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/dropdownlist#configuration-headerTemplate">headerTemplate </a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/dropdownlist#configuration-template">template</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/dropdownlist#configuration-valueTemplate">valueTemplate </a> </li>
+                                </ul></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/editor">Editor</a><ul>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/editor#configuration-tools.template">tools.template </a> </li>
+                                </ul></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/gantt">Gantt</a><ul>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/gantt#configuration-editable.template">editable.template</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/gantt#configuration-toolbar.template">toolbar.template</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/gantt#configuration-tooltip.template">tooltip.template</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/gantt#configuration-views.timeHeaderTemplate">views.timeHeaderTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/gantt#configuration-views.dayHeaderTemplate">views.dayHeaderTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/gantt#configuration-views.weekHeaderTemplate">views.weekHeaderTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/gantt#configuration-views.monthHeaderTemplate">views.monthHeaderTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/gantt#configuration-views.yearHeaderTemplate">views.yearHeaderTemplate</a> </li>
+                                </ul></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/grid">Grid</a><ul>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/grid#configuration-altRowTemplate">altRowTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/grid#configuration-columns.filterable.cell.template">columns.filterable.cell.template</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/grid#configuration-columns.filterable.itemTemplate">columns.filterable.itemTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/grid#configuration-columns.footerTemplate">columns.footerTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/grid#configuration-columns.groupHeaderTemplate">columns.groupHeaderTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/grid#configuration-columns.groupFooterTemplate">columns.groupFooterTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/grid#configuration-columns.headerTemplate">columns.headerTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/grid#configuration-columns.template">columns.template</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/grid#configuration-detailTemplate">detailTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/grid#configuration-editable.template">editable.template</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/grid#configuration-rowTemplate">rowTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/grid#configuration-toolbar.template">toolbar.template</a> </li>
+
+                                </ul></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/listview">ListView</a><ul>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/listview#configuration-editTemplate">editTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/listview#configuration-template">template</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/listview#configuration-altTemplate">altTemplate</a> </li>
+                                </ul></li>
+
+                                <li><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/multiselect">MultiSelect</a><ul>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/multiselect#configuration-fixedGroupTemplate">fixedGroupTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/multiselect#configuration-groupTemplate">groupTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/multiselect#configuration-headerTemplate">headerTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/multiselect#configuration-itemTemplate">itemTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/multiselect#configuration-tagTemplate">tagTemplate</a> </li>
+                                </ul></li>
+
+                                <li><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/notification">Notification</a><ul>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/notification#configuration-templates.template">templates.template</a> </li>
+                                </ul></li>
+
+                                <li><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/pager">Pager</a><ul>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/pager#configuration-selectTemplate">selectTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/pager#configuration-linkTemplate">linkTemplate</a> </li>
+
+                                </ul></li>
+
+                                <li><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/pivotgrid">PivotGrid</a><ul>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/pivotgrid#configuration-columnHeaderTemplate">columnHeaderTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/pivotgrid#configuration-dataCellTemplate">dataCellTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/pivotgrid#configuration-kpiStatusTemplate">kpiStatusTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/pivotgrid#configuration-kpiTrendTemplate">kpiTrendTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/pivotgrid#configuration-rowHeaderTemplate">rowHeaderTemplate</a> </li>
+
+                                </ul></li>
+
+                                <li><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/scheduler">Scheduler</a><ul>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/scheduler#configuration-allDayEventTemplate">allDayEventTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/scheduler#configuration-dateHeaderTemplate">dateHeaderTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/scheduler#configuration-editable.template">editable.template</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/scheduler#configuration-eventTemplate">eventTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/scheduler#configuration-majorTimeHeaderTemplate">majorTimeHeaderTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/scheduler#configuration-minorTimeHeaderTemplate">minorTimeHeaderTemplate</a> </li>
+                                </ul></li>
+
+                                <li><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/toolbar">ToolBar</a><ul>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/toolbar#configuration-items.overflowTemplate">items.overflowTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/toolbar#configuration-items.template">items.template</a> </li>
+
+                                </ul></li>
+
+                                <li><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/treelist">TreeList</a><ul>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/treelist#configuration-columns.footerTemplate">columns.footerTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/treelist#configuration-columns.headerTemplate">olumns.headerTemplate</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/treelist#configuration-columns.template">columns.template</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/treelist#configuration-editable.template">editable.template</a> </li>
+
+                                </ul></li>
+
+                                <li><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/treeview">TreeView</a><ul>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/treeview#configuration-checkboxes.template">checkboxes.template</a> </li>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/treeview#configuration-template">template</a> </li>
+
+                                </ul></li>
+
+                                <li><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/upload">Upload</a><ul>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/upload#configuration-template">template</a> </li>
+                                </ul></li>
+
+                                <li><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/validator">Validator</a><ul>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/validator#configuration-errorTemplate">errorTemplate</a> </li>
+
+                                </ul></li>
+
+                                <li><a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/window">Window</a><ul>
+                                    <li> <a href="http://docs.telerik.com/kendo-ui/api/javascript/ui/window#configuration-content.template">content.template</a> </li>
+                                </ul></li>
+
                             </ul>
 
                             <h3><strong>6.5</strong> Using non-Kendo UI templates with widgets</h3>
 
                             <p>You are not locked into using only the Kendo UI templating engine with Kendo UI widgets. Because widgets accept a function value for template configuration options any templating engine that offers a function that will return HTML with merged data can be used. For example in the code example below the Handlers templating engine is being used in place of Kendo UI's (i.e. <code>Handlebars.compile()</code> can be used in place of <code>kendo.template()</code>)</p>
 
-                            <a class="jsbin-embed" href="http://jsbin.com/cejepu/2/embed?html,output&height=650px">JS Bin</a>
-
-                            <h3><strong>6.6</strong> Speeding up Kendo UI templates</h3>
+                            <a class="jsbin-embed" href="http://jsbin.com/cejepu/2/embed?html&height=650px">JS Bin</a>
 
                             </div><!--  /chapter 6  -->
 
@@ -2602,7 +2725,7 @@ $('#autocomplete').kendoAutoComplete({
                             <!--_____________-->
                             <div id="chapter7" class="chapter">
                             
-                            <h2><strong>Chapter 7.</strong> DataSource (<code>kendo.data.DataSource</code>)</h2>
+                            <h2><strong>Chapter 7.</strong> DataSource</h2>
 
                             <h3>Coming Soon.</h3>
 
@@ -2760,6 +2883,7 @@ $('#autocomplete').kendoAutoComplete({
         $(window).setBreakpoints({distinct: true, breakpoints: [320,480,768,1024] });
 
         $(window).on('enterBreakpoint320',function() {
+            console.log(1);
             $('h1').css('width','200px');
             splitter.size('.k-pane:first', '70%');
             splitter.size('.k-pane:last', '30%');
@@ -2849,10 +2973,10 @@ $('#autocomplete').kendoAutoComplete({
                 }
             });
 
-            $(window).resize(function(event) {
+            /*$(window).resize(function(event) {
                 $.waypoints('refresh');
                 lineWrap()
-            });
+            });*/
 
 
         },4000);
