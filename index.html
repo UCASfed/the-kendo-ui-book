@@ -1945,14 +1945,14 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
 
                             <h3><strong>3.6</strong> Options for including Kendo UI</h3>
 
-                            <p>Kendo UI provides a comprehensive set of options for including Kendo UI in a web page. We've already exmained a lot of the options, but you should be aware of all fo them</p>  
+                            <p>Kendo UI provides a comprehensive set of options for including Kendo UI in a web page. We've already examined a lot of the options, but you should be aware of all fo them.</p>  
 
                             <p>You can include Kendo UI in one of the following five ways:</p>
 
                             <ol>
-                            <li><strong>One JavaScript file</strong> - Kendo UI can be included in a web page using a single JavaScript file, which includes everything (i.e <code>http://cdn.kendostatic.com/2015.1.318/js/kendo.all.min.js</code>).</li>
-                            <li><strong>Individual source files</strong> - The <a href="http://docs.telerik.com/kendo-ui/getting-started/javascript-dependencies#individual-scripts">Kendo UI source is divided into a set of individual JavaScript modules, which have dependencies</a> on each other. These files can individually be added to a web page and the dependencies will have to be managed manually (with your human brain in real time!) as opposed to using a dependency manager/loader like RequireJS that deals with which files are needed and when.</li>
-                            <li><strong>AMD module/dependency loader</strong> - Because each source file is an module and wrapped in an AMD definition, a modular loading system such as <a href="http://docs.telerik.com/kendo-ui/getting-started/using-kendo-with/using-kendo-with-requirejs">RequireJS can be used to load and manage Kendo UI dependencies</a>. Using a dependency loader alleviates having to manage dependencies manually which typically requires the correct ordering of inline <code>&lt;script&gt;</code> tags in an html web page.</li>
+                            <li><strong>One JavaScript file</strong> - Kendo UI code can be included in a web page using a single JavaScript file, which includes everything (i.e <code>http://cdn.kendostatic.com/2015.1.318/js/kendo.all.min.js</code>).</li>
+                            <li><strong>Individual source files</strong> - The <a href="http://docs.telerik.com/kendo-ui/getting-started/javascript-dependencies#individual-scripts">Kendo UI source code is divided into a set of individual JavaScript modules, which have dependencies</a> on each other. These files can individually be added to a web page and the dependencies will have to be managed manually (i.e. by a human!).</li>
+                            <li><strong>AMD module/dependency loader</strong> - Because the source is divided into individual files and these files are wrapped in an AMD definition, a modular loading system such as <a href="http://docs.telerik.com/kendo-ui/getting-started/using-kendo-with/using-kendo-with-requirejs">RequireJS can be used to load and manage Kendo UI dependencies</a>. Using a dependency loader alleviates having to manage dependencies manually, which requires the correct ordering of inline <code>&lt;script&gt;</code> tags in an html web page.</li>
                             <li><strong>One custom JavaScript file</strong> - Using the Custom Download Tool a custom version of Kendo UI can be downloaded as a single, all in one, file (Note: you must create an account and be logged in to use the <a href="http://www.telerik.com/download/custom-download">Custom Download tool</a>).</li>
                             <li><strong>One custom Core JavaScript file</strong> - If you use Kendo UI Core, you can build a custom distribution using the grunt build tool by following <a href="https://github.com/telerik/kendo-ui-core#building-only-what-you-need">the instructions in the README</a>.</li>
                             </ol>
@@ -2413,7 +2413,11 @@ $('#autocomplete').kendoAutoComplete({
                                 &lt;/html&gt;
                             </pre>
 
-                            <p>If it's not obvious, by calling the <code>kendo.template()</code> function you are in fact creating another function. This function that is created expects to be passed the object/array containing the data you would like to merge with the template. The <code>kendo.template()</code> function can be passed two arguments and should be thought of as the function that compiles the template so that the function returned can be called to actually produce the HTML. The first argument passed to <code>kendo.template()</code> is a JavaScript string and the second, optional argument, is an object containing values used to configure the template (<code><a href="http://docs.telerik.com/kendo-ui/api/javascript/kendo#methods-template">paramName</a></code> and <code><a href="http://docs.telerik.com/kendo-ui/api/javascript/kendo#methods-template">useWithBlock</a></code>) for additional performance gains. We'll look at those options later in this chapter. Once you have compiled the template the function returned can be passed a JavaScript object or an array. If you pass an array then you'll have to use the default '<code>data</code>' property in the template to access the array. For example, in the code below expressions <code>data.length</code> and <code>data[i]</code> in the template is used to access the values contained in the data array.</p>
+                            <p>If it's not obvious, by calling the <code>kendo.template()</code> function you are in fact creating another function. This function that is created expects to be passed the object/array containing the data you would like to merge with the template.</p>
+
+                            <p>The <code>kendo.template()</code> function can be passed two arguments and should be thought of as the function that compiles the template so that the function returned can be called to actually produce the HTML. The first argument passed to <code>kendo.template()</code> is a JavaScript string and the second, optional argument, is an object containing values used to configure the template (i.e. <code><a href="http://docs.telerik.com/kendo-ui/api/javascript/kendo#methods-template">paramName</a></code> and <code><a href="http://docs.telerik.com/kendo-ui/api/javascript/kendo#methods-template">useWithBlock</a></code>) for additional performance gains. </p>
+
+                            <p>Once you have compiled the template the function returned can be passed a JavaScript object or an array. If you pass an array then you'll have to use the default '<code>data</code>' property in the template to access the array. For example, in the code below expressions <code>data.length</code> and <code>data[i]</code> in the template is used to access the values contained in the data array.</p>
 
                             <pre class="brush: html;">
                                 &lt;html&gt;
@@ -2451,7 +2455,9 @@ $('#autocomplete').kendoAutoComplete({
             
                             <a class="jsbin-embed" href="http://jsbin.com/heyese/2/embed?html&height=550px">JS Bin</a>
 
-                            <p>Second, the hash template syntax <code># expression #</code> is used to execute arbitrary JavaScript code when a template is executed. For example, to loop over a JavaScript value no extra syntactical sugar is available, instead by using <code># expression #</code> in the template you write a plain JavaScript expressions to perform the loop. Below I show three examples of templates containing plain JavaScript expressions wrapped with # # syntax. Notice how the hash's wrap the JavaScript expression both at the beginning and the end of the expression regardless of line breaks. </p>
+                            <p>Second, the hash template syntax <code># expression #</code> is used to execute JavaScript code/expressions when a template is executed. This syntax is used to identify parts of the template that should be evaluated by a JavaScript runtime. Using the JavaScript expression syntax a routine like looping over a collection of JavaScript values is possible with bare bones JavaScript.</p>
+
+                            <p>Below I show three examples of templates containing plain JavaScript expressions wrapped with # # syntax. Notice how the hash's wrap the JavaScript expression both at the beginning and the end of the expression regardless of line breaks. </p>
 
                             <p>Example 1:</p>
 
@@ -2493,7 +2499,7 @@ $('#autocomplete').kendoAutoComplete({
                                     <ul>
                                         <li>HTML encoding is useful when you want to avoid rendering HTML tags in your templates. It will escape the HTML tags in your data and render the tags as a string.</li>
                                          <li>If your template includes a literal # character, which is not part of a binding expression and is not a script code marker, then you must escape that character or it will cause a template compilation error. For example, this can happen if a # is used inside a hyperlink URL or a CSS color value. Literal # in Javascript strings are escaped with \\\\#, while literal # in external HTML script templates are escaped with \\#. If your template includes a # character, which is part of a binding expression of a nested template, then this character must be escaped as well. In this way the character will be ignored by the outer template, but will be handled correctly by the inner template.</li>
-                                         <li>Kendo UI opts to use normal JavaScript instead of custom syntax sugar because it's much faster and it's easy for anyone familiar with JavaScript to use.</li>
+                                         <li>Kendo UI opts to use normal JavaScript, instead of adding additional syntax sugar typically found with competing templating solutions, because it makes the templates run faster and you don't have to learn a lot of new syntax. Just use JavaScript.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -2718,6 +2724,16 @@ $('#autocomplete').kendoAutoComplete({
 
                             <a class="jsbin-embed" href="http://jsbin.com/cejepu/2/embed?html&height=650px">JS Bin</a>
 
+                            <p>List below are some of the known, modern, templating engines that compile a template into a function, which Kendo UI widgets can make use of without having to create additional functions.</p>
+
+                            <ul>
+                                <li><a href="http://documentcloud.github.io/underscore/#template">undescore.js templates</a></li>
+                                <li><a href="http://handlebarsjs.com/">handlebars</a></li>
+                                <li><a href="http://beebole.com/pure/">PURE</a></li>
+                                <li><a href="http://olado.github.io/doT/">doT.js</a></li>
+                                <li><a href="https://lodash.com/docs#template">lodash templates</a></li>
+                            </ul>
+
                             </div><!--  /chapter 6  -->
 
                             <!--_____________-->
@@ -2727,7 +2743,7 @@ $('#autocomplete').kendoAutoComplete({
                             
                             <h2><strong>Chapter 7.</strong> DataSource</h2>
 
-                            <h3>Coming Soon.</h3>
+                            <h3><strong>7.1</strong> <code>kendo.data.dataSource</code> Overview</h3>
 
                             </div><!--  /chapter 7  -->
 
@@ -2736,9 +2752,15 @@ $('#autocomplete').kendoAutoComplete({
                             <!--_____________-->
                             <div id="chapter8" class="chapter">
                             
-                            <h2><strong>Chapter 8.</strong> MVVM</h2>
+                            <h2><strong>Chapter 8.</strong>Custom Widgets</code> </h2>
 
-                            <h3>Coming Soon.</h3>
+                            <h3><strong>8.1</strong> Custom Widget Overview</h3>
+
+                            <h3><strong>8.2</strong> Creating a custom widget</h3>
+
+                            <h3><strong>8.3</strong> Using templates with a custom widget</h3>
+
+                            <h3><strong>8.4</strong> Using a datasource with a custom widget</h3>
 
                             </div><!--  /chapter 8  -->
 
@@ -2747,14 +2769,9 @@ $('#autocomplete').kendoAutoComplete({
                             <!--_____________-->
                             <div id="chapter9" class="chapter">
                             
-                            <h2><strong>Chapter 9.</strong> Kendo UI &amp; ES6</h2>
+                            <h2><strong>Chapter 9.</strong> Using Kendo UI with AngularJS</h2>
 
-                            <h3>Coming Soon.</h3>
-<!--
-                            <h3><strong>9.X</strong> Using custom download to create professional static bundles</h3>
-                            <h3><strong>9.X</strong> Using Grunt to create core static bundles </h3>
-                            <h3><strong>9.X</strong> Using an AMD module bundler to create custom static bundles</h3>
-                            -->
+                            <h3>Waiting on AngularJS 2.0 to complete chapter outline</h3>
 
                             </div><!--  /chapter 9  -->
 
@@ -2763,12 +2780,43 @@ $('#autocomplete').kendoAutoComplete({
                             <!--_____________-->
                             <div id="chapter10" class="chapter">
                             
-                            <h2><strong>Chapter 10.</strong> Creating Custom Widgets by extending <code>kendo.ui.Widget</code> </h2>
+                            <h2><strong>Chapter 10.</strong> Using Kendo UI with React</h2>
 
-                            <h3>Coming Soon.</h3>
+                            <h3><strong>10.1</strong> What is React</h3>
+
+                            <h3><strong>10.2</strong> Using Kenod UI with React</h3>
 
                             </div><!--  /chapter 10  -->
 
+                            <!--_____________-->
+                            <!--  chapter 11  -->
+                            <!--_____________-->
+                            <div id="chapter11" class="chapter">
+                            
+                            <h2><strong>Chapter 11.</strong> Using Kendo UI with jspm.io</code> </h2>
+
+                            <h3><strong>11.1</strong> What is jspm.io</h3>
+
+                            <h3><strong>11.2</strong> Installing jspm.io</h3>
+
+                            <h3><strong>11.3</strong> Using jspm.io, ES6, and Kendo UI together</h3>
+
+                            </div><!--  /chapter 11  -->
+
+                            <!--_____________-->
+                            <!--  chapter 12  -->
+                            <!--_____________-->
+                            <div id="chapter12" class="chapter">
+                            
+                            <h2><strong>Chapter 12.</strong> Using Kendo UI with webpack</code> </h2>
+                            
+                            <h3><strong>12.1</strong> What is webpack</h3>
+
+                            <h3><strong>12.2</strong> Installing webpack</h3>
+
+                            <h3><strong>12.3</strong> Using webpack, ES6, and Kendo UI together</h3>
+
+                            </div><!--  /chapter 12  -->
 
                         </div>
                     </div>
