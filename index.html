@@ -487,7 +487,7 @@
 
                             <h3><strong>1.3</strong> Widgets are jQuery based</h3>
 
-                            <p>The jQuery find-something-then-do-something pattern is likely the most prevalent pattern for working with the DOM today.  It is likely impossible to find a developer who is not familiar with jQuery and its plugin architecture.  Developers who have never used a jQuery-based UI toolkit, like  Kendo UI, will already be familiar with it because of its similarities to jQuery and the jQuery plugin pattern.</p>
+                            <p>The jQuery find-something-then-do-something pattern is likely the most prevalent pattern for working with the DOM today.  It is likely impossible to find a developer who is not familiar with jQuery and its plugin architecture (<a href="http://trends.builtwith.com/javascript/jQuery">60%+ of leading sites use jQuery</a>).  Developers who have never used a jQuery-based UI toolkit, like Kendo UI, will already be familiar with it because of its similarities to jQuery and the jQuery plugin pattern.</p>
 
                             <p>With that said, Kendo UI widgets can also be <a href="http://developer.telerik.com/featured/patterns-of-javascript-ui-widget-instantiation/">instantiated and controlled outside of the patterns provided by jQuery</a>. One is not locked into jQuery patterns for the life cycle of a Kendo UI widget.</p>
 
@@ -499,7 +499,7 @@
 
                             <h3><strong>1.5</strong> Initialize widgets using imperative or declarative interfaces</h3>
 
-                            <p>Kendo UI widgets can be initialized imperatively using using the common <a href="http://developer.telerik.com/featured/patterns-of-javascript-ui-widget-instantiation/">jQuery plugin method pattern or declaratively from markup using several options</a> including AngularJS Directives. </p>
+                            <p>Kendo UI widgets can be initialized imperatively using the common <a href="http://developer.telerik.com/featured/patterns-of-javascript-ui-widget-instantiation/">jQuery plugin method pattern or declaratively from markup using several options</a> including AngularJS Directives. </p>
 
                             <h3><strong>1.6</strong> Data visualization widgets Included</h3>
 
@@ -542,6 +542,7 @@
                                         <li>Choose AngularJS Data Binding/Routing or Kendo MVVM/Routing, but don't mix these solutions in a single application</li>
                                         <li>When loading individual Kendo UI files you need to also load <code>kendo.angular.js</code> (or <code>kendo.angular.min.js</code>) after <code>kendo.core.js</code> (or <code>kendo.core.min.js</code>) because this file contains the actual directives</li>
                                         <li>Angular 2.0 is on the 2015 Kendo UI road map.</li>
+                                        <li>AngularJS directives are maintained by Telerik, but several integration parts for completing solutions are available from the community. e.g. <a href="https://github.com/kendo-labs/kendo-backbone">Backbone</a>, <a href="https://github.com/tjwebb/react-kendo">React</a> <a href="https://atmospherejs.com/telerik">Meteor</a>.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -818,7 +819,9 @@
 
                             <p>Kendo UI can be used with anything that runs on the web platform. In this sense you can think of Kendo UI much like a simple jQuery plugin that can augment any front-end website or web application.</p>
 
-                            <p>In addition to UI widgets Kendo UI also provides some optional and basic tools (aka framework and utilities in the docs) for developing modern JavaScript applications (e.g. <a href="http://demos.telerik.com/kendo-ui/mvvm/index">MVVM</a>, <a href="http://demos.telerik.com/kendo-ui/datasource/index">DataSource</a>, <a href="http://demos.telerik.com/kendo-ui/templates/index">Templates</a>, <a href="http://demos.telerik.com/kendo-ui/fx/expand">Effects/FX</a> etc...). Many of these are optionally used in conjunction with the Kendo UI widgets themselves (i.e. <code><a href="http://docs.telerik.com/kendo-ui/framework/templates/overview">templates</a></code> and <code><a href="http://docs.telerik.com/kendo-ui/framework/datasource/overview">DataSource</a></code>). While, Kendo UI makes a basic offering of tools for build JS applications, and one could build an entire JS application using just Kendo UI framework tools, its more common that Kendo UI is used in combination with solutions like Backbone, React, Ember, Meteor, or AngularJS.</p>
+                            <p>In addition to UI widgets Kendo UI also provides some optional and basic tools (aka framework and utilities in the docs) for developing modern JavaScript applications (e.g. <a href="http://demos.telerik.com/kendo-ui/mvvm/index">MVVM</a>, <a href="http://demos.telerik.com/kendo-ui/datasource/index">DataSource</a>, <a href="http://demos.telerik.com/kendo-ui/templates/index">Templates</a>, <a href="http://demos.telerik.com/kendo-ui/fx/expand">Effects/FX</a> etc...). Many of these are optionally used in conjunction with the Kendo UI widgets themselves (i.e. <code><a href="http://docs.telerik.com/kendo-ui/framework/templates/overview">templates</a></code> and <code><a href="http://docs.telerik.com/kendo-ui/framework/datasource/overview">DataSource</a></code>).</p>
+
+                            <p>While Kendo UI makes a basic offering of tools for building JS applications (<a href="http://docs.telerik.com/kendo-ui/framework/mvvm/overview">MVVM</a>, <a href="http://docs.telerik.com/kendo-ui/framework/spa/layout">layout</a>, <a href="http://docs.telerik.com/kendo-ui/framework/spa/router">router</a>, and <a href="http://docs.telerik.com/kendo-ui/framework/spa/view">view</a>), and one could build an entire JS application using just Kendo UI framework tools, its more common that Kendo UI is used in combination with solutions like <a href="https://github.com/kendo-labs/kendo-backbone">Backbone</a>, <a href="https://github.com/tjwebb/react-kendo">React</a>, Ember, <a href="https://atmospherejs.com/telerik">Meteor</a>, or <a href="http://docs.telerik.com/kendo-ui/AngularJS/introduction">AngularJS</a>.</p>
 
                             <p>Kendo UI is designed to run on laptop/desktop web browsers, as well as browsers on touch devices and WebViews used in hybrid mobile application development.</p>
 
@@ -2741,9 +2744,15 @@ $('#autocomplete').kendoAutoComplete({
                             <!--_____________-->
                             <div id="chapter7" class="chapter">
                             
-                            <h2><strong>Chapter 7.</strong> DataSource</h2>
+                            <h2><strong>Chapter 7.</strong> Configuring A Widgets <code>dataSource</code></h2>
 
-                            <h3><strong>7.1</strong> <code>kendo.data.dataSource</code> Overview</h3>
+                            <h3><strong>7.1</strong> <code>Widget <code>dataSource</code> configuration Overview </code></h3>
+
+                            <h3><strong>7.2</strong> Using an Array as a <code>dataSource</code> value</h3>
+
+                            <h3><strong>7.3</strong> Using a Object as a <code>dataSource</code> value</h3>
+
+                            <h3><strong>7.4</strong> Using a DataSource instance as a <code>dataSource</code> value</h3>
 
                             </div><!--  /chapter 7  -->
 
@@ -2752,15 +2761,29 @@ $('#autocomplete').kendoAutoComplete({
                             <!--_____________-->
                             <div id="chapter8" class="chapter">
                             
-                            <h2><strong>Chapter 8.</strong>Custom Widgets</code> </h2>
+                            <h2><strong>Chapter 8.</strong> <code>DataSource</code> &amp; Widgets</h2>
 
-                            <h3><strong>8.1</strong> Custom Widget Overview</h3>
+                            <h3><strong>8.1</strong> <code>kendo.data.DataSource</code> Overview</h3>
 
-                            <h3><strong>8.2</strong> Creating a custom widget</h3>
+                            <h3><strong>8.2</strong> Binding and retrieve a widgets local data</h3>
 
-                            <h3><strong>8.3</strong> Using templates with a custom widget</h3>
+                            <h3><strong>8.3</strong> Binding and retrieving a widgets remote data</h3>
 
-                            <h3><strong>8.4</strong> Using a datasource with a custom widget</h3>
+                            <h3><strong>8.4</strong> Using <code>DataSource</code>'s offline capabilities with widgets</h3>
+
+                            <h3><strong>8.5</strong> DataSource CRUD (Create, Read, Update, Destroy) operations on local/remote widget data</h3>
+
+                            <h3><strong>8.6</strong> Grouping widget data</h3>
+
+                            <h3><strong>8.7</strong> Sorting widget data</h3>
+
+                            <h3><strong>8.8</strong> Paging widget data</h3>
+
+                            <h3><strong>8.9</strong> Filtering widget data</h3>
+
+                            <h3><strong>8.10</strong> Sharing a <code>DataSource</code> instance between widgets</h3>
+
+                            <h3><strong>8.11</strong> Widget specific <code>DataSource</code> objects</h3>
 
                             </div><!--  /chapter 8  -->
 
@@ -2769,9 +2792,15 @@ $('#autocomplete').kendoAutoComplete({
                             <!--_____________-->
                             <div id="chapter9" class="chapter">
                             
-                            <h2><strong>Chapter 9.</strong> Using Kendo UI with AngularJS</h2>
+                            <h2><strong>Chapter 9.</strong>Custom Widgets</code> </h2>
 
-                            <h3>Waiting on AngularJS 2.0 to complete chapter outline</h3>
+                            <h3><strong>9.1</strong> Custom Widget Overview</h3>
+
+                            <h3><strong>9.2</strong> Creating a custom widget</h3>
+
+                            <h3><strong>9.3</strong> Using templates with a custom widget</h3>
+
+                            <h3><strong>9.4</strong> Using a datasource with a custom widget</h3>
 
                             </div><!--  /chapter 9  -->
 
@@ -2780,11 +2809,9 @@ $('#autocomplete').kendoAutoComplete({
                             <!--_____________-->
                             <div id="chapter10" class="chapter">
                             
-                            <h2><strong>Chapter 10.</strong> Using Kendo UI with React</h2>
+                            <h2><strong>Chapter 10.</strong> Using Kendo UI with AngularJS</h2>
 
-                            <h3><strong>10.1</strong> What is React</h3>
-
-                            <h3><strong>10.2</strong> Using Kenod UI with React</h3>
+                            <h3>Waiting on AngularJS 2.0 to complete chapter outline</h3>
 
                             </div><!--  /chapter 10  -->
 
@@ -2793,13 +2820,11 @@ $('#autocomplete').kendoAutoComplete({
                             <!--_____________-->
                             <div id="chapter11" class="chapter">
                             
-                            <h2><strong>Chapter 11.</strong> Using Kendo UI with jspm.io</code> </h2>
+                            <h2><strong>Chapter 11.</strong> Using Kendo UI with React</h2>
 
-                            <h3><strong>11.1</strong> What is jspm.io</h3>
+                            <h3><strong>11.1</strong> What is React</h3>
 
-                            <h3><strong>11.2</strong> Installing jspm.io</h3>
-
-                            <h3><strong>11.3</strong> Using jspm.io, ES6, and Kendo UI together</h3>
+                            <h3><strong>11.2</strong> Using Kenod UI with React</h3>
 
                             </div><!--  /chapter 11  -->
 
@@ -2808,15 +2833,30 @@ $('#autocomplete').kendoAutoComplete({
                             <!--_____________-->
                             <div id="chapter12" class="chapter">
                             
-                            <h2><strong>Chapter 12.</strong> Using Kendo UI with webpack</code> </h2>
-                            
-                            <h3><strong>12.1</strong> What is webpack</h3>
+                            <h2><strong>Chapter 12.</strong> Using Kendo UI with jspm.io</code> </h2>
 
-                            <h3><strong>12.2</strong> Installing webpack</h3>
+                            <h3><strong>12.1</strong> What is jspm.io</h3>
 
-                            <h3><strong>12.3</strong> Using webpack, ES6, and Kendo UI together</h3>
+                            <h3><strong>12.2</strong> Installing jspm.io</h3>
+
+                            <h3><strong>12.3</strong> Using jspm.io, ES6, and Kendo UI together</h3>
 
                             </div><!--  /chapter 12  -->
+
+                            <!--_____________-->
+                            <!--  chapter 13  -->
+                            <!--_____________-->
+                            <div id="chapter13" class="chapter">
+                            
+                            <h2><strong>Chapter 13.</strong> Using Kendo UI with webpack</code> </h2>
+                            
+                            <h3><strong>13.1</strong> What is webpack</h3>
+
+                            <h3><strong>13.2</strong> Installing webpack</h3>
+
+                            <h3><strong>13.3</strong> Using webpack, ES6, and Kendo UI together</h3>
+
+                            </div><!--  /chapter 13  -->
 
                         </div>
                     </div>
