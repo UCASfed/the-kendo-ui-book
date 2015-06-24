@@ -2752,7 +2752,7 @@ $('#autocomplete').kendoAutoComplete({
 
                             <h3><strong>7.3</strong> Using a Object as a <code>dataSource</code> value</h3>
 
-                            <h3><strong>7.4</strong> Using a DataSource instance as a <code>dataSource</code> value</h3>
+                            <h3><strong>7.4</strong> Using a <code>DataSource</code> instance as a <code>dataSource</code> configuration value</h3>
 
                             </div><!--  /chapter 7  -->
 
@@ -2884,7 +2884,7 @@ $('#autocomplete').kendoAutoComplete({
         SyntaxHighlighter.defaults['toolbar'] = false;
         SyntaxHighlighter.all();
 
-        function lineWrap(){
+        /*function lineWrap(){
             var wrap = function () {
                 var elems = document.getElementsByClassName('syntaxhighlighter');
                 for (var j = 0; j < elems.length; ++j) {
@@ -2909,7 +2909,7 @@ $('#autocomplete').kendoAutoComplete({
             };
             whenReady();
         };
-        lineWrap();
+        lineWrap();*/
 
         $('#book a').attr('target', '_blank');
 
@@ -3021,7 +3021,8 @@ $('#autocomplete').kendoAutoComplete({
                     $('a[href="'+window.location.hash+'"]')[0].click();
                 }
             };
-            s.src = "http://static.jsbin.com/js/embed.js";
+            //s.src = "http://static.jsbin.com/js/embed.js";
+            s.src = "embed.js";
             // Use any selector
             document.body.appendChild(s)
 
@@ -3061,10 +3062,10 @@ $('#autocomplete').kendoAutoComplete({
                 }
             });
 
-            /*$(window).resize(function(event) {
+            $(window).resize(function(event) {
                 $.waypoints('refresh');
-                lineWrap()
-            });*/
+                //lineWrap()
+            });
 
 
         },4000);
