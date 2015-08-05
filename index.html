@@ -796,7 +796,7 @@
 
                             <p>Most Kendo UI widgets will auto resize by default when used in a fluid web page layout (i.e. when widgets <a href="http://docs.telerik.com/kendo-ui/framework/widgets/wrapper-element#wrapper">wrapper</a> container has a height and width of 100% and is resized) making the widgets themselves drop-in ready for mobile web design strategies. Those widgets that do not auto resize will simply require their <code>resize()</code> method to be called directly or by using <a href="http://docs.telerik.com/kendo-ui/api/javascript/kendo#methods-resize"><code>kendo.resize()</code></a> to resize a grouping of widgets. </p>
 
-                            <p>Additionally, a select few widgets (grid, scheduler, charts, toolbar, tabstrip) will actually adapt to the screensize beyond simply adjusting themselves horizontally in width. Meaning, the widgets UI will adapt, automatically when required by the screen size or view port.</p>
+                            <p>Additionally, a select few widgets (grid, scheduler, treelist, charts, tabstrip, toolbar, editor) will actually adapt to the screensize beyond simply adjusting themselves horizontally in width. Meaning, the widgets UI will adapt, automatically when required by the screen size or view port.</p>
 
 
                             </div><!--  /chapter 1  -->
@@ -823,7 +823,7 @@
 
                             <p>While Kendo UI makes a basic offering of tools for building JS applications (<a href="http://docs.telerik.com/kendo-ui/framework/mvvm/overview">MVVM</a>, <a href="http://docs.telerik.com/kendo-ui/framework/spa/layout">layout</a>, <a href="http://docs.telerik.com/kendo-ui/framework/spa/router">router</a>, and <a href="http://docs.telerik.com/kendo-ui/framework/spa/view">view</a>), and one could build an entire JS application using just Kendo UI framework tools, its more common that Kendo UI is used in combination with solutions like <a href="https://github.com/kendo-labs/kendo-backbone">Backbone</a>, <a href="https://github.com/tjwebb/react-kendo">React</a>, Ember, <a href="https://atmospherejs.com/telerik">Meteor</a>, or <a href="http://docs.telerik.com/kendo-ui/AngularJS/introduction">AngularJS</a>.</p>
 
-                            <p>Kendo UI is designed to run on laptop/desktop web browsers, as well as browsers on touch devices and WebViews used in hybrid mobile application development.</p>
+                            <p>Kendo UI is designed to run on laptop/desktop web browsers, as well as browsers on touch devices and in WebViews used in hybrid mobile application development.</p>
 
                             <p><a href="http://www.telerik.com/kendo-ui">Kendo UI Professional</a>, the commercial version of Kendo used to develop line-of-business and data-centric applications, is divided into the following four parts:</p>
 
@@ -2746,13 +2746,86 @@ $('#autocomplete').kendoAutoComplete({
                             
                             <h2><strong>Chapter 7.</strong> Configuring A Widgets <code>dataSource</code></h2>
 
-                            <h3><strong>7.1</strong> <code>Widget <code>dataSource</code> configuration Overview </code></h3>
+                            <h3><strong>7.1</strong> Widget <code>dataSource</code> configuration Overview</h3>
 
-                            <h3><strong>7.2</strong> Using an Array as a <code>dataSource</code> value</h3>
+                            <p>In the code example below a grid widget is configured with a <code>datasource</code> configuration value containing an instance from the <code>kendo.data.DataSource()</code> constructor. Then a static field (i.e. <code>$('#grid').getKendoGrid().dataSource</code>) is used to access the <code>DataSource</code> instance (as opposed to the Grid instance itself) so the <code>add()</code> method can be called. Lastly, the Grid's <code>setDataSource()</code> method is used to change the widgets <code>dataSource</code>.</p>
 
-                            <h3><strong>7.3</strong> Using a Object as a <code>dataSource</code> value</h3>
+                            <a class="jsbin-embed" href="http://jsbin.com/vopaju/embed?html,output&height=950px">JS Bin</a>
 
-                            <h3><strong>7.4</strong> Using a <code>DataSource</code> instance as a <code>dataSource</code> configuration value</h3>
+                            <p>This is an overview of the life-cycle of configuring a widget with a <code>dataSource</code> instance, updating the <code>dataSource</code> instance, and resetting a widgets <code>dataSource</code>.</p>
+
+                            <p>Not all Kendo UI widgets have a <code>dataSource</code> configuration option. The following widgets all have a <code>datasource</code> configuration value.</p>
+
+                            <ul>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/autocomplete/overview">AutoComplete</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/combobox/overview">ComboBox</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/menu/contextmenu">ContextMenu</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/dropdownlist/overview">DropDownList</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/gantt/overview">Gantt</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/grid/overview">Grid</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/listview/overview">ListView</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/multiselect/overview">MultiSelect</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/panelbar/overview">PanelBar</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/pivotgrid/overview">PivotConfigurator</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/pivotgrid/overview">PivotGrid</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/scheduler/overview">Scheduler</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/treelist/overview">TreeList</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/treeview/overview">TreeView</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/dataviz/chart/overview">Chart</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/dataviz/diagram/overview">Diagram</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/dataviz/sparkline/overview">Sparkline</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/dataviz/stockchart/overview">StockChart</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/dataviz/treemap/overview">TreeMap</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/mobile/listview/overview">ListView (mobile)</a></li>
+
+                            </ul>
+
+                           <p> The <code>datasource</code> configuration value is used to define the data that will be consumed and presented by a widget. A widget can consume data in the form of a JavaScript Object object, Array object, or an instance of the DataSource constructor/class (or any of the <code>DataSource</code> constructors that inherit from <code>DataSource</code>). If a DataSource instance is not passed one will be created from the Object object or Array object passed.</p> 
+
+                            <p>Not all widgets that have a <code>dataSource</code> configuration option have a <code>dataSource</code> field (static pointer to DataSource instance used by widget) and <code>setDataSource()</code>. The following widgets offer a static reference to a widgets <code>datasource</code> instance and a <code>setDataSource()</code> method for creating a new dataSource after a widget has already been instantiated.</p>
+
+                            <ul>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/autocomplete/overview">AutoComplete</a></li>
+                                <li><a href="hhttp://docs.telerik.com/kendo-ui/web/combobox/overview">ComboBox</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/dropdownlist/overview">DropDownList</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/gantt/overview">Gantt</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/grid/overview">Grid</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/listview/overview">ListView</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/multiselect/overview">MultiSelect</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/pivotgrid/overview">PivotConfigurator</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/pivotgrid/overview">PivotGrid</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/scheduler/overview">Scheduler</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/treelist/overview">TreeList</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/treeview/overview">TreeView</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/dataviz/diagram/overview">Diagram</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/dataviz/sparkline/overview">Sparkline</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/dataviz/stockchart/overview">StockChart</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/dataviz/treemap/overview">TreeMap</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/mobile/listview/overview">ListView (mobile)</a></li>
+                            </ul>
+
+
+                            <h3><strong>7.2</strong> Using a <code>DataSource</code> instance as a <code>dataSource</code> configuration value</h3>
+
+                            <p>In the introduction part of this chapter a code example was shown where a grid was setup using a simple amount of JSON passed to the <code>DataSource</code> constructor in order to create a DataSource instance. The code example below is a scaled back version of that code example containing only the portion of code that creates the Grid and DataSource instance passed to the Grid <code>dataSource</code> configuration option.</p>
+
+                            <a class="jsbin-embed" href="http://jsbin.com/waqego/embed?html,output&height=750px">JS Bin</a>
+
+                            <p>The next chapter will detail the DataSource abstraction itself. What you need to grokk before looking at the DataSource abstraction is that widgets collaborate with a DataSource instance. By passing a widget a DataSource instance, widgets behind the scenes setup that DataSource for use by the widget. Anything that is not handled by the internals of the widget can then be dealt with by the DataSource API (a separate API from the widget) which you access by referencing the <code>datasource</code> field (e.g. <code>grid.dataSource.XXXX</code> that is simply a pointer to the <code>DataSource</code> instance.</p>
+
+                            <h3><strong>7.3</strong> Using an Array as a <code>dataSource</code> configuration value</h3>
+
+                            <p>The <code>dataSource</code> widget configuration option will accept an array of objects, which it will use to create a <code>DataSource</code> instance behind the scenes. In the code below I am passing the Grid widget an array of objects that will be converted to a <code>DataSource</code> instance and then consumed by the grid widget.</p>
+
+                            <a class="jsbin-embed" href="http://jsbin.com/lajaji/embed?html,output&height=750px">JS Bin</a>
+
+                            <h3><strong>7.4</strong> Using a Object as a <code>dataSource</code> configuration value</h3>
+
+                            <p>The <code>dataSource</code> widget configuration option will also accept a user defined object containing a <code>data</code> property with an array value. In the code below I am passing the Grid widget an object, with a <code>data</code> property that will be converted to a <code>DataSource</code> instance and then consumed by the grid widget.</p>
+
+                            <a class="jsbin-embed" href="http://jsbin.com/fofotop/embed?html,output&height=750px">JS Bin</a>
+
+
 
                             </div><!--  /chapter 7  -->
 
@@ -2867,7 +2940,7 @@ $('#autocomplete').kendoAutoComplete({
     <!-- SCRIPTS -->
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/kendo-ui-core/js/kendo.ui.core.min.js"></script>
+    <script src="bower_components/kendo-ui-core/src/js/kendo.ui.core.js"></script>
     <script src="bower_components/jquery.breakpoints/breakpoints.js"></script>
     <script src="bower_components/jquery-waypoints/waypoints.min.js"></script>
 
