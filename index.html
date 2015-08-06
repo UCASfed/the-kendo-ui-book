@@ -2752,7 +2752,7 @@ $('#autocomplete').kendoAutoComplete({
 
                             <a class="jsbin-embed" href="http://jsbin.com/vopaju/embed?html,output&height=950px">JS Bin</a>
 
-                            <p>This is an overview of the life-cycle of configuring a widget with a <code>dataSource</code> instance, updating the <code>dataSource</code> instance, and resetting a widgets <code>dataSource</code>.</p>
+                            <p>The previous code example is an overview of the life-cycle of configuring a widget with a <code>dataSource</code> instance, updating the <code>dataSource</code> instance, and resetting a widgets <code>dataSource</code>.</p>
 
                             <p>Not all Kendo UI widgets have a <code>dataSource</code> configuration option. The following widgets all have a <code>datasource</code> configuration value.</p>
 
@@ -2775,35 +2775,21 @@ $('#autocomplete').kendoAutoComplete({
                                 <li><a href="http://docs.telerik.com/kendo-ui/dataviz/diagram/overview">Diagram</a></li>
                                 <li><a href="http://docs.telerik.com/kendo-ui/dataviz/sparkline/overview">Sparkline</a></li>
                                 <li><a href="http://docs.telerik.com/kendo-ui/dataviz/stockchart/overview">StockChart</a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/web/tabstrip/overview">TabStrip</a></li>
                                 <li><a href="http://docs.telerik.com/kendo-ui/dataviz/treemap/overview">TreeMap</a></li>
                                 <li><a href="http://docs.telerik.com/kendo-ui/mobile/listview/overview">ListView (mobile)</a></li>
-
                             </ul>
 
                            <p> The <code>datasource</code> configuration value is used to define the data that will be consumed and presented by a widget. A widget can consume data in the form of a JavaScript Object object, Array object, or an instance of the DataSource constructor/class (or any of the <code>DataSource</code> constructors that inherit from <code>DataSource</code>). If a DataSource instance is not passed one will be created from the Object object or Array object passed.</p> 
 
-                            <p>Not all widgets that have a <code>dataSource</code> configuration option have a <code>dataSource</code> field (static pointer to DataSource instance used by widget) and <code>setDataSource()</code>. The following widgets offer a static reference to a widgets <code>datasource</code> instance and a <code>setDataSource()</code> method for creating a new dataSource after a widget has already been instantiated.</p>
-
-                            <ul>
-                                <li><a href="http://docs.telerik.com/kendo-ui/web/autocomplete/overview">AutoComplete</a></li>
-                                <li><a href="hhttp://docs.telerik.com/kendo-ui/web/combobox/overview">ComboBox</a></li>
-                                <li><a href="http://docs.telerik.com/kendo-ui/web/dropdownlist/overview">DropDownList</a></li>
-                                <li><a href="http://docs.telerik.com/kendo-ui/web/gantt/overview">Gantt</a></li>
-                                <li><a href="http://docs.telerik.com/kendo-ui/web/grid/overview">Grid</a></li>
-                                <li><a href="http://docs.telerik.com/kendo-ui/web/listview/overview">ListView</a></li>
-                                <li><a href="http://docs.telerik.com/kendo-ui/web/multiselect/overview">MultiSelect</a></li>
-                                <li><a href="http://docs.telerik.com/kendo-ui/web/pivotgrid/overview">PivotConfigurator</a></li>
-                                <li><a href="http://docs.telerik.com/kendo-ui/web/pivotgrid/overview">PivotGrid</a></li>
-                                <li><a href="http://docs.telerik.com/kendo-ui/web/scheduler/overview">Scheduler</a></li>
-                                <li><a href="http://docs.telerik.com/kendo-ui/web/treelist/overview">TreeList</a></li>
-                                <li><a href="http://docs.telerik.com/kendo-ui/web/treeview/overview">TreeView</a></li>
-                                <li><a href="http://docs.telerik.com/kendo-ui/dataviz/diagram/overview">Diagram</a></li>
-                                <li><a href="http://docs.telerik.com/kendo-ui/dataviz/sparkline/overview">Sparkline</a></li>
-                                <li><a href="http://docs.telerik.com/kendo-ui/dataviz/stockchart/overview">StockChart</a></li>
-                                <li><a href="http://docs.telerik.com/kendo-ui/dataviz/treemap/overview">TreeMap</a></li>
-                                <li><a href="http://docs.telerik.com/kendo-ui/mobile/listview/overview">ListView (mobile)</a></li>
-                            </ul>
-
+                           <div class="note">
+                                <div class="notes-title">Notes</div>
+                                <div class="notes">
+                                    <ul>
+                                        <li>Don't confuse what values you can pass to a widget by way of the dataSource configuration option with the types of data that the dataSource instance itself can contain. A DataSource can contain data in the form of JavaScript objects and arrays as well as JSON, JSONP, OData, and XML.</li>
+                                    </ul>
+                                </div>
+                            </div>
 
                             <h3><strong>7.2</strong> Using a <code>DataSource</code> instance as a <code>dataSource</code> configuration value</h3>
 
@@ -2811,21 +2797,35 @@ $('#autocomplete').kendoAutoComplete({
 
                             <a class="jsbin-embed" href="http://jsbin.com/waqego/embed?html,output&height=750px">JS Bin</a>
 
-                            <p>The next chapter will detail the DataSource abstraction itself. What you need to grokk before looking at the DataSource abstraction is that widgets collaborate with a DataSource instance. By passing a widget a DataSource instance, widgets behind the scenes setup that DataSource for use by the widget. Anything that is not handled by the internals of the widget can then be dealt with by the DataSource API (a separate API from the widget) which you access by referencing the <code>datasource</code> field (e.g. <code>grid.dataSource.XXXX</code> that is simply a pointer to the <code>DataSource</code> instance.</p>
+                            <p>The next chapter will detail the DataSource abstraction itself. What you need to grokk before looking at the DataSource abstraction is that widgets collaborate with a DataSource instance configuration value. By passing a widget a DataSource instance, widgets behind the scenes setup (i.e. call <code>read()</code>, <code>fetch()</code> etc..) that DataSource for use by the widget. Anything that is not handled by the internals of the widget can then be dealt with by the DataSource API (a separate API from the widget) which you access by referencing the <code>datasource</code> field (e.g. <code>grid.dataSource.XXXX</code> on the widget instance, which is simply a pointer to the <code>DataSource</code> instance.</p>
 
-                            <h3><strong>7.3</strong> Using an Array as a <code>dataSource</code> configuration value</h3>
+                            <h3><strong>7.3</strong> Why use <code>DataSource</code> with widgets?</h3>
+
+                            <p>The following advantages provide some insight as to why you might want to use a <code>DataSource</code> instance with a widget.</p>
+
+                            <ul>
+                                <li>In most situations the widget will internally handle the fetching and reading (i.e. <code>.read()</code>) of local or remote data. Triggering all the necessary <code>DataSource</code> methods to populate the widget with data. No additional <code>DataSource</code> method calls are required to get data when a <code>DataSource</code> instance is tied to a widget. The widget will handle this, but this nature can be overridden using the <code>autoBind</code> configuration option.</li>
+                                <li>Any changes to the data in a <code>DataSource</code> instance will automatically synchronized with a widget. Update the <code>DataSource</code> and then the widget will automatically re-render itself with the new data with no additional method calls.</li>
+                                <li>The <code>DataSource</code> abstraction can make your widget offline friendly.</li>
+                                <li>The <code>DataSource</code> abstraction not only abstracts data management but also the remote retrieval of data which without the DataSource abstraction would require invoking an XHR or AJAX HTTP request. <code>DataSource</code> handles the HTTP portions (via jQuery AJAX), you simply provide it some details.</li>
+                                <li>A <code>DataSource</code> instance makes sorting, paging, grouping, and filtering a widgets data simple.</li>
+                            </ul>
+
+                            <h3><strong>7.4</strong> Using an Array as a <code>dataSource</code> configuration value</h3>
 
                             <p>The <code>dataSource</code> widget configuration option will accept an array of objects, which it will use to create a <code>DataSource</code> instance behind the scenes. In the code below I am passing the Grid widget an array of objects that will be converted to a <code>DataSource</code> instance and then consumed by the grid widget.</p>
 
                             <a class="jsbin-embed" href="http://jsbin.com/lajaji/embed?html,output&height=750px">JS Bin</a>
 
-                            <h3><strong>7.4</strong> Using a Object as a <code>dataSource</code> configuration value</h3>
+                            <h3><strong>7.5</strong> Using a Object as a <code>dataSource</code> configuration value</h3>
 
                             <p>The <code>dataSource</code> widget configuration option will also accept a user defined object containing a <code>data</code> property with an array value. In the code below I am passing the Grid widget an object, with a <code>data</code> property that will be converted to a <code>DataSource</code> instance and then consumed by the grid widget.</p>
 
                             <a class="jsbin-embed" href="http://jsbin.com/fofotop/embed?html,output&height=750px">JS Bin</a>
 
+                            <h3><strong>7.6</strong> One DataSource, Multiple Widgets</h3>
 
+                            <p>Don't recreate the same <code>DataSource</code> instance for each Widget. Widgets can share dataSources. Be aware that by default, a change to a <code>DataSource</code> instance, configured to be used by multiple widgets, will automatically update <strong>ALL</strong> widgets that are configured to use the DataSource instance.</p>
 
                             </div><!--  /chapter 7  -->
 
@@ -2834,29 +2834,31 @@ $('#autocomplete').kendoAutoComplete({
                             <!--_____________-->
                             <div id="chapter8" class="chapter">
                             
-                            <h2><strong>Chapter 8.</strong> <code>DataSource</code> &amp; Widgets</h2>
+                            <h2><strong>Chapter 8.</strong> Data Source Abstraction (i.e. <code>DataSource</code>)</h2>
 
                             <h3><strong>8.1</strong> <code>kendo.data.DataSource</code> Overview</h3>
 
-                            <h3><strong>8.2</strong> Binding and retrieve a widgets local data</h3>
+                            <p>This chapter will discuss the workings of the <code>kendo.data.DataSource</code> abstraction. Instances from the <code>DataSource</code> constructor can be passed to widgets and used by widgets, as discussed in the previous chapter, but the <code>DataSource</code> should also be considered a standalone data abstraction solution. The <code>DataSource</code> mainly abstracts working with data (i.e. CRUD, Ordering, Grouping, filtering, Paging) and remote endpoints. This chapter will discuss the configuration options, methods, and events for a <code>DataSource</code> instance.</p>
 
-                            <h3><strong>8.3</strong> Binding and retrieving a widgets remote data</h3>
+                            <h3><strong>8.2</strong> Consuming local data</h3>
 
-                            <h3><strong>8.4</strong> Using <code>DataSource</code>'s offline capabilities with widgets</h3>
+                            <h3><strong>8.3</strong> Consuming remote data</h3>
 
-                            <h3><strong>8.5</strong> DataSource CRUD (Create, Read, Update, Destroy) operations on local/remote widget data</h3>
+                            <h3><strong>8.4</strong> Using CRUD (Create, Read, Update, Destroy) operations on local data</h3>
 
-                            <h3><strong>8.6</strong> Grouping widget data</h3>
+                            <h3><strong>8.5</strong> Using CRUD (Create, Read, Update, Destroy) operations on remote data</h3>
 
-                            <h3><strong>8.7</strong> Sorting widget data</h3>
+                            <h3><strong>8.6</strong> Grouping data</h3>
 
-                            <h3><strong>8.8</strong> Paging widget data</h3>
+                            <h3><strong>8.7</strong> Sorting data</h3>
 
-                            <h3><strong>8.9</strong> Filtering widget data</h3>
+                            <h3><strong>8.8</strong> Paging data</h3>
 
-                            <h3><strong>8.10</strong> Sharing a <code>DataSource</code> instance between widgets</h3>
+                            <h3><strong>8.9</strong> Filtering data</h3>
 
-                            <h3><strong>8.11</strong> Widget specific <code>DataSource</code> objects</h3>
+                            <h3><strong>8.10</strong> Aggregating data</h3>
+
+                            <h3><strong>8.11</strong> Using <code>DataSource</code>'s offline capabilities</h3>
 
                             </div><!--  /chapter 8  -->
 
@@ -2865,15 +2867,13 @@ $('#autocomplete').kendoAutoComplete({
                             <!--_____________-->
                             <div id="chapter9" class="chapter">
                             
-                            <h2><strong>Chapter 9.</strong>Custom Widgets</code> </h2>
+                            <h2><strong>Chapter 9.</strong> Using Kendo UI with jspm.io</code> </h2>
 
-                            <h3><strong>9.1</strong> Custom Widget Overview</h3>
+                            <h3><strong>9.1</strong> What is jspm.io</h3>
 
-                            <h3><strong>9.2</strong> Creating a custom widget</h3>
+                            <h3><strong>9.2</strong> Installing jspm.io</h3>
 
-                            <h3><strong>9.3</strong> Using templates with a custom widget</h3>
-
-                            <h3><strong>9.4</strong> Using a datasource with a custom widget</h3>
+                            <h3><strong>9.3</strong> Using jspm.io, ES6, and Kendo UI together</h3>
 
                             </div><!--  /chapter 9  -->
 
@@ -2882,54 +2882,15 @@ $('#autocomplete').kendoAutoComplete({
                             <!--_____________-->
                             <div id="chapter10" class="chapter">
                             
-                            <h2><strong>Chapter 10.</strong> Using Kendo UI with AngularJS</h2>
+                            <h2><strong>Chapter 10.</strong> Using Kendo UI with webpack</code> </h2>
+                            
+                            <h3><strong>10.1</strong> What is webpack</h3>
 
-                            <h3>Waiting on AngularJS 2.0 to complete chapter outline</h3>
+                            <h3><strong>10.2</strong> Installing webpack</h3>
+
+                            <h3><strong>10.3</strong> Using webpack, ES6, and Kendo UI together</h3>
 
                             </div><!--  /chapter 10  -->
-
-                            <!--_____________-->
-                            <!--  chapter 11  -->
-                            <!--_____________-->
-                            <div id="chapter11" class="chapter">
-                            
-                            <h2><strong>Chapter 11.</strong> Using Kendo UI with React</h2>
-
-                            <h3><strong>11.1</strong> What is React</h3>
-
-                            <h3><strong>11.2</strong> Using Kenod UI with React</h3>
-
-                            </div><!--  /chapter 11  -->
-
-                            <!--_____________-->
-                            <!--  chapter 12  -->
-                            <!--_____________-->
-                            <div id="chapter12" class="chapter">
-                            
-                            <h2><strong>Chapter 12.</strong> Using Kendo UI with jspm.io</code> </h2>
-
-                            <h3><strong>12.1</strong> What is jspm.io</h3>
-
-                            <h3><strong>12.2</strong> Installing jspm.io</h3>
-
-                            <h3><strong>12.3</strong> Using jspm.io, ES6, and Kendo UI together</h3>
-
-                            </div><!--  /chapter 12  -->
-
-                            <!--_____________-->
-                            <!--  chapter 13  -->
-                            <!--_____________-->
-                            <div id="chapter13" class="chapter">
-                            
-                            <h2><strong>Chapter 13.</strong> Using Kendo UI with webpack</code> </h2>
-                            
-                            <h3><strong>13.1</strong> What is webpack</h3>
-
-                            <h3><strong>13.2</strong> Installing webpack</h3>
-
-                            <h3><strong>13.3</strong> Using webpack, ES6, and Kendo UI together</h3>
-
-                            </div><!--  /chapter 13  -->
 
                         </div>
                     </div>
