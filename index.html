@@ -2838,15 +2838,47 @@ $('#autocomplete').kendoAutoComplete({
 
                             <h3><strong>8.1</strong> <code>kendo.data.DataSource</code> Overview</h3>
 
-                            <p>This chapter will discuss the workings of the <code>kendo.data.DataSource</code> abstraction. Instances from the <code>DataSource</code> constructor can be passed to widgets and used by widgets, as discussed in the previous chapter, but the <code>DataSource</code> should also be considered a standalone data abstraction solution. The <code>DataSource</code> mainly abstracts working with data (i.e. CRUD, Ordering, Grouping, filtering, Paging) and remote endpoints. This chapter will discuss the configuration options, methods, and events for a <code>DataSource</code> instance.</p>
+                            <p>This chapter will discuss the workings of the <code>kendo.data.DataSource</code> abstraction. Instances from the <code>DataSource</code> constructor can be passed to widgets and used by widgets, as discussed in the previous chapter, but the <code>DataSource</code> should also be considered a standalone data abstraction solution. The <code>DataSource</code> mainly abstracts consuming local or remote data then working with data (i.e. CRUD, Ordering, Grouping, filtering, Paging). This chapter will discuss the configuration options, methods, and events for a <code>DataSource</code> instance.</p>
 
-                            <h3><strong>8.2</strong> Consuming local data</h3>
+                            <p>When implementing the Kendo UI <code>DataSource</code> its important to keep in mind the following semantics, ideas, and rules:<p>
 
-                            <h3><strong>8.3</strong> Consuming remote data</h3>
+                            <ul>
+                                <li>DataSource assumes, by default in most cases, that it will be abstracting JSON data.</li>
+                                <li>The schema options customize how local or remote JSON (i.e. array of objects) or XML data is interpreted.</li>
+                                <li>The transport options are used to configure how a POST (i.e. create),  GET (i.e. read), PUT (i.e update), and DELETE operation on local or remote data should be handled. Using these CRUD options creating, reading, updating, and deleting data can be finely tuned for more than just JSON or XML data.</li>
+                                <li>If you want to abstract OData the schema and transport configurations are mostly predefined. You do have to configure the DataSource to use OData by setting the type configuration option to "odata".</li>
+                            <ul>
 
-                            <h3><strong>8.4</strong> Using CRUD (Create, Read, Update, Destroy) operations on local data</h3>
+                            <h3><strong>8.2</strong> Types of data consumed by <code>DataSource</code></h3>
 
-                            <h3><strong>8.5</strong> Using CRUD (Create, Read, Update, Destroy) operations on remote data</h3>
+                            <p>A <code>DataSource</code> instance can be configured to consume the following types of data:</p>
+
+                            <ul>
+                                <li>Locally, an array of objects (i.e. JSON) passed to the <code>data</code> configuration option or  passed to the <code>data()</code> method after instantiating an instance.</li>
+                                <li>Locally, an XML string passed to the <code>data</code> configuration option or passed to the <code>data()</code> method after instantiating an instance. But, only if the schema type configuration option is set to "xml".</li>
+                                <li>Remotely, JSON by setting the transport read <code>dataType</code> configuration value to "json". </li>
+                                <li>Remotely, JSONP by setting the transport read <code>dataType</code> configuration value to "jsonp"</li>
+                                <li>Remotely, XML by setting the transport read <code>dataType</code> configuration value to "xml"</li>
+                                <li>Remotely, text/html (i.e. plain text) by setting the transport read <code>dataType</code> configuration value to "text" or "html"</li>
+                                <li>Remotely, OData (v.2 and v.4 <a href="https://github.com/telerik/ui-for-aspnet-mvc-examples/tree/master/grid/odata-v4-web-api-binding">which partially supports signalr</a>) by using the <code>type</code> configuration option.</li>
+                            </ul>
+
+                            <div class="note">
+                                <div class="notes-title">Notes</div>
+                                <div class="notes">
+                                    <ul>
+                                        <li>The transport read <code>dataType</code> configuration option accepts a string value that can convert a data type from what it received in the Content-Type header to what you require. For example using the value "text xml" will assume the response from the server is text but then treat the text as XML.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h3><strong>8.2</strong> Abstracting local data</h3>
+
+                            <h3><strong>8.3</strong> Abstracting remote data</h3>
+
+                            <h3><strong>8.4</strong> Abstracting local CRUD (Create, Read, Update, Destroy) data</h3>
+
+                            <h3><strong>8.5</strong> Abstracting remote CRUD (Create, Read, Update, Destroy) data</h3>
 
                             <h3><strong>8.6</strong> Grouping data</h3>
 
@@ -2858,7 +2890,11 @@ $('#autocomplete').kendoAutoComplete({
 
                             <h3><strong>8.10</strong> Aggregating data</h3>
 
-                            <h3><strong>8.11</strong> Using <code>DataSource</code>'s offline capabilities</h3>
+                            <h3><strong>8.11</strong> Binding to <code>DataSource</code> events</h3>
+
+                            <h3><strong>8.12</strong> Using <code>DataSource</code> with templates</h3>
+
+                            <h3><strong>8.13</strong> Using <code>DataSource</code>'s offline capabilities</h3>
 
                             </div><!--  /chapter 8  -->
 
