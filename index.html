@@ -2838,16 +2838,19 @@ $('#autocomplete').kendoAutoComplete({
 
                             <h3><strong>8.1</strong> <code>kendo.data.DataSource</code> Overview</h3>
 
-                            <p>This chapter will discuss the workings of the <code>kendo.data.DataSource</code> abstraction. Instances from the <code>DataSource</code> constructor can be passed to widgets and used by widgets, as discussed in the previous chapter, but the <code>DataSource</code> should also be considered a standalone data abstraction solution. The <code>DataSource</code> mainly abstracts consuming local or remote data then working with data (i.e. CRUD, Ordering, Grouping, filtering, Paging). This chapter will discuss the configuration options, methods, and events for a <code>DataSource</code> instance.</p>
+                            <p>This chapter will discuss the workings of the <code>kendo.data.DataSource</code> abstraction. Instances from the <code>DataSource</code> constructor can be passed to widgets and used by widgets, as discussed in the previous chapter, but the <code>DataSource</code> should also be considered a standalone data abstraction solution. The purpose of using a <code>DataSource</code> abstraction is to abstract the consumption of local or remote data and then once consumed managing the lifestyle of the data (i.e. CRUD, Ordering, Grouping, Filtering, Paging).</p>
 
-                            <p>When implementing the Kendo UI <code>DataSource</code> its important to keep in mind the following semantics, ideas, and rules:<p>
+                            <p>When implementing the Kendo UI <code>DataSource</code> its important to keep in mind the following semantics, ideas, and rules:</p>
 
                             <ul>
                                 <li>DataSource assumes, by default in most cases, that it will be abstracting JSON data.</li>
                                 <li>The schema options customize how local or remote JSON (i.e. array of objects) or XML data is interpreted.</li>
-                                <li>The transport options are used to configure how a POST (i.e. create),  GET (i.e. read), PUT (i.e update), and DELETE operation on local or remote data should be handled. Using these CRUD options creating, reading, updating, and deleting data can be finely tuned for more than just JSON or XML data.</li>
-                                <li>If you want to abstract OData the schema and transport configurations are mostly predefined. You do have to configure the DataSource to use OData by setting the type configuration option to "odata".</li>
-                            <ul>
+                                <li>The transport options are used to configure how a POST (i.e. create),  GET (i.e. read), PUT (i.e update), and DELETE (i.e. destroy) operation on local or remote data should be handled. Using these CRUD options creating, reading, updating, and destroying data can be finely tuned for more than just JSON or XML data.</li>
+                                <li>The <code>DataSource</code> supports OData and the schema and transport configurations are mostly predefined. You do have to configure the <code>DataSource</code> to use OData by setting the type configuration option to "odata".</li>
+                                <li>Defining data for a <code>DataSource</code> instance does not immediately fetch/read the data, unless you are passing the <code>DataSource</code> to a widget. In that case, the widget will fetch/read the data without have to call the <code>read()</code> or <code>fetch()</code> method. If using a <code>DataSource</code> outside of a widget context you will have to call <code>read()</code> or <code>fetch()</code> to fill the instance with data. Note that <code>fetch()</code> will make a request to a remote service once the first time it is called, while <code>read()</code> always makes a request to the remote service, unless the data source is offline.</li>
+                            </ul>
+
+                            <p>This chapter will explore the most commonly used configuration options, methods, and events for a <code>DataSource</code> instance.</p>
 
                             <h3><strong>8.2</strong> Types of data consumed by <code>DataSource</code></h3>
 
@@ -2867,34 +2870,70 @@ $('#autocomplete').kendoAutoComplete({
                                 <div class="notes-title">Notes</div>
                                 <div class="notes">
                                     <ul>
-                                        <li>The transport read <code>dataType</code> configuration option accepts a string value that can convert a data type from what it received in the Content-Type header to what you require. For example using the value "text xml" will assume the response from the server is text but then treat the text as XML.</li>
+                                        <li>The <a href="https://www.techsmith.com/jing.html">transport read <code>dataType</code> configuration option</a> accepts a string value that can convert a data type from what it received in the Content-Type header to what you require. For example using the value "text xml" will assume the response from the server is text but then treat the text as XML.</li>
                                     </ul>
                                 </div>
                             </div>
 
-                            <h3><strong>8.2</strong> Abstracting local data</h3>
+                            <h3><strong>8.3</strong> Reading local data</h3>
 
-                            <h3><strong>8.3</strong> Abstracting remote data</h3>
+                            <p>Creating a <code>DataSource</code> instance that contains local data is as simple as passing the <code>DataSource</code> constructor an object that contains a value for the <code>data</code> configuration option. In the code example below I am constructing a <code>DataSource</code> instance with one <code>data</code> configuration value. The value for the data source is a simple JavaScript array of objects. </p>
 
-                            <h3><strong>8.4</strong> Abstracting local CRUD (Create, Read, Update, Destroy) data</h3>
 
-                            <h3><strong>8.5</strong> Abstracting remote CRUD (Create, Read, Update, Destroy) data</h3>
+<pre class="brush: js;]">
+  
+[
+{
+  "id": 1,
+  "name": "Leanne Graham",
+},
+{
+  "id": 2,
+  "name": "Ervin Howell",
+}
+]
+</pre>
 
-                            <h3><strong>8.6</strong> Grouping data</h3>
+                            <p>Once I have a <code>DataSource</code> instance I use the <code>fetch</code> method to read the data passed during instantiation. The function I passed to the <code>fetch</code> method is called once the data is completely read.</p>
 
-                            <h3><strong>8.7</strong> Sorting data</h3>
+                             <a class="jsbin-embed" href="http://jsbin.com/fuzigi/embed?html,console&height=850px">JS Bin</a>
 
-                            <h3><strong>8.8</strong> Paging data</h3>
+                            <h3><strong>8.4</strong> Reading remote data</h3>
 
-                            <h3><strong>8.9</strong> Filtering data</h3>
+                            <p>When reading non-local data that is from a remote service/server a transport must be provided defining how to read the data. The <code>transport</code> configuration object <code>read</code> property contains 6 properties that are passed to the <code>jQuery.ajax</code> method.</p>
 
-                            <h3><strong>8.10</strong> Aggregating data</h3>
+                            <p>In the code example below, I am reading remote data from <a href="http://jsonplaceholder.typicode.com/users" target="_blank">http://jsonplaceholder.typicode.com/users</a> using the <a href="http://api.jquery.com/jquery.ajax/">jQuery.ajax settings</a> <code>url</code> and <code>dataType</code>.</p>
 
-                            <h3><strong>8.11</strong> Binding to <code>DataSource</code> events</h3>
+                           <a class="jsbin-embed" href="http://jsbin.com/nogeja/embed?html,console&height=900px">JS Bin</a>
 
-                            <h3><strong>8.12</strong> Using <code>DataSource</code> with templates</h3>
+                            <div class="note">
+                                <div class="notes-title">Notes</div>
+                                <div class="notes">
+                                    <ul>
+                                        <li>The <code>read</code> object makes use (as do the other transport properties create, update, destroy) of the <a href="http://api.jquery.com/jquery.ajax/">cache, contentType, data, dataType, type, and url</a> properties. These properties and their values map to specific settings that can be sent to the <a href="http://api.jquery.com/jquery.ajax/">jQuery.ajax function</a>.</li>
+                                    </ul>
+                                </div>
+                            </div>
 
-                            <h3><strong>8.13</strong> Using <code>DataSource</code>'s offline capabilities</h3>
+                            <h3><strong>8.5</strong> CRUD (Create, Read, Update, Destroy) local data</h3>
+
+                            <h3><strong>8.6</strong> CRUD (Create, Read, Update, Destroy) remote data</h3>
+
+                            <h3><strong>8.7</strong> Grouping data</h3>
+
+                            <h3><strong>8.8</strong> Sorting data</h3>
+
+                            <h3><strong>8.9</strong> Paging data</h3>
+
+                            <h3><strong>8.10</strong> Filtering data</h3>
+
+                            <h3><strong>8.11</strong> Aggregating data</h3>
+
+                            <h3><strong>8.12</strong> Binding to <code>DataSource</code> events</h3>
+
+                            <h3><strong>8.13</strong> Using <code>DataSource</code> with templates</h3>
+
+                            <h3><strong>8.14</strong> Using <code>DataSource</code>'s offline capabilities</h3>
 
                             </div><!--  /chapter 8  -->
 
