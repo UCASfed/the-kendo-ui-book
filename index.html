@@ -2744,7 +2744,7 @@ $('#autocomplete').kendoAutoComplete({
                             <!--_____________-->
                             <div id="chapter7" class="chapter">
                             
-                            <h2><strong>Chapter 7.</strong> Configuring A Widgets <code>dataSource</code></h2>
+                            <h2><strong>Chapter 7.</strong> The <code>dataSource</code> widget configuration option</h2>
 
                             <h3><strong>7.1</strong> Widget <code>dataSource</code> configuration Overview</h3>
 
@@ -2834,7 +2834,7 @@ $('#autocomplete').kendoAutoComplete({
                             <!--_____________-->
                             <div id="chapter8" class="chapter">
                             
-                            <h2><strong>Chapter 8.</strong> Data Source Abstraction (i.e. <code>DataSource</code>)</h2>
+                            <h2><strong>Chapter 8.</strong> Data Source Abstraction (i.e. <code>DataSource()</code>)</h2>
 
                             <h3><strong>8.1</strong> <code>kendo.data.DataSource</code> Overview</h3>
 
@@ -2877,7 +2877,7 @@ $('#autocomplete').kendoAutoComplete({
 
                             <h3><strong>8.3</strong> Reading local data</h3>
 
-                            <p>Creating a <code>DataSource</code> instance that contains local data is as simple as passing the <code>DataSource</code> constructor an object that contains a value for the <code>data</code> configuration option. In the code example below I am constructing a <code>DataSource</code> instance with one <code>data</code> configuration value. The value for the data source is a simple JavaScript array of objects. </p>
+                            <p>Creating a <code>DataSource</code> instance that contains local data is as simple as passing the <code>DataSource</code> constructor an object that contains a value for the <code>data</code> configuration option. In the code example below I am constructing a <code>DataSource</code> instance from data passed to the instance using the <code>data</code> configuration option. The value for the data source is a simple JavaScript array of objects. </p>
 
 
 <pre class="brush: js;]">
@@ -2898,9 +2898,18 @@ $('#autocomplete').kendoAutoComplete({
 
                              <a class="jsbin-embed" href="http://jsbin.com/fuzigi/embed?html,console&height=850px">JS Bin</a>
 
+                             <div class="note">
+                                <div class="notes-title">Notes</div>
+                                <div class="notes">
+                                    <ul>
+                                        <li>Fueling a <code>DataSource</code> instance with a array of objects by passing the data using the <code>data</code> configuration option is quick and easy. However, once non-local data is needed or you need to create/update/destroy data you should start to use <a href="http://docs.telerik.com/kendo-ui/api/javascript/data/datasource#configuration-transport">transports</a>.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
                             <h3><strong>8.4</strong> Reading remote data</h3>
 
-                            <p>When reading non-local data that is from a remote service/server a transport must be provided defining how to read the data. The <code>transport</code> configuration object <code>read</code> property contains 6 properties that are passed to the <code>jQuery.ajax</code> method.</p>
+                            <p>When reading non-local data that is from a remote service/server a data source transport must be provided defining how to read the data. The <code>transport</code> configuration object <code>read</code> property contains six properties that are passed to the <code>jQuery.ajax</code> method.</p>
 
                             <p>In the code example below, I am reading remote data from <a href="http://jsonplaceholder.typicode.com/users" target="_blank">http://jsonplaceholder.typicode.com/users</a> using the <a href="http://api.jquery.com/jquery.ajax/">jQuery.ajax settings</a> <code>url</code> and <code>dataType</code>.</p>
 
@@ -2910,14 +2919,29 @@ $('#autocomplete').kendoAutoComplete({
                                 <div class="notes-title">Notes</div>
                                 <div class="notes">
                                     <ul>
-                                        <li>The <code>read</code> object makes use (as do the other transport properties create, update, destroy) of the <a href="http://api.jquery.com/jquery.ajax/">cache, contentType, data, dataType, type, and url</a> properties. These properties and their values map to specific settings that can be sent to the <a href="http://api.jquery.com/jquery.ajax/">jQuery.ajax function</a>.</li>
+                                        <li>The <code>read</code> object makes use (as do the other transport properties create, update, destroy) of the <a href="http://api.jquery.com/jquery.ajax/">cache, contentType, data, dataType, type, and url</a> properties. These properties and their values map to specific settings that can be sent to the <a href="http://api.jquery.com/jquery.ajax/"><code>jQuery.ajax</code> function</a>.</li>
                                     </ul>
                                 </div>
                             </div>
 
-                            <h3><strong>8.5</strong> CRUD (Create, Read, Update, Destroy) local data</h3>
+                            <h3><strong>8.5</strong> CRUD (Create, Read, Update, Destroy) remote data</h3>
 
-                            <h3><strong>8.6</strong> CRUD (Create, Read, Update, Destroy) remote data</h3>
+                            <p>Reading data is only one facet of the life-cycle of data and typically works well with static data you don't intend on editing. When working with dynamic data or a data API you'll have to start thinking about data in terms of what you are going to do when creating (i.e. POST), updating (i.e. PUT), reading (i.e. GET), and destroying (i.e. DELETE) data. This is why the <code>transport</code> configuration option accepts four objects called create, read, update, destroy. In addition to the transports it will more than likely be the case they you will need to also provide some value for the schema object. The schema object has properties that can be used to configure how the data is parsed. The most important properties in the <code>schema</code> configuration object that need to be define is the <code>schema.model.id</code> and <code>schema.data</code> properties.</p>
+
+                            <p>In the code example below you'll find a <code>DataSource</code> instance which configures both the transport and schema options for doing CRUD.</p>
+
+                            <div class="note">
+                                <div class="notes-title">Notes</div>
+                                <div class="notes">
+                                    <ul>
+                                        <li>The <code>read</code> object makes use (as do the other transport properties create, update, destroy) of the <a href="http://api.jquery.com/jquery.ajax/">cache, contentType, data, dataType, type, and url</a> properties. These properties and their values map to specific settings that can be sent to the <a href="http://api.jquery.com/jquery.ajax/"><code>jQuery.ajax</code> function</a>.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h3><strong>8.6</strong> CRUD (Create, Read, Update, Destroy) local data</h3>
+
+                            <p> </p>
 
                             <h3><strong>8.7</strong> Grouping data</h3>
 
