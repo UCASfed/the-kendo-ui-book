@@ -792,7 +792,7 @@
                                 </div>
                             </div>
 
-                            <h3><strong>1.19</strong> Offline widgets</h3>
+                            <h3><strong>1.19</strong> Offline widgets &amp; <code>DataSource</code> Abstraction</h3>
 
                             <p>Kendo UI allows data-bound widgets (i.e. widgets that use <a href="http://docs.telerik.com/kendo-ui/framework/datasource/offline">DataSource</a>) to function without being online. Users can continue working while offline and data will be stored locally until network connectivity resumes.</p>
 
@@ -827,9 +827,9 @@
 
                             <p>While Kendo UI makes a basic offering of tools for building JS applications (<a href="http://docs.telerik.com/kendo-ui/framework/mvvm/overview">MVVM</a>, <a href="http://docs.telerik.com/kendo-ui/framework/spa/layout">layout</a>, <a href="http://docs.telerik.com/kendo-ui/framework/spa/router">router</a>, and <a href="http://docs.telerik.com/kendo-ui/framework/spa/view">view</a>), and one could build an entire JS application using just Kendo UI framework tools, its more common that Kendo UI is used in combination with solutions like <a href="https://github.com/kendo-labs/kendo-backbone">Backbone</a>, <a href="https://github.com/tjwebb/react-kendo">React</a>, Ember, <a href="https://atmospherejs.com/telerik">Meteor</a>, or <a href="http://docs.telerik.com/kendo-ui/AngularJS/introduction">AngularJS</a>.</p>
 
-                            <p>Kendo UI is designed to run on laptop/desktop web browsers, as well as browsers on touch devices and in WebViews used in hybrid mobile application development.</p>
+                            <p>Kendo UI is designed to run on laptop/desktop web browsers, as well as browsers on touch devices and in WebViews used in native application development.</p>
 
-                            <p><a href="http://www.telerik.com/kendo-ui">Kendo UI Professional</a>, the commercial version of Kendo used to develop line-of-business and data-centric applications, is divided into the following four parts:</p>
+                            <p><a href="http://www.telerik.com/kendo-ui">Kendo UI Professional</a>, the commercial version of Kendo UI used to develop line-of-business and data-centric applications, is divided into four parts:</p>
 
                             <ul>
                                 <li><strong>Web widgets</strong> - Common application widgets (e.g. <a href="http://demos.telerik.com/kendo-ui/datepicker/index">Date Picker</a>)</li>
@@ -1132,7 +1132,7 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
 
                             <h3><strong>2.6</strong> Getting Kendo UI Core code</h3>
 
-                            <p>The Kendo UI Core code can be obtained in the following five ways:</p>
+                            <p>The Kendo UI Core code can be obtained in the following ways:</p>
 
                             <ul>
                                 <li><a href="https://github.com/telerik/kendo-ui-core/archive/master.zip">Download</a> a zipped archive of the <a href="https://github.com/telerik/kendo-ui-core">Kendo UI Core github repo</a></li>
@@ -1140,6 +1140,9 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
                                 <li>Sign up for a Telerik account and <a href="http://www.telerik.com/download/kendo-ui-core">get a zipped directory of Kendo UI Core</a></li>
                                 <li>Use <a href="http://bower.io/">Bower</a> to install the <a href="https://github.com/kendo-labs/bower-kendo-ui">Kendo UI Core bower package</a> (i.e. <code>$ bower install kendo-ui-core</code>)</li>
                                 <li>Use the <a href="https://github.com/telerik/kendo-ui-core#using-kendo-ui-core-via-the-kendo-static-cdn">Kendo CDN to include Kendo UI Core</a>.</li>
+                                <li>Use the <a href="https://github.com/telerik/kendo-ui-core#using-kendo-ui-core-via-the-kendo-static-cdn">Kendo CDN to include Kendo UI Core</a>.</li>
+                                <li>Install from <a href="http://jspm.io/">jspm</a> CLI (<a href="https://github.com/jspm/registry/tree/master/package-overrides/github/kendo-labs">uses bower endpoint</a>).</li>
+                                <li>Install from <a href="https://www.meteor.com/">meteor</a> CLI (i.e. from <a href="https://atmospherejs.com/telerik">Atmosphere</a>)</li>
                             </ul>
 
                             <p>Once downloaded (or built using grunt) you will find a directory with the following sub directories.</p>
@@ -1152,14 +1155,13 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
 └── styles //minified CSS, fonts, and images
 
 </pre>
-
-
                             <div class="note">
                                 <div class="notes-title">Notes</div>
                                 <div class="notes">
                                     <ul>
                                         <li>Kendo UI Core is free for use by anyone, for anything, and does not contain professional widgets. Yes. This includes commercial use!</li>
                                         <li>Kendo UI Core is released under the Apache License, version 2.0.</li>
+                                        <li><a href="http://codylindley.com/jqueryuiwidgets/">Compare Kendo UI's open source offer to our competition.</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -1172,7 +1174,7 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
 
                             <h3><strong>2.8</strong> Kendo UI development status/news</h3>
 
-                            <p>The following resources provide the necessary details around past, present, and current Kendo UI development happenings:</p>
+                            <p>The following resources provide the necessary details around past, present, and future Kendo UI development happenings:</p>
 
                             <ul>
                                 <li><a href="http://www.telerik.com/support/whats-new/kendo-ui">What's New</a></li>
@@ -3123,7 +3125,7 @@ offlineStorage: {
 </pre>
                             <p>Switching on and off the offline mode is as simple as calling the <code>.online()</code> <code>DataSource</code> method passing it <code>false</code> to go offline and <code>true</code> to turn offline mode off.</p>
 
-                            <p>The code example below takes the code example from section 8.6, which shows CRUD operations on local data, and updates it so that the local data is using offline mode to persist data to <code>localStorage</code> . This is a rather trivial example, but hopefully it will allow you to understand the functionality of offline mode.</p>
+                            <p>The code example below takes the code example from section 8.6, which shows CRUD operations on local data, and updates it so that the local data is using offline mode to persist data to <code>localStorage</code> . This is a trivial example, but hopefully it will allow you to understand the functionality of offline mode.</p>
 
                             <a class="jsbin-embed" href="http://jsbin.com/dapiju/embed?html&height=800px">JS Bin</a>
 
