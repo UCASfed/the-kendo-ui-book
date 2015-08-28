@@ -3069,6 +3069,8 @@ $('#autocomplete').kendoAutoComplete({
                                 <div class="notes-title">Notes</div>
                                 <div class="notes">
                                     <ul>
+                                        <li>A detailed explanation of the code in this section is available in a blog post entitled, "<a href="http://www.telerik.com/blogs/kendo-ui-datasource-enlightenment">Kendo UI DataSource Enlightenment</a>". </li>
+                                        <li>An alternative version of this code is available in Github that replaces the display of the data using the Kendo UI templating engine with a Kendo UI Grid.</li>
                                         <li>The <code>read</code> object makes use (as do the other transport properties create, update, destroy) of the <a href="http://api.jquery.com/jquery.ajax/">cache, contentType, data, dataType, type, and url</a> properties. These properties and their values map to specific settings that can be sent to the <a href="http://api.jquery.com/jquery.ajax/"><code>jQuery.ajax</code> function</a>.</li>
                                     </ul>
                                 </div>
@@ -3076,7 +3078,18 @@ $('#autocomplete').kendoAutoComplete({
 
                             <h3><strong>8.6</strong> CRUD (Create, Read, Update, Destroy) local data</h3>
 
-                            <p>Normally the transport properties are used to establish how data will interface with a remote data API or what we might say is non-local data. However, the transport properties can also be us to organize and wrap the CRUD'ing of local data. In the code example below ....</p>
+                            <p>Normally the transport properties are used to establish how data will interface with a remote data API or what we might say is non-local data. However, the transport properties can also be used to perform CRUD'ing routines on local data. I've taken the code example from the previous section, which uses remote data and re-written the CRUD transports so that local data is being used.</p>
+
+                            <a class="jsbin-embed" href="http://jsbin.com/wucoha/embed?html&height=800px">JS Bin</a>
+
+                            <div class="note">
+                                <div class="notes-title">Notes</div>
+                                <div class="notes">
+                                    <ul>
+                                        <li>The code for this section is available on <a href="https://github.com/kendo-labs/datasource-restful-api-CRUD-demo/blob/master/local-data-CRUD-demo.html">Github</a>.</li>
+                                    </ul>
+                                </div>
+                            </div>
 
                             <h3><strong>8.7</strong> Grouping data</h3>
 
@@ -3093,6 +3106,38 @@ $('#autocomplete').kendoAutoComplete({
                             <h3><strong>8.13</strong> Using <code>DataSource</code> with templates</h3>
 
                             <h3><strong>8.14</strong> Using <code>DataSource</code>'s offline capabilities</h3>
+
+                            <p>A <code>DataSource</code> instance can be place in an offline mode (online by default) so that no connection is necessary to continue CRUD'ing data. When a data source instance is switch to offline mode, it will store data changes to <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">localStorage</a>. The <code>DataSource</code> abstraction itself does not detect if a device is on or offline. When to go into offline or online mode will require <a href="http://caniuse.com/#feat=online-status">additional</a> <a href="https://github.com/remy/polyfills/blob/master/offline-events.js">programming</a> <a href="http://jsbin.com/ozusa6/2/edit?html,js,output">logic</a>.</p>
+
+                            <p>To setup a <code>DataSource</code> instance for going into offline mode be sure to configure the <code>offlineStorage</code> option during or after <code>DataSource</code> instantiation. This configuration option can be set to a string or object. If set to a string, that string will be the object key used to store the data in <code>localStorage</code>. By passing an object with a <code>getItem()</code> and <code>setItem()</code> function, instead of a string, the mechanism that is storing the data can be customized. For example, one could customize offline mode so that it uses <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage">sessionStorage</a></code> instead of <code>localStorage</code>.</p>
+
+<pre class="brush: js;]">
+offlineStorage: {
+    getItem: function() {
+        return JSON.parse(sessionStorage.getItem('products-key'));
+    },
+    setItem: function(item) {
+        sessionStorage.setItem('products-key', JSON.stringify(item));
+    }
+}
+</pre>
+                            <p>Switching on and off the offline mode is as simple as calling the <code>.online()</code> <code>DataSource</code> method passing it <code>false</code> to go offline and <code>true</code> to turn offline mode off.</p>
+
+                            <p>The code example below takes the code example from section 8.6, which shows CRUD operations on local data, and updates it so that the local data is using offline mode to persist data to <code>localStorage</code> . This is a rather trivial example, but hopefully it will allow you to understand the functionality of offline mode.</p>
+
+                            <a class="jsbin-embed" href="http://jsbin.com/dapiju/embed?html&height=800px">JS Bin</a>
+
+                            <p>You should note that even in offline mode, storing changes to data still requires the use of the <code>sync()</code> method.</p>
+
+                            <div class="note">
+                                <div class="notes-title">Notes</div>
+                                <div class="notes">
+                                    <ul>
+                                        <li>The storage limit for local data is around 5mb to 10mb depending up browser. An error will be thrown by the browser if the limit is exceeded. All data source instances severed from the same domain, port, and protocol will share the same offline storage space. The dataSource abstraction will not manage storage space for you.</li>
+                                        <li>The <code>offlineData()</code> method is available so that the current state of the offline data can be retrieved at anypoint.</li>
+                                    </ul>
+                                </div>
+                            </div>
 
                             </div><!--  /chapter 8  -->
 
