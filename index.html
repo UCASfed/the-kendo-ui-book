@@ -425,6 +425,10 @@
             padding: 3px 10px;
             margin-top:50px;
         }
+
+        a.sec:link, a.sec:active, a.sec:hover, a.sec:visited{
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -763,7 +767,7 @@
 
                             <p>Kendo UI widgets are designed from the ground up to make use of a powerful data abstraction that fully supports CRUD operations (Create, Read, Update, Destroy), and provides support for data sorting, paging, filtering, grouping and aggregates. The abstraction (i.e. <code>kendo.data.DataSource()</code> instances) can use local data (arrays of JavaScript objects) or connect to remote data (web services returning JSON, JSONP, OData or XML) services and API's.</p>
 
-                            <p>The Kendo UI DataSource has many abilities and responsibilities, including:</p>
+                            <p>The Kendo UI <code>DataSource</code> has many abilities and responsibilities, including:</p>
 
                             <ul>
                                 <li>
@@ -2750,7 +2754,7 @@ $('#autocomplete').kendoAutoComplete({
 
                             <p>In the code example below a grid widget is configured with a <code>datasource</code> configuration value containing an instance from the <code>kendo.data.DataSource()</code> constructor. Then a static field (i.e. <code>$('#grid').getKendoGrid().dataSource</code>) is used to access the <code>DataSource</code> instance (as opposed to the Grid instance itself) so the <code>add()</code> method can be called. Lastly, the Grid's <code>setDataSource()</code> method is used to change the widgets <code>dataSource</code>.</p>
 
-                            <a class="jsbin-embed" href="http://jsbin.com/vopaju/embed?html,output&height=950px">JS Bin</a>
+                            <a class="jsbin-embed" href="http://jsbin.com/vopaju/embed?html&height=850px">JS Bin</a>
 
                             <p>The previous code example is an overview of the life-cycle of configuring a widget with a <code>dataSource</code> instance, updating the <code>dataSource</code> instance, and resetting a widgets <code>dataSource</code>.</p>
 
@@ -2780,52 +2784,52 @@ $('#autocomplete').kendoAutoComplete({
                                 <li><a href="http://docs.telerik.com/kendo-ui/mobile/listview/overview">ListView (mobile)</a></li>
                             </ul>
 
-                           <p> The <code>datasource</code> configuration value is used to define the data that will be consumed and presented by a widget. A widget can consume data in the form of a JavaScript Object object, Array object, or an instance of the DataSource constructor/class (or any of the <code>DataSource</code> constructors that inherit from <code>DataSource</code>). If a DataSource instance is not passed one will be created from the Object object or Array object passed.</p> 
+                           <p> The <code>datasource</code> configuration value is used to define the data that will be consumed and presented by a widget. A widget can consume data in the form of a JavaScript Object object, Array object, or an instance of the <code>DataSource</code> constructor/class (or any of the <code>DataSource</code> constructors that inherit from <code>DataSource</code>). If a <code>DataSource</code> instance is not passed one will be created from the Object object or Array object passed.</p> 
 
                            <div class="note">
                                 <div class="notes-title">Notes</div>
                                 <div class="notes">
                                     <ul>
-                                        <li>Don't confuse what values you can pass to a widget by way of the dataSource configuration option with the types of data that the dataSource instance itself can contain. A DataSource can contain data in the form of JavaScript objects and arrays as well as JSON, JSONP, OData, and XML.</li>
+                                        <li>Don't confuse what values you can pass to a widget by way of the dataSource configuration option with the types of data that the dataSource instance itself can contain. A <code>DataSource</code> can contain data in the form of JavaScript objects and arrays as well as JSON, JSONP, OData, and XML.</li>
                                     </ul>
                                 </div>
                             </div>
 
                             <h3><strong>7.2</strong> Using a <code>DataSource</code> instance as a <code>dataSource</code> configuration value</h3>
 
-                            <p>In the introduction part of this chapter a code example was shown where a grid was setup using a simple amount of JSON passed to the <code>DataSource</code> constructor in order to create a DataSource instance. The code example below is a scaled back version of that code example containing only the portion of code that creates the Grid and DataSource instance passed to the Grid <code>dataSource</code> configuration option.</p>
+                            <p>In the introduction part of this chapter a code example was shown where a grid was setup using a simple amount of JSON passed to the <code>DataSource</code> constructor in order to create a <code>DataSource</code> instance. The code example below is a scaled back version of that code example containing only the portion of code that creates the Grid and <code>DataSource</code> instance passed to the Grid <code>dataSource</code> configuration option.</p>
 
-                            <a class="jsbin-embed" href="http://jsbin.com/waqego/embed?html,output&height=750px">JS Bin</a>
+                            <a class="jsbin-embed" href="http://jsbin.com/waqego/embed?html&height=650px">JS Bin</a>
 
-                            <p>The next chapter will detail the DataSource abstraction itself. What you need to grokk before looking at the DataSource abstraction is that widgets collaborate with a DataSource instance configuration value. By passing a widget a DataSource instance, widgets behind the scenes setup (i.e. call <code>read()</code>, <code>fetch()</code> etc..) that DataSource for use by the widget. Anything that is not handled by the internals of the widget can then be dealt with by the DataSource API (a separate API from the widget) which you access by referencing the <code>datasource</code> field (e.g. <code>grid.dataSource.XXXX</code> on the widget instance, which is simply a pointer to the <code>DataSource</code> instance.</p>
+                            <p>The next chapter will detail the <code>DataSource</code> abstraction itself. What you need to grokk before looking at the <code>DataSource</code> abstraction is that widgets collaborate with a <code>DataSource</code> instance configuration value. By passing a widget a <code>DataSource</code> instance, widgets behind the scenes setup (i.e. call <code>read()</code>, <code>fetch()</code> etc..) that <code>DataSource</code> for use by the widget. Anything that is not handled by the internals of the widget can then be dealt with by the <code>DataSource</code> API (a separate API from the widget) which you access by referencing the <code>datasource</code> field (e.g. <code>grid.dataSource.XXXX</code> on the widget instance, which is simply a pointer to the <code>DataSource</code> instance used by the widget.</p>
 
                             <h3><strong>7.3</strong> Why use <code>DataSource</code> with widgets?</h3>
 
                             <p>The following advantages provide some insight as to why you might want to use a <code>DataSource</code> instance with a widget.</p>
 
                             <ul>
-                                <li>In most situations the widget will internally handle the fetching and reading (i.e. <code>.read()</code>) of local or remote data. Triggering all the necessary <code>DataSource</code> methods to populate the widget with data. No additional <code>DataSource</code> method calls are required to get data when a <code>DataSource</code> instance is tied to a widget. The widget will handle this, but this nature can be overridden using the <code>autoBind</code> configuration option.</li>
-                                <li>Any changes to the data in a <code>DataSource</code> instance will automatically synchronized with a widget. Update the <code>DataSource</code> and then the widget will automatically re-render itself with the new data with no additional method calls.</li>
-                                <li>The <code>DataSource</code> abstraction can make your widget offline friendly.</li>
-                                <li>The <code>DataSource</code> abstraction not only abstracts data management but also the remote retrieval of data which without the DataSource abstraction would require invoking an XHR or AJAX HTTP request. <code>DataSource</code> handles the HTTP portions (via jQuery AJAX), you simply provide it some details.</li>
-                                <li>A <code>DataSource</code> instance makes sorting, paging, grouping, and filtering a widgets data simple.</li>
+                                <li>In most situations the widget will internally handle the fetching and reading (i.e. <code>.read()</code>) of local or remote data. Triggering all the necessary <code>DataSource</code> methods to populate the widget with data. No additional <code>DataSource</code> method calls are required to get data when a <code>DataSource</code> instance is tied to a widget. The widget will handle this, but this nature can be overridden using the <code>autoBind</code> configuration option for widgets that use <code>DataSource</code> instances.</li>
+                                <li>Any changes to the data in a <code>DataSource</code> instance will automatically synchronized with a widget. Update a <code>DataSource</code> tied to a widget with new data and the widget will automatically re-render itself with with no additional code.</li>
+                                <li>The <code>DataSource</code> abstraction can make easily make your widget offline friendly.</li>
+                                <li>The <code>DataSource</code> abstraction not only abstracts data management but also the remote retrieval of data which without the <code>DataSource</code> abstraction would require directly invoking a native XHR or jQuery AJAX HTTP request. <code>DataSource</code> can handle/abstract the HTTP portions (via jQuery AJAX), you simply provide it some details.</li>
+                                <li>A <code>DataSource</code> instance makes sorting, paging, grouping, and filtering a widgets data trivial.</li>
                             </ul>
 
                             <h3><strong>7.4</strong> Using an Array as a <code>dataSource</code> configuration value</h3>
 
                             <p>The <code>dataSource</code> widget configuration option will accept an array of objects, which it will use to create a <code>DataSource</code> instance behind the scenes. In the code below I am passing the Grid widget an array of objects that will be converted to a <code>DataSource</code> instance and then consumed by the grid widget.</p>
 
-                            <a class="jsbin-embed" href="http://jsbin.com/lajaji/embed?html,output&height=750px">JS Bin</a>
+                            <a class="jsbin-embed" href="http://jsbin.com/lajaji/embed?html&height=650px">JS Bin</a>
 
                             <h3><strong>7.5</strong> Using a Object as a <code>dataSource</code> configuration value</h3>
 
                             <p>The <code>dataSource</code> widget configuration option will also accept a user defined object containing a <code>data</code> property with an array value. In the code below I am passing the Grid widget an object, with a <code>data</code> property that will be converted to a <code>DataSource</code> instance and then consumed by the grid widget.</p>
 
-                            <a class="jsbin-embed" href="http://jsbin.com/fofotop/embed?html,output&height=750px">JS Bin</a>
+                            <a class="jsbin-embed" href="http://jsbin.com/fofotop/embed?html&height=650px">JS Bin</a>
 
-                            <h3><strong>7.6</strong> One DataSource, Multiple Widgets</h3>
+                            <h3><strong>7.6</strong> One <code>DataSource</code>, Multiple Widgets</h3>
 
-                            <p>Don't recreate the same <code>DataSource</code> instance for each Widget. Widgets can share dataSources. Be aware that by default, a change to a <code>DataSource</code> instance, configured to be used by multiple widgets, will automatically update <strong>ALL</strong> widgets that are configured to use the DataSource instance.</p>
+                            <p>Don't re-create the same <code>DataSource</code> instance for each individual widget. Widgets can share <code>DataSource</code> instances. Just be aware that by default, a change to a <code>DataSource</code> instance, configured to be used by multiple widgets, will automatically update <strong>ALL</strong> widgets that are configured to use the <code>DataSource</code> instance.</p>
 
                             </div><!--  /chapter 7  -->
 
@@ -2836,23 +2840,24 @@ $('#autocomplete').kendoAutoComplete({
                             
                             <h2><strong>Chapter 8.</strong> Data Source Abstraction (i.e. <code>DataSource()</code>)</h2>
 
-                            <h3><strong>8.1</strong> <code>kendo.data.DataSource</code> Overview</h3>
+                            <h3><strong>8.1</strong> <code>kendo.data.DataSource()</code> Overview</h3>
 
-                            <p>This chapter will discuss the workings of the <code>kendo.data.DataSource</code> abstraction. Instances from the <code>DataSource</code> constructor can be passed to widgets and used by widgets, as discussed in the previous chapter, but the <code>DataSource</code> should also be considered a standalone data abstraction solution. The purpose of using a <code>DataSource</code> abstraction is to abstract the consumption of local or remote data and then once consumed managing the lifestyle of the data (i.e. CRUD, Ordering, Grouping, Filtering, Paging).</p>
+                            <p>This chapter will discuss the workings of the <code>kendo.data.DataSource()</code> abstraction. Instances from the <code>DataSource</code> constructor can be passed to widgets and used by widgets, as discussed in the previous chapter, but the <code>DataSource</code> should also be considered a standalone data abstraction solution. The purpose of using a <code>DataSource</code> abstraction is to abstract the consumption of local or remote data and then once consumed managing the life-cycle of the data (i.e. CRUD, Ordering, Grouping, Filtering, Paging).</p>
 
-                            <p>When implementing the Kendo UI <code>DataSource</code> its important to keep in mind the following semantics, ideas, and rules:</p>
+                            <p>When working with the Kendo UI <code>DataSource</code> its important to keep in mind the following broad semantics, ideas, and rules:</p>
 
                             <ul>
-                                <li>DataSource assumes, by default in most cases, that it will be abstracting JSON data.</li>
                                 <li>The schema options customize how local or remote JSON (i.e. array of objects) or XML data is interpreted.</li>
-                                <li>The transport options are used to configure how a POST (i.e. create),  GET (i.e. read), PUT (i.e update), and DELETE (i.e. destroy) operation on local or remote data should be handled. Using these CRUD options creating, reading, updating, and destroying data can be finely tuned for more than just JSON or XML data.</li>
-                                <li>The <code>DataSource</code> supports OData and the schema and transport configurations are mostly predefined. You do have to configure the <code>DataSource</code> to use OData by setting the type configuration option to "odata".</li>
-                                <li>Defining data for a <code>DataSource</code> instance does not immediately fetch/read the data, unless you are passing the <code>DataSource</code> to a widget. In that case, the widget will fetch/read the data without have to call the <code>read()</code> or <code>fetch()</code> method. If using a <code>DataSource</code> outside of a widget context you will have to call <code>read()</code> or <code>fetch()</code> to fill the instance with data. Note that <code>fetch()</code> will make a request to a remote service once the first time it is called, while <code>read()</code> always makes a request to the remote service, unless the data source is offline.</li>
+                                <li>The transport options are used to configure how a POST (i.e. create),  GET (i.e. read), PUT (i.e update), and DELETE (i.e. destroy) operate for remote data. Using these CRUD options creating, reading, updating, and destroying data can be finely tuned for more than just JSON or XML data.</li>
+                                <li>The <code>DataSource</code> supports <a href="http://www.odata.org/">OData</a> and when used the schema and transport configurations are mostly predefined. To use OData you have to configure the <code>DataSource</code> to use it by setting the <code>type</code> configuration option to "odata".</li>
+                                <li>Defining data for a <code>DataSource</code> instance does not immediately fetch/read the data, unless you are passing the <code>DataSource</code> to a widget. In that case, the widget will fetch/read the data without have to call the <code>read()</code> or <code>fetch()</code> method. If using a <code>DataSource</code> outside of a widget context you will have to call <code>read()</code> or <code>fetch()</code> to fill the instance with data. Note that <code>fetch()</code> will make a request to a remote service once, the first time it is called, while <code>read()</code> always makes a request to the remote service, unless the data source is offline.</li>
+                                <li><code>DataSource</code> assumes, by default in most cases, that it will be abstracting JSON data.</li>
+                                <li><code>DataSource</code> sends, by default content to the server with an HTTP header of "application/x-www-form-urlencoded".</li>
                             </ul>
 
-                            <p>This chapter will explore the most commonly used configuration options, methods, and events for a <code>DataSource</code> instance.</p>
+                            <p>This rest of this chapter will explore the most commonly used configuration options, methods, and events involving a <code>DataSource</code> instance.</p>
 
-                            <h3><strong>8.2</strong> Types of data consumed by <code>DataSource</code></h3>
+                            <h3><strong>8.2</strong> Types of data consumed/readable by <code>DataSource</code></h3>
 
                             <p>A <code>DataSource</code> instance can be configured to consume the following types of data:</p>
 
@@ -2870,14 +2875,20 @@ $('#autocomplete').kendoAutoComplete({
                                 <div class="notes-title">Notes</div>
                                 <div class="notes">
                                     <ul>
-                                        <li>The <a href="https://www.techsmith.com/jing.html">transport read <code>dataType</code> configuration option</a> accepts a string value that can convert a data type from what it received in the Content-Type header to what you require. For example using the value "text xml" will assume the response from the server is text but then treat the text as XML.</li>
+                                        <li>The <a href="https://www.techsmith.com/jing.html">transport read <code>dataType</code> configuration option</a> accepts a string value that can convert a data type from what it received in the Content-Type header to what you require. For example using the value "text xml" will assume the response from the server is text but then treat the text as XML. Learn more about this by reading up on the <code>dataType</code> option defined by the <a href="http://api.jquery.com/jquery.ajax/">jQuery documentation for jQuery.ajax()</a>.</li>
                                     </ul>
                                 </div>
                             </div>
 
                             <h3><strong>8.3</strong> Reading local data</h3>
 
-                            <p>Creating a <code>DataSource</code> instance that contains local data is as simple as passing the <code>DataSource</code> constructor an object that contains a value for the <code>data</code> configuration option. In the code example below I am constructing a <code>DataSource</code> instance from data passed to the instance using the <code>data</code> configuration option. The value for the data source is a simple JavaScript array of objects. </p>
+                            <p>Creating a <code>DataSource</code> instance that contains local static data that is not intended to be edible is as simple as passing the <code>DataSource</code> constructor a value for the <code>data</code> configuration option. In the code example below I am constructing a <code>DataSource</code> instance from an array of objects passed to the instance using the <code>data</code> configuration option.</p>
+
+
+                            <a class="jsbin-embed" href="http://jsbin.com/fuzigi/embed?html,console&height=850px">JS Bin</a>
+
+
+                            <p>The value for the data source is a simple JavaScript Array of objects. </p>
 
 
 <pre class="brush: js;]">
@@ -2894,9 +2905,7 @@ $('#autocomplete').kendoAutoComplete({
 ]
 </pre>
 
-                            <p>Once I have a <code>DataSource</code> instance I use the <code>fetch</code> method to read the data passed during instantiation. The function I passed to the <code>fetch</code> method is called once the data is completely read.</p>
-
-                             <a class="jsbin-embed" href="http://jsbin.com/fuzigi/embed?html,console&height=850px">JS Bin</a>
+                            <p>Once I have a <code>DataSource</code> instance I use the <code>fetch</code> method to read the data passed during instantiation. The function I passed to the <code>fetch</code> method is called once the data is completely read. In side of the callback function passed to <code>fetch</code> I am using the <code>this</code> keyword to get the <code>DataSource</code> instance and then calling methods on the data source (i.e. <code>data()</code> and <code>get()</code>). </p>
 
                              <div class="note">
                                 <div class="notes-title">Notes</div>
@@ -2909,9 +2918,9 @@ $('#autocomplete').kendoAutoComplete({
 
                             <h3><strong>8.4</strong> Reading remote data</h3>
 
-                            <p>When reading non-local data that is from a remote service/server a data source transport must be provided defining how to read the data. The <code>transport</code> configuration object <code>read</code> property contains six properties that are passed to the <code>jQuery.ajax</code> method.</p>
+                            <p>When reading non-local data that is from a remote service/server a data source transport must be provided defining how to read the data. The <code>transport</code> configuration object <code>read</code> property contains six properties that are passed to the <code>jQuery.ajax</code> method. These properties simply map to options that the <code>jQuery.ajax</code> expects.</p>
 
-                            <p>In the code example below, I am reading remote data from <a href="http://jsonplaceholder.typicode.com/users" target="_blank">http://jsonplaceholder.typicode.com/users</a> using the <a href="http://api.jquery.com/jquery.ajax/">jQuery.ajax settings</a> <code>url</code> and <code>dataType</code>.</p>
+                            <p>In the code example below, I am reading remote data from <a href="http://jsonplaceholder.typicode.com/users" target="_blank">http://jsonplaceholder.typicode.com/users</a> using the <a href="http://api.jquery.com/jquery.ajax/">jQuery.ajax settings</a> <code>url</code> and <code>dataType</code>. The <code>url</code> is the HTTP request I want to make and the <code>dataType</code> defines the type of data expected back from the server.</p>
 
                            <a class="jsbin-embed" href="http://jsbin.com/nogeja/embed?html,console&height=900px">JS Bin</a>
 
@@ -2926,9 +2935,135 @@ $('#autocomplete').kendoAutoComplete({
 
                             <h3><strong>8.5</strong> CRUD (Create, Read, Update, Destroy) remote data</h3>
 
-                            <p>Reading data is only one facet of the life-cycle of data and typically works well with static data you don't intend on editing. When working with dynamic data or a data API you'll have to start thinking about data in terms of what you are going to do when creating (i.e. POST), updating (i.e. PUT), reading (i.e. GET), and destroying (i.e. DELETE) data. This is why the <code>transport</code> configuration option accepts four objects called create, read, update, destroy. In addition to the transports it will more than likely be the case they you will need to also provide some value for the schema object. The schema object has properties that can be used to configure how the data is parsed. The most important properties in the <code>schema</code> configuration object that need to be define is the <code>schema.model.id</code> and <code>schema.data</code> properties.</p>
+                            <p>Reading data alone is only one facet of the life-cycle of data and typically works well with static data you don't intend on editing. When working with dynamic data or a data API you'll have to start thinking about data in terms of CRUD'ing i.e. creating (i.e. POST), updating (i.e. PUT), reading (i.e. GET), and destroying (i.e. DELETE) data. </p>
 
-                            <p>In the code example below you'll find a <code>DataSource</code> instance which configures both the transport and schema options for doing CRUD.</p>
+                            <p>The <code>transport</code> configuration option accepts four objects called create, read, update, and destroy for defining CRUD operations. In addition to the transports it will more than likely be the case they you will need to also provide values for the schema object. The schema object has properties which configure how incoming data is parsed. The most important properties in the <code>schema</code> configuration object that need to be define is the <code>schema.model.id</code> and <code>schema.data</code> properties.</p>
+
+                            <p>In the code example below you'll find a <code>DataSource</code> instance which configures both the transport and schema options so that CRUD operations can occur using a RESTful JSON api.</p>
+
+                            <p>Before investigating the example you be aware that the code assumes that a RESTful JSON endpoint is setup for CORS locally at localhost:3000 and has the following URL routes:</p>
+
+                            <ul>
+                                <li>POST localhost:3000/users (i.e. create users)</li>
+                                <li>GET localhost:3000/users (i.e. read users)</li> 
+                                <li>PUT localhost:3000/users/[user id] (i.e. update user)</li>
+                                <li>DELETE localhost:3000/users/[user id] (i.e. delete user)</li>
+                            </ul>
+
+<pre class="brush: html;]">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Kendo UI <code>DataSource</code> CRUD Example&lt;/title&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;http://cdn.kendostatic.com/2015.1.318/styles/kendo.common.min.css&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;http://cdn.kendostatic.com/2015.1.318/styles/kendo.bootstrap.min.css&quot; /&gt;
+&lt;/head&gt;
+
+&lt;body style=&quot;margin:100px&quot;&gt;
+    &lt;div class=&quot;panel panel-default&quot;&gt;
+        &lt;div class=&quot;panel-body&quot;&gt;
+                        &lt;label for=&quot;name&quot;&gt;Enter users name click add:&lt;/label&gt;
+            &lt;div class=&quot;input-group&quot;&gt;
+                &lt;input type=&quot;text&quot; id=&quot;name&quot; class=&quot;form-control&quot; placeholder=&quot;name&quot;&gt;
+                &lt;span class=&quot;input-group-btn&quot;&gt;
+        &lt;button class=&quot;btn btn-primary&quot; id=&quot;add&quot; type=&quot;button&quot;&gt;Add&lt;/button&gt;
+      &lt;/span&gt;
+            &lt;/div&gt;
+            &lt;table class=&quot;table&quot;&gt;
+                &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;id&lt;/th&gt;
+                        &lt;th&gt;name&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-2.1.4.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;http://cdn.kendostatic.com/2015.1.318/js/kendo.all.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/x-kendo-template&quot; id=&quot;template&quot;&gt;
+        &lt;tr&gt;
+            &lt;td&gt;#:id#&lt;/td&gt;
+            &lt;td&gt;
+                &lt;input value=&quot;#:name#&quot;&gt;
+                &lt;button type=&quot;button&quot; data-id=&quot;#:id#&quot; id=&quot;update&quot; class=&quot;btn btn-default btn-xs&quot;&gt;update&lt;/button&gt;
+                &lt;button type=&quot;button&quot; data-id=&quot;#:id#&quot; id=&quot;delete&quot; class=&quot;btn btn-danger btn-xs&quot;&gt;delete&lt;/button&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/script&gt;
+    &lt;script&gt;
+    //create <code>DataSource</code> instance
+    var dataSource = new kendo.data.DataSource({
+
+        autoSync: true, //sync changes with restful API automatically
+
+        transport: {
+            read: {
+                url: &#039;http://localhost:3000/users&#039;,
+                dataType: &#039;json&#039;, //not needed jQuery figures it out, shown to be verbose
+                type: &#039;GET&#039; //defined but, this is the default
+            },
+            create: {
+                url: &#039;http://localhost:3000/users&#039;,
+                type: &#039;POST&#039;
+            },
+            update: {
+                url: function(data) {
+                    return &#039;http://localhost:3000/users/&#039; + data.id;
+                },
+                type: &#039;PUT&#039;
+            },
+            destroy: {
+                url: function(data) {
+                    return &#039;http://localhost:3000/users/&#039; + data.id;
+                },
+                type: &#039;DELETE&#039;
+            }
+        },
+
+        schema: {
+            model: {
+                id: &#039;id&#039;
+            }
+        },
+
+        change: function() {
+            $(&#039;tbody&#039;).html(kendo.render(kendo.template($(&#039;#template&#039;).html()), this.view()));
+        }
+
+    });
+
+    dataSource.read();
+
+    $(&#039;#add&#039;).on(&#039;click&#039;, function() {
+        dataSource.add({
+            name: $(&#039;#name&#039;).val()
+        });
+        //dataSource.sync(); //using autoSync: true so don&#039;t have to call
+    });
+
+    $(&#039;tbody&#039;).on(&#039;click&#039;, &#039;#delete&#039;, function() {
+        var $this = $(this);
+        dataSource.remove(dataSource.get($this.data(&#039;id&#039;)));
+        //dataSource.sync(); //using autoSync: true so don&#039;t have to call
+    });
+
+    $(&#039;tbody&#039;).on(&#039;click&#039;, &#039;#update&#039;, function() {
+        var $this = $(this);
+        dataSource.get($this.data(&#039;id&#039;)).set(&#039;name&#039;, $this.prev(&#039;input&#039;).val());
+        //dataSource.sync(); //using autoSync: true so don&#039;t have to call
+    });
+    &lt;/script&gt;
+    
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+                        
 
                             <div class="note">
                                 <div class="notes-title">Notes</div>
@@ -2941,7 +3076,7 @@ $('#autocomplete').kendoAutoComplete({
 
                             <h3><strong>8.6</strong> CRUD (Create, Read, Update, Destroy) local data</h3>
 
-                            <p> </p>
+                            <p>Normally the transport properties are used to establish how data will interface with a remote data API or what we might say is non-local data. However, the transport properties can also be us to organize and wrap the CRUD'ing of local data. In the code example below ....</p>
 
                             <h3><strong>8.7</strong> Grouping data</h3>
 
@@ -2961,35 +3096,37 @@ $('#autocomplete').kendoAutoComplete({
 
                             </div><!--  /chapter 8  -->
 
-                            <!--_____________-->
-                            <!--  chapter 9  -->
-                            <!--_____________-->
-                            <div id="chapter9" class="chapter">
+<script>
+                            // <!--_____________-->
+                            // <!--  chapter 9  -->
+                            // <!--_____________-->
+                            // <div id="chapter9" class="chapter">
                             
-                            <h2><strong>Chapter 9.</strong> Using Kendo UI with jspm.io</code> </h2>
+                            // <h2><strong>Chapter 9.</strong> Using Kendo UI with jspm.io</code> </h2>
 
-                            <h3><strong>9.1</strong> What is jspm.io</h3>
+                            // <h3><strong>9.1</strong> What is jspm.io</h3>
 
-                            <h3><strong>9.2</strong> Installing jspm.io</h3>
+                            // <h3><strong>9.2</strong> Installing jspm.io</h3>
 
-                            <h3><strong>9.3</strong> Using jspm.io, ES6, and Kendo UI together</h3>
+                            // <h3><strong>9.3</strong> Using jspm.io, ES6, and Kendo UI together</h3>
 
-                            </div><!--  /chapter 9  -->
+                            // </div><!--  /chapter 9  -->
 
-                            <!--_____________-->
-                            <!--  chapter 10  -->
-                            <!--_____________-->
-                            <div id="chapter10" class="chapter">
+                            // <!--_____________-->
+                            // <!--  chapter 10  -->
+                            // <!--_____________-->
+                            // <div id="chapter10" class="chapter">
                             
-                            <h2><strong>Chapter 10.</strong> Using Kendo UI with webpack</code> </h2>
+                            // <h2><strong>Chapter 10.</strong> Using Kendo UI with webpack</code> </h2>
                             
-                            <h3><strong>10.1</strong> What is webpack</h3>
+                            // <h3><strong>10.1</strong> What is webpack</h3>
 
-                            <h3><strong>10.2</strong> Installing webpack</h3>
+                            // <h3><strong>10.2</strong> Installing webpack</h3>
 
-                            <h3><strong>10.3</strong> Using webpack, ES6, and Kendo UI together</h3>
+                            // <h3><strong>10.3</strong> Using webpack, ES6, and Kendo UI together</h3>
 
-                            </div><!--  /chapter 10  -->
+                            // </div><!--  /chapter 10  -->
+</script>
 
                         </div>
                     </div>
@@ -3084,6 +3221,7 @@ $('#autocomplete').kendoAutoComplete({
                 var foo = index+1+'';
                 //$(this).attr('id',((index+1)+($(this).text().replace(foo,'').replace(/ /g,'-'))));
                 $(this)
+                    .wrapInner('<a href="#'+((index+1)+($(this).text().replace(foo,'').replace(/ /g,'-')))+'">')
                     .wrap('<div class="sec" id="'+((index+1)+($(this).text().replace(foo,'').replace(/ /g,'-')))+'"></div>');
                 $('#toc-padding')
                     .append('<h5><a href="#'+(index+1)+($(this).text().replace(foo,'').replace(/ /g,'-'))+'">'+$(this).html()+'</a></h5>');
@@ -3092,6 +3230,7 @@ $('#autocomplete').kendoAutoComplete({
             jQuery('h3','#chapter'+(index+1)).each(function(i){
                 var foo = (index+1)+'.'+(i+1)+'';
                 //$(this).attr('id',(index+1)+'.'+(i+1)+($(this).text().replace(foo,'').replace(/ /g,'-')));
+                $(this).wrapInner('<a href="#'+(index+1)+'.'+(i+1)+($(this).text().replace(foo,'').replace(/ /g,'-'))+'">');
                 $(this)
                     .nextUntil('h3')
                     .andSelf()
