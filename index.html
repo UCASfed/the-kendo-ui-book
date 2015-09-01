@@ -3105,9 +3105,97 @@ $('#autocomplete').kendoAutoComplete({
 
                             <h3><strong>8.12</strong> Binding to <code>DataSource</code> events</h3>
 
-                            <h3><strong>8.13</strong> Using <code>DataSource</code> with templates</h3>
+                            <p>A DataSource instance will trigger the following events that you can attach a callback function too either before instantiation or after.</p>
 
-                            <h3><strong>8.14</strong> Using <code>DataSource</code>'s offline capabilities</h3>
+                            <ul>
+                                <li><code>change</code>: Fired when the data source is populated from a JavaScript array or a remote service, a data item is inserted, updated or removed, the data items are paged, sorted, filtered or grouped.</li>
+                                <li><code>error</code>: Fired when a request to the remote service fails.</li>
+                                <li><code>push</code>: Fired when the data source receives a push notification or the pushCreate, pushUpdate or pushDestroy methods are called.</li>
+                                <li><code>requestStart</code>: Fired when the data source makes a remote service request.</li>
+                                <li><code>requestEnd</code>: Fired when a remote service request is finished.</li>
+                                <li><code>sync</code>: Fired after the data source saves data item changes. The data source saves the data item changes when the sync method is called.</li>
+                            </ul>
+
+                            <p>Below I show two code snippets where all the events a <code>DataSource</code> instance offers are given a callback function during instantiation and after.</p>
+
+                            <p>Define event callback during instantiation:</p>
+
+<pre class="brush: js;]">
+//Note this inside of callback is the DataSource instance
+//And e is a unique event object containing event details passed to the callback
+
+var dataSource = new kendo.data.DataSource({
+    change: function(e){console.log(this, e.sender, e.action, e.items);},
+    error: function(e){console.log(this, e.errorThrown, e.sender, e.status, e.xhr);},
+    push: function(e){console.log(this,e.items, e.type, e.sender);},
+    requestStart: function(e){console.log(this, e.sender, e.type);},
+    requestEnd: function(e){console.log(this, e.response, e.sender, e.type);},
+    sync: function(e){console.log(this, e.sender);},
+});
+</pre>
+
+                            <p>Define event callback after instantiation:</p>
+
+<pre class="brush: js;]">
+    //Note this inside of callback is the DataSource instance
+    //And e is a unique event object containing event details passed to the callback
+
+    var dataSource = new kendo.data.DataSource();
+
+    dataSource.bind('change', function(e){console.log(this, e.sender, e.action, e.items);});
+    dataSource.bind('error', function(e){console.log(this, e.errorThrown, e.sender, e.status, e.xhr);});
+    dataSource.bind('push', function(e){console.log(this, this,e.items, e.type, e.sender);});
+    dataSource.bind('requestStart', function(e){console.log(this, e.sender, e.type);});
+    dataSource.bind('requestEnd', function(e){console.log(this, e.response, e.sender, e.type);});
+    dataSource.bind('sync', function(e){console.log(this, e.sender);});
+</pre>
+
+                            <p>Each event will be passed a unique event data object as a parameter to the callback function. Below I detail the event properties contained in each object for a given event type.</p>
+
+                            <ul>
+                                <li><code>change</code>: 
+                                    <ul>
+                                        <li><code>sender</code> - The data source instance which fired the event.</li>
+                                        <li><code>action</code> - String describing the action type (available for all actions other than "read"). Possible values are "itemchange", "add", "remove" and "sync".</li>
+                                        <li><code>items</code> - The array of data items that were affected (or read).</li>
+                                    </ul>
+                                </li>
+                                <li><code>error</code>:  
+                                    <ul>
+                                        <li><code>errorThrown</code> - Optional exception.</li>
+                                        <li><code>sender</code> - The data source instance which fired the event.</li>
+                                        <li><code>status</code> - String describing the type of the error</li>
+                                        <li><code>xhr</code> - The current jqXHR.</li>
+                                    </ul>
+                                </li>
+                                <li><code>push</code>:  
+                                    <ul>
+                                        <li><code>items</code> - The array of data items that were affected by the push notification.</li>
+                                        <li><code>type</code> - The type of the push notification. One of the following values: "create", "update", "destroy";</li>
+                                        <li><code>sender</code> - The data source instance which fired the event.</li>
+                                    </ul>
+                                </li>
+                                <li><code>requestStart</code>:  
+                                    <ul>
+                                        <li><code>sender</code> - The data source instance which fired the event.</li>
+                                        <li><code>type</code> - The type of the request. Set to "create", "read", "update" or "destroy".</li>
+                                    </ul>
+                                </li>
+                                <li><code>requestEnd</code>:  
+                                    <ul>
+                                        <li><code>response</code> - The raw remote service response.</li>
+                                        <li><code>sender</code> - The data source instance which fired the event.</li>
+                                        <li><code>type</code> - The type of the request. Set to "create", "read", "update" or "destroy".</li>
+                                    </ul>
+                                </li>
+                                <li><code>sync</code>:  
+                                    <ul>
+                                        <li><code>sender</code> - The data source instance which fired the event.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <h3><strong>8.13</strong> Using <code>DataSource</code>'s offline capabilities</h3>
 
                             <p>A <code>DataSource</code> instance can be place in an offline mode (online by default) so that no connection is necessary to continue CRUD'ing data. When a data source instance is switch to offline mode, it will store data changes to <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">localStorage</a>. The <code>DataSource</code> abstraction itself does not detect if a device is on or offline. When to go into offline or online mode will require <a href="http://caniuse.com/#feat=online-status">additional</a> <a href="https://github.com/remy/polyfills/blob/master/offline-events.js">programming</a> <a href="http://jsbin.com/ozusa6/2/edit?html,js,output">logic</a>.</p>
 
