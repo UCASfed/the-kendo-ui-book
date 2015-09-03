@@ -3111,9 +3111,52 @@ $('#autocomplete').kendoAutoComplete({
 
                             <h3><strong>8.8</strong> Paging data</h3>
 
+                            <p>Using the <code>page</code> and <code>pageSize</code> data source configuration options you can configure the state of data in a <code>DataSource</code> instance to represent a specified number of data items from a specific page.</p>
+
+                            <p>In the code example below I configure a <code>DataSource</code> after instantiation (could have been configured during as well) to divide the data into pages, containing only two data items per page, and then set the current state of the data to return only the data on page three.</p>
+                            
+                            <a class="jsbin-embed" href="http://jsbin.com/riqusu/edit?html&height=740px">JS Bin</a>
+
                             <h3><strong>8.9</strong> Sorting data</h3>
 
+                            <p>Data in a <code>DataSource</code> instance is not sorted by default. By Default data will simply be sorted based on order of definition (i.e. array index).</p>
+
+                            <p>Data can be sorted by either configuring the <code>sort</code> option at instantiation or after using the <code>sort()</code> method.</p>
+
+                            <p>In the code example below I am showing an example of sorting data in both an ascending and descending direction.</p>
+
+                            <a class="jsbin-embed" href="http://jsbin.com/loxuja/edit?html,output&height=990px">JS Bin</a>
+
                             <h3><strong>8.10</strong> Filtering data</h3>
+
+                            <p>Data items in a <code>DataSource</code> can be filter by applying a filter to a specific field/property in the <code>DataSource</code>. Using a filter will change the state of the data in the <code>DataSource</code> by excluding any data items that do not <strong>match</strong> the filters. This is done by providing a <code>value</code> that is compared to each item in the data source. The available filters are:<p>
+
+                            <ul>
+                                <li><code>eq</code> (equal to)</li>
+                                <li><code>neq</code> (not equal to)</li>
+                                <li><code>lt</code> (less than)</li>
+                                <li><code>lte</code> (less than or equal to)</li>
+                                <li><code>gt</code> (greater than)</li>
+                                <li><code>gte</code> (greater than or equal to)</li>
+                                <li><code>startswith</code> (Note: only for strings)</li>
+                                <li><code>endswith</code> (Note: only for strings)</li>
+                                <li><code>contains</code> (Note: only for strings)</li>
+                            </ul>
+
+                            <p>In the code example below I am using the <code>"eq"</code> and <code>"contains"</code> filters to filter out any data items that do not have a score of zero or start with "Bill".</p>
+
+                            <a class="jsbin-embed" href="http://jsbin.com/xarukid/edit?html,output&height=990px">JS Bin</a>
+
+                            <div class="note">
+                                <div class="notes-title">Notes</div>
+                                <div class="notes">
+                                    <ul>
+                                        <li>Strings are case insensitive when filtering e.g. Bill and bill are the same thing when using a filter that operates on strings.</li>
+                                        <li>When using multiple filters the logic can be <code>"or"</code> or <code>"and"</code>.</li>
+                                        <li>The data source filters the data items client-side unless the serverFiltering option is set to true.</li>
+                                    </ul>
+                                </div>
+                            </div>
 
                             <h3><strong>8.11</strong> Grouping data</h3>
 
