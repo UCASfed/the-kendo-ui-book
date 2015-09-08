@@ -3191,7 +3191,7 @@ $('#autocomplete').kendoAutoComplete({
 
                             <p>By using the grouping configuration option the data contained in a <code>DataSource</code> can be re-arranged so the state of the data items are transformed into a hierarchical data structure.</p>
 
-                            <p>In the code example below the data (i.e the array of objects passed to the DataSource) in the <code>DataSource</code> is transformed into a structural state determined by the <code>group</code> configuration option.  
+                            <p>In the code example below the data (i.e the array of objects passed to the DataSource) in the <code>DataSource</code> is transformed into a structural state determined by the <code>group</code> configuration option. The, <code>group: {field: "category"}</code> configuration option changes the order of the data. The data is updated to by group by <code>"category"</code> instead of a flat array of objects.</p>
 
                             <a class="jsbin-embed" href="http://jsbin.com/nohoqo/edit?html,output&height=990px">JS Bin</a>
                             
@@ -3233,9 +3233,8 @@ $('#autocomplete').kendoAutoComplete({
                                 <div class="notes">
                                     <ul>
                                         <li>The data source groups the data items client-side unless the serverGrouping option is set to true.</li>
-                                        <li></li>
                                         <li>Grouping is done by identifying a field that you'd like to group. Additionally you can define sorting direction and aggregates when grouping.</li>
-                                        <li>Multiple grouping objects be used to configure a <code>DataSource</code> with an infinite number of grouped hierarchies. This is done by setting the group option value to an array of grouping configuration objects (e.g. <code>[{ field: "category" },{ field: "subcategory" }</code>].</li>
+                                        <li>Multiple grouping objects can be used to configure a <code>DataSource</code> with an infinite number of grouped hierarchies. This is done by setting the group option value to an array of grouping configuration objects (e.g. <code>[{ field: "category" },{ field: "subcategory" }</code>].</li>
                                     </ul>
                                 </div>
                             </div>
