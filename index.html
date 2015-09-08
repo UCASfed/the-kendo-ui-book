@@ -3109,6 +3109,15 @@ $('#autocomplete').kendoAutoComplete({
 
                             <a class="jsbin-embed" href="http://jsbin.com/jiyevo/edit?html,console&height=1020px">JS Bin</a>
 
+                            <div class="note">
+                                <div class="notes-title">Notes</div>
+                                <div class="notes">
+                                    <ul>
+                                        <li>The data source calculates aggregates client-side unless the serverAggregates option is set to true.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
                             <h3><strong>8.8</strong> Paging data</h3>
 
                             <p>Using the <code>page</code> and <code>pageSize</code> data source configuration options you can configure the state of data in a <code>DataSource</code> instance to represent a specified number of data items from a specific page.</p>
@@ -3116,6 +3125,15 @@ $('#autocomplete').kendoAutoComplete({
                             <p>In the code example below I configure a <code>DataSource</code> after instantiation (could have been configured during as well) to divide the data into pages, containing only two data items per page, and then set the current state of the data to return only the data on page three.</p>
                             
                             <a class="jsbin-embed" href="http://jsbin.com/riqusu/edit?html&height=740px">JS Bin</a>
+
+                            <div class="note">
+                                <div class="notes-title">Notes</div>
+                                <div class="notes">
+                                    <ul>
+                                        <li>The data source will page the data items client-side unless the serverPaging option is set to true.</li>
+                                    </ul>
+                                </div>
+                            </div>
 
                             <h3><strong>8.9</strong> Sorting data</h3>
 
@@ -3126,6 +3144,16 @@ $('#autocomplete').kendoAutoComplete({
                             <p>In the code example below I am showing an example of sorting data in both an ascending and descending direction.</p>
 
                             <a class="jsbin-embed" href="http://jsbin.com/loxuja/edit?html,output&height=990px">JS Bin</a>
+                            
+                            <div class="note">
+                                <div class="notes-title">Notes</div>
+                                <div class="notes">
+                                    <ul>
+                                        <li>An array of sorting configuration objects (e.g. <code>sort: [{ field: "category", dir: "desc" },{ field: "name", dir: "asc" }]</code>) can be passed to the sort configuration option making it possible to sort first by X category in ascending order, then by Z category in a descending direction.</li>
+                                        <li>The data source sorts the data items client-side unless the serverSorting option is set to true.</li>
+                                    </ul>
+                                </div>
+                            </div>
 
                             <h3><strong>8.10</strong> Filtering data</h3>
 
@@ -3154,11 +3182,63 @@ $('#autocomplete').kendoAutoComplete({
                                         <li>Strings are case insensitive when filtering e.g. Bill and bill are the same thing when using a filter that operates on strings.</li>
                                         <li>When using multiple filters the logic can be <code>"or"</code> or <code>"and"</code>.</li>
                                         <li>The data source filters the data items client-side unless the serverFiltering option is set to true.</li>
+                                        <li>If you are using only one filter you can pass the filter configuration option a single object containing the filter instead of an array of filters (e.g. <code>filter:{field: "name", value: "Bill", operator: "startswith"}</code>).</li>
                                     </ul>
                                 </div>
                             </div>
 
                             <h3><strong>8.11</strong> Grouping data</h3>
+
+                            <p>By using the grouping configuration option the data contained in a <code>DataSource</code> can be re-arranged so the state of the data items are transformed into a hierarchical data structure.</p>
+
+                            <p>In the code example below the data (i.e the array of objects passed to the DataSource) in the <code>DataSource</code> is transformed into a structural state determined by the <code>group</code> configuration option.  
+
+                            <a class="jsbin-embed" href="http://jsbin.com/nohoqo/edit?html,output&height=990px">JS Bin</a>
+                            
+                            <p>In other words, the state of the data is change to look more like this:</p>
+<pre class="brush: html;]">
+
+[{
+    "field": "category",
+    "value": "Beverages",
+    "items": [{
+        "name": "Tea",
+        "category": "Beverages",
+        "price": "1.00"
+    }, {
+        "name": "Coffee",
+        "category": "Beverages",
+        "price": "2.00"
+    }],
+    "hasSubgroups": false,
+    "aggregates": {}
+}, {
+    "field": "category",
+    "value": "Food",
+    "items": [{
+        "name": "Ham",
+        "category": "Food",
+        "price": "3.00"
+    }],
+    "hasSubgroups": false,
+    "aggregates": {}
+}]
+
+</pre>
+                                
+                            <p>Note the addition of the <code>value</code> and <code>items</code> properties which are used in the template.</p>
+
+                            <div class="note">
+                                <div class="notes-title">Notes</div>
+                                <div class="notes">
+                                    <ul>
+                                        <li>The data source groups the data items client-side unless the serverGrouping option is set to true.</li>
+                                        <li></li>
+                                        <li>Grouping is done by identifying a field that you'd like to group. Additionally you can define sorting direction and aggregates when grouping.</li>
+                                        <li>Multiple grouping objects be used to configure a <code>DataSource</code> with an infinite number of grouped hierarchies. This is done by setting the group option value to an array of grouping configuration objects (e.g. <code>[{ field: "category" },{ field: "subcategory" }</code>].</li>
+                                    </ul>
+                                </div>
+                            </div>
 
                             <h3><strong>8.12</strong> Binding to <code>DataSource</code> events</h3>
 
@@ -3285,6 +3365,18 @@ offlineStorage: {
                                     </ul>
                                 </div>
                             </div>
+
+                            <h3><strong>8.14</strong> <code>DataSource</code> extensions</h3>
+
+                            <p>You should be aware that several <code>DataSource</code> extensions (which inherit from <code>DataSource</code>) are available. These extended constructors offer nuanced features commonly for specific widgets.</p>
+
+                            <ul>
+                                <li><a href="http://docs.telerik.com/kendo-ui/api/javascript/data/ganttdatasource"><code>GanttDataSource</code></a> (used with the <a href="http://demos.telerik.com/kendo-ui/gantt/index">Gantt widget</a>)</li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/api/javascript/data/hierarchicaldatasource"><code>HierarchicalDataSource</code></a></li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/api/javascript/data/pivotdatasource"><code>PivotDataSource</code></a> (used with the <a href="http://demos.telerik.com/kendo-ui/pivotgrid/index">PivotGrid widget</a>)</li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/api/javascript/data/schedulerdatasource"><code>SchedulerDataSource</code></a> (used with the <a href="http://demos.telerik.com/kendo-ui/scheduler/index">Scheduler widget</a>)</li>
+                                <li><a href="http://docs.telerik.com/kendo-ui/api/javascript/data/treelistdatasource"><code>TreeListDataSource</code></a> (used with the <a href="http://demos.telerik.com/kendo-ui/treelist/index">TreeList widget</a>)</li>
+                            </ul>
 
                             </div><!--  /chapter 8  -->
 
