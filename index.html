@@ -464,7 +464,9 @@
                             <p>This chapter will answer the question of why kendo UI. It will broadly discuss Kendo UI's benefits, strengths, and major features.</p>
 
 
-                            <h3><strong>1.2</strong> A comprehensive toolkit of UI widgets &amp; tools for building web sites &amp; applications for desktop computers &amp; touch devices</h3>
+                            <h3><strong>1.2</strong> Off the shelf UI widgets &amp; tools to aid the development of web sites &amp; applications for desktop computers &amp; touch devices</h3>
+
+                            <p>Kendo UI, first and foremost, is a comprehensive set of commercial user interface widgets, dependent on jQuery, and written in JavaScript, to be used in the development of web sites/applications that run on the web platform. In short, Kendo UI is a tookit of widgets that provide UI solutions for showing and acquiring data by way of <a href="http://ui-patterns.com/patterns">common user interface widget patterns</a> (e.g. <a href="http://designinginterfaces.com/patterns/">data grids, calendar selection, tooltips etc...</a>)</p>
                             
                             <p>The totality of Kendo UI parts makes it the most complete set of JavaScript/jQuery widgets and tools, from one source, that runs in the widest range of browsers, on the widest range of hand held devices and computers. Consider that Kendo UI contains <a href="http://demos.telerik.com/kendo-ui/">70+ widgets</a> and an extensive set of tools for building JavaScript applications.</p>
 
@@ -553,7 +555,7 @@
 
                             <h3><strong>1.8</strong> In-depth getting started docs and API docs</h3>
 
-                            <p>Kendo UI provides <a href="http://docs.telerik.com/kendo-ui/api/introduction">API documentation</a> which details options, methods, and events for each widget or tool. Additionally, above and beyond the API documentation, a <a href="http://docs.telerik.com/kendo-ui/getting-started/introduction">Getting Started</a> overview is provided for each widget or tool. Very few commercial solutions provide such a resource (API &amp; Documenation on usage), and if they do, it is nowhere as in depth as what is found in the Kendo UI docs.</p>
+                            <p>Kendo UI provides <a href="http://docs.telerik.com/kendo-ui/api/introduction">API documentation</a> which detail configuration options, methods, and events for each widget or tool. Additionally, above and beyond the API documentation, a <a href="http://docs.telerik.com/kendo-ui/getting-started/introduction">Getting Started</a> overview is provided for each widget or tool. Very few commercial solutions provide such a resource (API &amp; Documenation on usage), and if they do, it is nowhere as in depth as what is found in the Kendo UI docs, demos, and API reference.</p>
 
                             <h3><strong>1.9</strong> Detailed demos immediately runnable and editable</h3>
 
@@ -562,6 +564,15 @@
                             <img src="images/dojo.png">
 
                             <p>The fact that the demos are immediately editable and runnable in an <b>official</b> online editor sets Kendo UI apart from all of its competitors.</p>
+
+                            <div class="note">
+                                <div class="notes-title">Notes</div>
+                                <div class="notes">
+                                    <ul>
+                                        <li>As of Sept 2015 code demos found in the Kendo UI docs and api reference can be edited and run inline in the page without having to go to the Dojo.</li>
+                                    </ul>
+                                </div>
+                            </div>
 
                             <h3><strong>1.10</strong> Chrome DevTools extension to aid development</h3>
                             
@@ -576,11 +587,11 @@
 
                             <h3><strong>1.11</strong> Out-of-the-box themes and theme builder tools</h3>
 
-                            <p>The Kendo UI Web &amp; DataViz widgets have 15 out-of-the-box themes. As well, each of the themes can be customized using the <a href="http://demos.telerik.com/kendo-ui/themebuilder/">Telerik ThemeBuilder</a> tool.</p>
+                            <p>The Kendo UI Web &amp; DataViz widgets have 16 out-of-the-box themes. As well, each of the themes can be customized using the <a href="http://demos.telerik.com/kendo-ui/themebuilder/">Telerik ThemeBuilder</a> tool.</p>
 
 <!-- TJ: As a suggestion it'd be great to have a demo here to see all these themes in one place. A calendar rendered in each theme for instance would look great here. -->
 
-                            <p>The Kendo UI Mobile widgets have 5 platform-specific themes and 1 generic (flat skin). As well, each of the themes can be customized using the <a href="http://demos.telerik.com/kendo-ui/mobilethemebuilder">Telerik Mobile ThemeBuilder</a> tool.</p>
+                            <p>The Kendo UI Mobile widgets have 5 platform-specific themes and 2 generic (flat &amp; nova) themse. As well, each of the themes can be customized using the <a href="http://demos.telerik.com/kendo-ui/mobilethemebuilder">Telerik Mobile ThemeBuilder</a> tool.</p>
 
                             <div class="note">
                                 <div class="notes-title">Notes</div>
@@ -800,6 +811,16 @@
 
                             <p>Most Kendo UI widgets will auto resize by default when used in a fluid web page layout (i.e. when widgets <a href="http://docs.telerik.com/kendo-ui/framework/widgets/wrapper-element#wrapper">wrapper</a> container has a height and width of 100% and is resized) making the widgets themselves drop-in ready for mobile web design strategies. Those widgets that do not auto resize will simply require their <code>resize()</code> method to be called directly or by using <a href="http://docs.telerik.com/kendo-ui/api/javascript/kendo#methods-resize"><code>kendo.resize()</code></a> to resize a grouping of widgets. </p>
 
+                            <p>Additional patterns for working with Kendo UI widgets include:</p>
+
+                            <ul>
+                                <li>Imperatively instantiate widgets using new and constructor<li>
+                                <li>Instantiate widgets declaratively (from markup) using kendo.init()</li>
+                                <li>Instantiate widgets declaratively (from markup) using kendo.Views</li>
+                                <li>Instantiate widgets declaratively (from markup) using MVVM</li>
+                                <li>Instantiate widgets declaratively (from markup) using AngularJS directives</li>
+                            </ul>
+
                             <p>Additionally, a select few widgets (grid, scheduler, treelist, charts, tabstrip, toolbar, editor) will actually adapt to the screensize beyond simply adjusting themselves horizontally in width. Meaning, the widgets UI will adapt, automatically when required by the screen size or view port.</p>
 
 
@@ -817,7 +838,7 @@
 
                             <p>Briefly in this section I will answer the question of what exactly Kendo UI is, and is not.</p>
 
-                            <p>Kendo UI, first and foremost, is a comprehensive set of commercial <a href="http://en.wikipedia.org/wiki/Graphical_control_element">user interface widgets</a>, dependent on jQuery, and written in JavaScript, to be used in the development of web sites/applications that run on the web platform. In short, Kendo UI is a tookit of widgets that provide UI solutions for showing and acquiring data by way of common user interface widget patterns (e.g. data grids, calendar selection, tooltips etc...)</p>
+                            <p>Kendo UI, first and foremost, is a comprehensive set of commercial user interface widgets, dependent on jQuery, and written in JavaScript, to be used in the development of web sites/applications that run on the web platform. In short, Kendo UI is a tookit of widgets that provide UI solutions for showing and acquiring data by way of <a href="http://ui-patterns.com/patterns">common user interface widget patterns</a> (e.g. <a href="http://designinginterfaces.com/patterns/">data grids, calendar selection, tooltips etc...</a>)</p>
 
                             <p>It is not a CSS framework like Bootstrap or, alone, a JavaScript application tool like AngularJS, React, Backbone, or Ember. Kendo UI's purpose isn't too directly compete with any of these solutions. In fact, Kendo UI is intended to augment these solutions with professional grade UI widgets/components. 
 
@@ -1140,7 +1161,6 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
                                 <li>Sign up for a Telerik account and <a href="http://www.telerik.com/download/kendo-ui-core">get a zipped directory of Kendo UI Core</a></li>
                                 <li>Use <a href="http://bower.io/">Bower</a> to install the <a href="https://github.com/kendo-labs/bower-kendo-ui">Kendo UI Core bower package</a> (i.e. <code>$ bower install kendo-ui-core</code>)</li>
                                 <li>Use the <a href="https://github.com/telerik/kendo-ui-core#using-kendo-ui-core-via-the-kendo-static-cdn">Kendo CDN to include Kendo UI Core</a>.</li>
-                                <li>Use the <a href="https://github.com/telerik/kendo-ui-core#using-kendo-ui-core-via-the-kendo-static-cdn">Kendo CDN to include Kendo UI Core</a>.</li>
                                 <li>Install from <a href="http://jspm.io/">jspm</a> CLI (<a href="https://github.com/jspm/registry/tree/master/package-overrides/github/kendo-labs">uses bower endpoint</a>).</li>
                                 <li>Install from <a href="https://www.meteor.com/">meteor</a> CLI (i.e. from <a href="https://atmospherejs.com/telerik">Atmosphere</a>)</li>
                             </ul>
@@ -1168,7 +1188,7 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
 
                             <h3><strong>2.7</strong> Kendo UI releases &amp; versions</h3>
 
-                            <p>Kendo UI typically has three major releases in a year (i.e. Q1, Q2, Q3) and several beta and service pack releases in between. The version number is based on the year of the release and the quarter (i.e. 2104.3.XXXX = year . quarter). The last four digits can be used, but not always, to signify the month and date the release occurred (i.e. 2014.3.1114 = 2014 - Quarter 3 - November 14th). </p>
+                            <p>Kendo UI typically has three major releases in a year (i.e. Q1, Q2, Q3) and several beta and service pack releases in between. The version number is based on the year of the release and the quarter (i.e. 2104.3.XXXX = year.quarter). The last four digits can be used, but not always, to signify the month and date the release occurred (i.e. 2014.3.1114 = 2014 - Quarter 3 - November 14th). </p>
 
                             <p>Fro example, most recent release of Kendo UI is version <a href="http://cdn.kendostatic.com/2015.1.318/js/kendo.all.min.js">2105.1.318</a>.</p>
 
