@@ -1574,7 +1574,7 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
                                 <li>Kendo UI ships with three third-party libraries, <a href="https://angularjs.org/">AngularJS</a>, <a href="https://jquery.com/">jQuery</a>, and <a href="https://stuk.github.io/jszip/">JSZip</a>. This is out of convenience and, while you are not required to use these versions, you should be aware of the versions which are <a href="http://docs.telerik.com/kendo-ui/install/prerequisites">officially supported</a> (Keep in mind that jQuery is the only required third-party library).</li>
                                  <li>Obviously, the Professional source will differ from the CDN and Core source files and directories. The directory structure I am showing is a combination of all these sources (i.e. not exactly what is downloaded) so you can understand what is offered from each.</li>
                                  <li>Two strategies for including Kendo UI widgets are possible. The first is simply including bundled files (i.e. kendo.all.min.js) which contains large groupings of widgets in one file. The second option would be to include the <code>kendo.core.min.js</code> file then each individual widget/tool module (i.e. kendo.menu.min.js) and all its <a href="http://docs.telerik.com/kendo-ui/install/custom#framework">dependencies</a>.</li>
-                                 <li>The CDN offers the directory structure above excluding non-minified files. The CDN offers the current and past versions of Kendo UI, which should be obvious based on the URLs to the files on the CDN (e.g. <code>http://cdn.kendostatic.com/2015.1.318/styles/...</code> and <code>http://cdn.kendostatic.com/2015.1.318/js/...</code>). Note, that no "the latest" CDN (i.e. not a version, just the latest) endpoint is offered for Kendo UI.</li>
+                                 <li>The CDN offers the directory structure above excluding non-minified files. The CDN offers the current and past versions of Kendo UI, which should be obvious based on the URLs to the files on the CDN (e.g. <code>http://cdn.kendostatic.com/2015.1.318/styles/...</code> and <code>http://cdn.kendostatic.com/2015.1.318/js/...</code>). Note, that no "the latest" (i.e. not a version, just the latest) is offered from the CDN.</li>
                             </ol>
 
                             <p>The remainder of this book will show code examples using Professional source code hosted locally or from the CDN. It's assumed from this point forward that the above directory structure is in place regardless of whether the code in the book references the CDN or locally hosted files. 
@@ -1921,9 +1921,11 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
                                 </div>
                             </div>
 
-                            <h3><strong>3.4</strong> Using individual JavaScript files instead of bundled files</h3>
+                            <h3><strong>3.6</strong> Using individual JavaScript files instead of bundled files</h3>
 
-                            <p>It is possible to include only the JavaScript required to run specific widgets, as opposed to using bundled JavaScript files. In order to include individual widgets and tools replace <code>kendo.all.min.js</code> or <code>kendo.ui.core.min.js</code> with <code>kendo.core.min.js</code>. Then, include the individual widgets <code>.js</code> file, as well as all of the <a href="http://docs.telerik.com/kendo-ui/install/custom#framework">dependencies</a> for the individual widget in the correct order.</p>
+                            <p>It is possible to include only the JavaScript files required to run specific widgets, as opposed to using an all in one JavaScript file (aka bundled file) containing code for every widget. </p>
+
+                            <p>In order to include individual widgets and tools replace <code>kendo.all.min.js</code> or <code>kendo.ui.core.min.js</code> with <code>kendo.core.min.js</code>. Then, include the individual widgets <code>.js</code> file, as well as all of the <a href="http://docs.telerik.com/kendo-ui/install/custom#framework">dependencies</a> for the individual widget in the correct order.</p>
 
                             <p>The code below demonstrates how to include the minimal amount of JavaScript to use the DatePicker widget and MVVM tools.</p>
 
@@ -1972,11 +1974,11 @@ $ bower install https://bower.telerik.com/bower-kendo-ui.git
                                 </div>
                             </div>
 
-                            <h3><strong>3.6</strong> Options for including Kendo UI</h3>
+                            <h3><strong>3.7</strong> Options for including Kendo UI</h3>
 
                             <p>Kendo UI provides a comprehensive set of options for including Kendo UI in a web page. We've already examined a lot of the options, but you should be aware of all fo them.</p>  
 
-                            <p>You can include Kendo UI in one of the following five ways:</p>
+                            <p>You can include Kendo UI in one of the following five ways (This includes patterns already discussed):</p>
 
                             <ol>
                             <li><strong>One JavaScript file</strong> - Kendo UI code can be included in a web page using a single JavaScript file, which includes everything (i.e <code>http://cdn.kendostatic.com/2015.1.318/js/kendo.all.min.js</code>).</li>
@@ -3385,7 +3387,7 @@ offlineStorage: {
                                 </div>
                             </div>
 
-                            <h3><strong>8.14</strong> <code>DataSource</code> extensions</h3>
+                            <h3><strong>8.14</strong> <code>DataSource</code> child constructors</h3>
 
                             <p>You should be aware that several <code>DataSource</code> extensions (which inherit from <code>DataSource</code>) are available. These extended constructors offer nuanced features commonly for specific widgets.</p>
 
